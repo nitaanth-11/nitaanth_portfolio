@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "status": "Accepted · Springer",
                 "year": 2026,
                 "abstract": "Combining Static Analysis and Retrieval-Augmented Reasoning for Explainable Vulnerability Detection. Validating automated vulnerability analysis through layered LLM reasoning grounded in static code metrics.",
-                "link": "Research Papers/252_CRC.pdf",
+                "link": "Research-Papers/252_CRC.pdf",
                 "journal": "ICDECT-2026 (Springer Proceedings)",
                 "tags": ["Springer", "Static Analysis", "RAG", "Vulnerability Detection"]
             },
@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "status": "Under Peer Review",
                 "year": 2026,
                 "abstract": "An assistive and coordination intelligence framework bridging workflows and user needs, engineered under academic guidance and currently undergoing peer review.",
-                "link": "Research Papers/Bandhoo_IEEE_paper.pdf",
+                "link": "Research-Papers/Bandhoo_IEEE_paper.pdf",
                 "journal": "Under Peer Review",
                 "tags": ["AI Systems", "Full Stack", "Under Review"]
             },
@@ -433,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "status": "Active Research",
                 "year": 2026,
                 "abstract": "Predicting xenotransplantation viability and organ rejection risks through multi-layered biological, genomic, and immunological compatibility profiling.",
-                "link": "Research Papers/Xenotransplantation_final_research.pdf",
+                "link": "Research-Papers/Xenotransplantation_final_research.pdf",
                 "journal": "Active Research",
                 "tags": ["Bioinformatics", "Deep Learning", "Active Research"]
             }
