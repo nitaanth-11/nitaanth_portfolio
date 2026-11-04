@@ -1,0 +1,39 @@
+# Environment & Secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Documents (Excluded per instruction: no documents on GitHub)
+*.pdf
+*.docx
+*.doc
+*.pptx
+*.ppt
+*.xlsx
+*.xls
+*.csv
+Certificates/
+Research Papers/
+
+# Pictures & Media (Excluded per instruction: no pictures on GitHub)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.bmp
+*.ico
+*.mp4
+*.mov
+*.avi
