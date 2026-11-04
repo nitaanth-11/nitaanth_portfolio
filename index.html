@@ -61,22 +61,17 @@
 
     <main>
         <!-- ═══════════════════════════════════════════════════════════
-             HERO / ABOUT ME — WITH PROFILE PICTURE BACKGROUND
+             HERO / ABOUT ME — FULLY RESPONSIVE TWO-COLUMN GRID
              ═══════════════════════════════════════════════════════════ -->
         <section id="home" class="hero section">
-            <!-- Background profile picture with low brightness and low exposure -->
-            <div class="hero-bg-container">
-                <img src="profile.jpg" alt="Nitaanth Background" class="hero-bg-image" onerror="this.parentElement.classList.add('bg-fallback');">
-                <div class="hero-bg-overlay"></div>
-            </div>
-
             <div class="container hero-container-relative">
-                <div class="hero-card-panel">
+                <div class="hero-grid-layout">
+                    <!-- Left Column: Bio & Introduction -->
                     <div class="hero-content">
                         <p class="hero-greeting">Hey, I'm</p>
                         <h1 class="hero-name">Nitaanth</h1>
                         <p class="hero-skills">Top Skills: Python-Full Stack Development · Agentic AI · Cloud Computing · MLOps</p>
-                        <p class="hero-university">MUKESH PATEL SCHOOL OF TECHNOLOGY MANAGEMENT & ENGINEERING · NMIMS</p>
+                        <p class="hero-university">MUKESH PATEL SCHOOL OF TECHNOLOGY MANAGEMENT &amp; ENGINEERING · NMIMS</p>
 
                         <p class="hero-description">
                             I'm Nitaanth, a final-year B.Tech Data Science student at NMIMS with a genuine curiosity for technology, problem-solving and understanding how things work. I'm particularly passionate about AI, Machine Learning, Computer Vision and GIS, and I love exploring ideas that bring these fields together in practical ways. Outside academics, cricket has always been a big part of my life, both as a player and as someone who enjoys the competitive side of the sport. I also enjoy travelling, exploring new places, following technology and constantly picking up something new. I'm someone who likes experimenting, asking questions and learning by doing, whether that's building a project, working on an idea or stepping onto a cricket field.
@@ -91,6 +86,13 @@
                                 View Resume
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                             </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Profile Picture Frame -->
+                    <div class="hero-portrait-wrapper">
+                        <div class="hero-portrait-frame">
+                            <img src="profile.jpg" alt="Nitaanth Panickar" class="hero-portrait-img" onerror="this.parentElement.classList.add('img-fallback');">
                         </div>
                     </div>
                 </div>
