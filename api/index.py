@@ -10,3 +10,4 @@ from server import app
 
 # Vercel WSGI entry point
 # The Flask 'app' object is automatically detected by @vercel/python
+

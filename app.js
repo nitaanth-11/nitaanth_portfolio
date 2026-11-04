@@ -125,15 +125,16 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (dep.toLowerCase().includes('test')) {
                 demoLinkHTML = `<span class="project-link-badge badge-testing"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg> Under Testing</span>`;
             } else if (dep.toLowerCase().includes('cli') || (proj.status || '').toLowerCase().includes('cli')) {
-                demoLinkHTML = `<span class="project-link-badge badge-cli"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg> CLI Tool</span>`;
+                demoLinkHTML = `<button type="button" class="project-link-badge badge-cli sentinel-cli-trigger" id="sentinel-cli-btn" title="Click to view SentinelAI CLI Scans Guide & Snippets"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg> CLI Scans Guide ↗</button>`;
             }
 
             const gitLinkHTML = (proj.github && proj.github.startsWith('http'))
                 ? `<a href="${proj.github}" target="_blank" class="project-link">${ICONS.github} Source</a>`
                 : '';
 
+            const isSentinel = titleLower.includes('sentinel');
             const card = document.createElement('div');
-            card.className = 'card';
+            card.className = `card ${isSentinel ? 'sentinel-card-item' : ''}`;
             card.innerHTML = `
                 <div class="project-card-body">
                     <div class="project-header">
@@ -224,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.innerHTML = '';
 
         papers.forEach(paper => {
+            const isSentinel = (paper.title || '').toLowerCase().includes('sentinel');
             const row = document.createElement('a');
             row.href = paper.link || '#';
             row.target = '_blank';
@@ -237,7 +239,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     ${paper.subtitle ? `<p class="research-status-note">${paper.subtitle}</p>` : ''}
                     <p class="research-abstract">${paper.abstract || ''}</p>
-                    <div class="research-link">${ICONS.externalLink} View Manuscript (PDF)</div>
+                    <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 10px;">
+                        <div class="research-link" style="margin-top: 0;">${ICONS.externalLink} View Manuscript (PDF)</div>
+                        ${isSentinel ? `
+                        <button type="button" class="sentinel-cli-trigger" style="background: none; border: none; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--crescent); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 0;">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            CLI Scans Guide ↗
+                        </button>` : ''}
+                    </div>
                 </div>
             `;
             grid.appendChild(row);
@@ -682,5 +691,77 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 6000);
         });
     }
+
+    // ═══════════════════════════════════════════════════════════════
+    // SENTINEL AI CLI GUIDE MODAL CONTROLLER
+    // ═══════════════════════════════════════════════════════════════
+    const sentinelModal = document.getElementById('sentinel-modal');
+    const sentinelCloseBtn = document.getElementById('sentinel-close-btn');
+    const sentinelCloseDot = document.getElementById('sentinel-close-dot');
+    const sentinelBackdrop = document.getElementById('sentinel-modal-backdrop');
+
+    function openSentinelModal() {
+        if (!sentinelModal) return;
+        sentinelModal.classList.add('active');
+        sentinelModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSentinelModal() {
+        if (!sentinelModal) return;
+        sentinelModal.classList.remove('active');
+        sentinelModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    if (sentinelCloseBtn) sentinelCloseBtn.addEventListener('click', closeSentinelModal);
+    if (sentinelCloseDot) sentinelCloseDot.addEventListener('click', closeSentinelModal);
+    if (sentinelBackdrop) sentinelBackdrop.addEventListener('click', closeSentinelModal);
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sentinelModal && sentinelModal.classList.contains('active')) {
+            closeSentinelModal();
+        }
+    });
+
+    // Delegation click listener for Sentinel card and all CLI triggers
+    document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('.sentinel-cli-trigger');
+        if (trigger) {
+            e.preventDefault();
+            e.stopPropagation();
+            openSentinelModal();
+            return;
+        }
+
+        const sentinelCard = e.target.closest('.sentinel-card-item');
+        if (sentinelCard && !e.target.closest('a')) {
+            openSentinelModal();
+        }
+    });
+
+    // Copy Command Buttons
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const textToCopy = btn.getAttribute('data-clipboard') || '';
+            if (!textToCopy) return;
+
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                const span = btn.querySelector('span');
+                const originalText = span ? span.textContent : 'Copy';
+                btn.classList.add('copied');
+                if (span) span.textContent = 'Copied! ✓';
+
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    if (span) span.textContent = originalText;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy command:', err);
+            }
+        });
+    });
 
 });

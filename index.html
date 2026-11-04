@@ -445,9 +445,15 @@
                                 <p class="research-abstract">
                                     Combining Static Analysis and Retrieval-Augmented Reasoning for Explainable Vulnerability Detection. Validating automated vulnerability analysis through layered LLM reasoning grounded in static code metrics.
                                 </p>
-                                <div class="research-link">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    View Manuscript (PDF)
+                                <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 10px;">
+                                    <div class="research-link" style="margin-top: 0;">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                        View Manuscript (PDF)
+                                    </div>
+                                    <button type="button" class="sentinel-cli-trigger" style="background: none; border: none; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--crescent); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 0;">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                        CLI Scans Guide ↗
+                                    </button>
                                 </div>
                             </div>
                         </a>
@@ -647,7 +653,7 @@
                     </div>
 
                     <!-- Sentinel AI -->
-                    <div class="card">
+                    <div class="card sentinel-card-item">
                         <div class="project-card-body">
                             <div class="project-header">
                                 <div class="project-icon" style="color: var(--crescent);">
@@ -667,7 +673,10 @@
                             </div>
                             <div class="project-links">
                                 <a href="https://github.com/nitaanth-11/Sentinel-AI" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Source</a>
-                                <span class="project-link-badge badge-cli"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg> CLI Tool</span>
+                                <button type="button" class="project-link-badge badge-cli sentinel-cli-trigger" id="sentinel-cli-btn" title="Click to view SentinelAI CLI Scans Guide & Snippets">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                                    CLI Scans Guide ↗
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -917,6 +926,177 @@
             <p class="footer-copy">&copy; 2026 Nitaanth Panickar. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SENTINEL AI — CLI COMMANDS & SCANS MODAL
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="sentinel-modal" class="sentinel-modal-overlay" aria-hidden="true">
+        <div class="sentinel-modal-backdrop" id="sentinel-modal-backdrop"></div>
+        <div class="sentinel-modal-container" role="dialog" aria-modal="true" aria-labelledby="sentinel-modal-title">
+            
+            <!-- Terminal Header Bar -->
+            <div class="sentinel-terminal-header">
+                <div class="terminal-dots">
+                    <span class="dot dot-red" id="sentinel-close-dot" title="Close"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="terminal-title" id="sentinel-modal-title">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    sentinelai — CLI-Based Scans &amp; Remediation Guide
+                </div>
+                <button type="button" class="sentinel-close-btn" id="sentinel-close-btn" aria-label="Close Guide">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="sentinel-modal-body">
+                <div class="sentinel-intro">
+                    <div class="sentinel-badge-row">
+                        <span class="activity-chip" style="color: var(--crescent); border-color: var(--border-default); font-weight: 700;">PyPI: nitaanth-sentinelai</span>
+                        <span class="activity-chip" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">Accepted · Springer ICDECT-2026</span>
+                    </div>
+                    <p class="sentinel-intro-text">
+                        Complete reference guide to running automated multi-tool AST security audits, Llama 3.3-70B AI explanations via Groq, interactive AST patching, report exports, and CI/CD quality gating with SentinelAI.
+                    </p>
+                </div>
+
+                <!-- 6 Code Snippets Grid / List -->
+                <div class="sentinel-snippets-list">
+                    
+                    <!-- 1. One-Time Setup -->
+                    <div class="sentinel-snippet-card">
+                        <div class="snippet-header">
+                            <div class="snippet-num">01</div>
+                            <div class="snippet-info">
+                                <h4 class="snippet-title">1. One-Time Setup (On Any Machine)</h4>
+                                <p class="snippet-desc">Installs the package globally via pip. Now <code>sentinelai</code> is available globally in your terminal.</p>
+                            </div>
+                            <button type="button" class="copy-btn" data-clipboard="pip install nitaanth-sentinelai" title="Copy code">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div class="terminal-block">
+                            <pre><code><span class="prompt">$</span> pip install nitaanth-sentinelai</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- 2. Basic CLI Scan -->
+                    <div class="sentinel-snippet-card">
+                        <div class="snippet-header">
+                            <div class="snippet-num">02</div>
+                            <div class="snippet-info">
+                                <h4 class="snippet-title">2. Basic CLI Scan (Core Scanners)</h4>
+                                <p class="snippet-desc">Runs Semgrep, Bandit, and GitLeaks, correlates findings, and shows the terminal summary:</p>
+                            </div>
+                            <button type="button" class="copy-btn" data-clipboard="# Scan the current directory&#10;sentinelai scan .&#10;# Scan a specific repository or folder&#10;sentinelai scan sentinelai-manual-test" title="Copy code">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div class="terminal-block">
+                            <pre><code><span class="comment"># Scan the current directory</span>
+<span class="prompt">$</span> sentinelai scan .
+<span class="comment"># Scan a specific repository or folder</span>
+<span class="prompt">$</span> sentinelai scan sentinelai-manual-test</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- 3. CLI Scan with AI Insights (Groq LLM) -->
+                    <div class="sentinel-snippet-card">
+                        <div class="snippet-header">
+                            <div class="snippet-num">03</div>
+                            <div class="snippet-info">
+                                <h4 class="snippet-title">3. CLI Scan with AI Insights (Groq LLM)</h4>
+                                <p class="snippet-desc">Uses Llama 3.3-70B on Groq to explain vulnerabilities and recommend root-cause fixes:</p>
+                            </div>
+                            <button type="button" class="copy-btn" data-clipboard="export GROQ_API_KEY=&quot;your-groq-key&quot;          # macOS/Linux&#10;$env:GROQ_API_KEY=&quot;your-groq-key&quot;           # Windows PowerShell&#10;# Run scan with Groq&#10;sentinelai scan . --ai-provider groq --egress allow" title="Copy code">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div class="terminal-block">
+                            <pre><code><span class="comment"># Set your API key</span>
+<span class="prompt">$</span> export GROQ_API_KEY="your-groq-key"          <span class="comment"># macOS/Linux</span>
+<span class="prompt">PS&gt;</span> $env:GROQ_API_KEY="your-groq-key"           <span class="comment"># Windows PowerShell</span>
+<span class="comment"># Run scan with Groq</span>
+<span class="prompt">$</span> sentinelai scan . --ai-provider groq --egress allow</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- 4. Interactive Vulnerability Remediation -->
+                    <div class="sentinel-snippet-card">
+                        <div class="snippet-header">
+                            <div class="snippet-num">04</div>
+                            <div class="snippet-info">
+                                <h4 class="snippet-title">4. Interactive Vulnerability Remediation (fix &amp; undo)</h4>
+                                <p class="snippet-desc">Interactively reviews detected security flaws, previews AST syntax-validated diffs, and prompts to apply fixes:</p>
+                            </div>
+                            <button type="button" class="copy-btn" data-clipboard="# Interactively fix detected issues&#10;sentinelai fix .&#10;# Revert / rollback the last fix session&#10;sentinelai undo" title="Copy code">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div class="terminal-block">
+                            <pre><code><span class="comment"># Interactively fix detected issues</span>
+<span class="prompt">$</span> sentinelai fix .
+<span class="comment"># Revert / rollback the last fix session</span>
+<span class="prompt">$</span> sentinelai undo</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- 5. Generate Reports -->
+                    <div class="sentinel-snippet-card">
+                        <div class="snippet-header">
+                            <div class="snippet-num">05</div>
+                            <div class="snippet-info">
+                                <h4 class="snippet-title">5. Generate Reports</h4>
+                                <p class="snippet-desc">Export audit findings in HTML for visual review, SARIF for GitHub &amp; IDEs, JSON for pipelines, or Markdown for PRs:</p>
+                            </div>
+                            <button type="button" class="copy-btn" data-clipboard="# HTML interactive report (best for visual review)&#10;sentinelai scan . --format html -o report.html&#10;# SARIF format (for GitHub Security tab / VS Code / IDEs)&#10;sentinelai scan . --format sarif -o results.sarif&#10;# JSON format (for automated scripts / pipelines)&#10;sentinelai scan . --format json -o scan-result.json&#10;# Markdown report (for PR comments / documentation)&#10;sentinelai scan . --format markdown -o report.md" title="Copy code">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div class="terminal-block">
+                            <pre><code><span class="comment"># HTML interactive report (best for visual review)</span>
+<span class="prompt">$</span> sentinelai scan . --format html -o report.html
+<span class="comment"># SARIF format (for GitHub Security tab / VS Code / IDEs)</span>
+<span class="prompt">$</span> sentinelai scan . --format sarif -o results.sarif
+<span class="comment"># JSON format (for automated scripts / pipelines)</span>
+<span class="prompt">$</span> sentinelai scan . --format json -o scan-result.json
+<span class="comment"># Markdown report (for PR comments / documentation)</span>
+<span class="prompt">$</span> sentinelai scan . --format markdown -o report.md</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- 6. Filter by Severity & CI/CD Pipeline Gating -->
+                    <div class="sentinel-snippet-card">
+                        <div class="snippet-header">
+                            <div class="snippet-num">06</div>
+                            <div class="snippet-info">
+                                <h4 class="snippet-title">6. Filter by Severity &amp; CI/CD Pipeline Gating</h4>
+                                <p class="snippet-desc">Target specific severities or fail automated build pipelines when critical flaws are found:</p>
+                            </div>
+                            <button type="button" class="copy-btn" data-clipboard="# Only show High and Critical findings in terminal&#10;sentinelai scan . --severity high&#10;# Break the build / exit code 1 if High or Critical issues exist (CI gate)&#10;sentinelai scan . --fail-on high" title="Copy code">
+                                <svg class="copy-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div class="terminal-block">
+                            <pre><code><span class="comment"># Only show High and Critical findings in terminal</span>
+<span class="prompt">$</span> sentinelai scan . --severity high
+<span class="comment"># Break the build / exit code 1 if High or Critical issues exist (CI gate)</span>
+<span class="prompt">$</span> sentinelai scan . --fail-on high</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="app.js"></script>
