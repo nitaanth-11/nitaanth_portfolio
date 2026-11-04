@@ -5,12 +5,20 @@ Personal developer portfolio and showcase for Nitaanth Panickar, Data Science un
 ## 🚀 Overview
 
 - **Frontend:** Vanilla HTML5, CSS3 (Modern Glassmorphic Dark UI), JavaScript (ES6+).
-- **Backend:** Python Flask API service (`server.py`) serving portfolio dynamic endpoints for projects, work ventures, research manuscripts, and certifications.
+- **Backend:** Python Flask API service (`server.py`) with Vercel serverless integration (`api/index.py`).
 - **Key Modules:**
   - `index.html` — Semantic, responsive portfolio layout.
   - `styles.css` — Custom glassmorphism, responsive grid, dynamic hover micro-interactions.
-  - `app.js` — Client-side API hydration with local fallback.
-  - `server.py` — Flask API service with CORS support.
+  - `app.js` — Client-side API hydration with resilient local fallback.
+  - `server.py` — Flask API service with dual-route support.
+  - `vercel.json` — Vercel routing and serverless function configuration.
+
+## ⚡ Deployment to Vercel
+
+1. Import this repository into [Vercel](https://vercel.com).
+2. Framework Preset: **Other**.
+3. Root Directory: `./` (leave default).
+4. Click **Deploy**. Vercel will automatically serve the static frontend and route `/api/*` to the Python serverless function (`api/index.py`).
 
 ## 🛠️ Setup & Running Locally
 

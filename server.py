@@ -313,18 +313,27 @@ def get_nitaanth_data():
     rows = fetch_nitaanth_rows()
     return rows if rows else FALLBACK_ROWS
 
+# ── HEALTH ────────────────────────────────────────────────────
+@app.route('/api/health', methods=['GET'])
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "healthy", "service": "Nitaanth Portfolio API"})
+
 # ── PROJECTS ──────────────────────────────────────────────────
 @app.route('/api/projects', methods=['GET'])
+@app.route('/projects', methods=['GET'])
 def get_projects():
     return jsonify(PROJECTS_FALLBACK)
 
 # ── WORK ──────────────────────────────────────────────────────
 @app.route('/api/work', methods=['GET'])
+@app.route('/work', methods=['GET'])
 def get_work():
     return jsonify(WORK_FALLBACK)
 
 # ── RESEARCH ──────────────────────────────────────────────────
 @app.route('/api/research', methods=['GET'])
+@app.route('/research', methods=['GET'])
 def get_research():
     return jsonify(RESEARCH_FALLBACK)
 
@@ -338,6 +347,7 @@ def serve_certificates(filename):
 
 # ── SOCIALS ───────────────────────────────────────────────────
 @app.route('/api/socials', methods=['GET'])
+@app.route('/socials', methods=['GET'])
 def get_socials():
     nitaanth = get_nitaanth_data()
     github = "https://github.com/nitaanth-11"
@@ -359,11 +369,13 @@ def get_socials():
 
 # ── CERTIFICATIONS ────────────────────────────────────────────
 @app.route('/api/certifications', methods=['GET'])
+@app.route('/certifications', methods=['GET'])
 def get_certifications():
     return jsonify(CERTIFICATIONS_FALLBACK)
 
 # ── RESUME ────────────────────────────────────────────────────
 @app.route('/api/resume', methods=['GET'])
+@app.route('/resume', methods=['GET'])
 def get_resume():
     nitaanth = get_nitaanth_data()
     # First row with a Resume link wins
@@ -374,6 +386,7 @@ def get_resume():
     return jsonify(RESUME)
 
 @app.route('/api/contact', methods=['POST'])
+@app.route('/contact', methods=['POST'])
 def handle_contact():
     data = request.json
     name = data.get('name')

@@ -7,9 +7,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ═══════════════════════════════════════════════════════════════
-    // CONFIG — API base URL (set in .env and served by backend)
+    // CONFIG — API base URL (Vercel serverless / Local backend)
     // ═══════════════════════════════════════════════════════════════
-    const API_BASE = window.__API_BASE || 'http://localhost:5000/api';
+    const API_BASE = window.__API_BASE || (
+        window.location.hostname === 'localhost' && window.location.port !== '5000' && window.location.port !== ''
+            ? 'http://localhost:5000/api'
+            : '/api'
+    );
 
     // ═══════════════════════════════════════════════════════════════
     // SVG ICON HELPERS
