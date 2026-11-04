@@ -14,8 +14,7 @@ env/
 .DS_Store
 Thumbs.db
 
-# Documents (Excluded per instruction: no documents on GitHub)
-*.pdf
+# Office & temp files
 *.docx
 *.doc
 *.pptx
@@ -23,17 +22,20 @@ Thumbs.db
 *.xlsx
 *.xls
 *.csv
-Certificates/
-Research Papers/
-
-# Pictures & Media (Excluded per instruction: no pictures on GitHub)
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.webp
-*.bmp
-*.ico
 *.mp4
 *.mov
 *.avi
+check_drive.py
+
+# Personal / sensitive documents
+*sponsor*
+*statement*
+*passport*
+*visa*
+*bank*
+*aadhar*
+*pan*
+
+# Duplicate folders
+images/
+

@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ],
         resume: {
-            "url": "nitaanth_resume.pdf"
+            "url": "https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing"
         }
     };
 
