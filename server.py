@@ -71,12 +71,17 @@ PROJECTS_FALLBACK = [
     },
     {
         "title": "Bandhoo",
-        "domain": "Assistive AI & Orchestration",
-        "description": "Adaptive collaborative agent framework designed to orchestrate complex user workflows and bridge communication through contextual memory and task execution. Supported by active academic peer review.",
-        "tags": ["Agentic AI", "Task Orchestration", "Contextual Memory", "Python", "Under Review"],
+        "domain": "Legal AI & Penal Code NLP",
+        "description": "Mumbai crime-reporting and legal-provision classification engine based on the Bharatiya Nyaya Sanhita (BNS, 2023) and procedural mandates under the Bharatiya Nagarik Suraksha Sanhita (BNSS, 2023). Evaluates natural-language police complaints across English, Hindi, and Hinglish with a 4-tier statutory certainty schema, clause-level retrieval, and automated procedural mapping.",
+        "tags": ["BNS 2023", "BNSS Procedure", "Legal NLP", "4-Tier Classification", "Multilingual (EN/HI/Hinglish)", "Vercel Live"],
         "github": "https://github.com/nitaanth-11/Bandhoo",
-        "deployed": "Under testing",
-        "status": "Testing"
+        "deployed": "https://bandhoo-sigma.vercel.app/",
+        "status": "Live",
+        "architecture": {
+            "systemDesign": "Dual-stage legal classification harness combining single-pass clause-level BM25 legal retrieval (max_k=8) over codified statutory provisions with an LLM reasoning validator enforcing fact/inference separation.",
+            "dataFlow": "Multilingual Complaint (English, Hindi, or Hinglish) → Preprocessing & Entity Extraction → Clause-Level Statutory Retrieval (BNS 2023) → 4-Tier Certainty Classifier → BNSS Schedule I Part I Procedural Determination → Transparent Legal Rationale Output.",
+            "keyDecisions": "Formulated a 4-Tier Certainty Schema (Tier A–D) to prevent hallucinated penal sections on ambiguous complaints, accompanied by explicit negation and keyword trap immunity (e.g., neutralizing metaphorical traps like 'daylight robbery')."
+        }
     },
     {
         "title": "Sentinel AI",
@@ -159,13 +164,13 @@ RESEARCH_FALLBACK = [
     },
     {
         "title": "Bandhoo",
-        "subtitle": "Under peer review from the guide and in view of application",
-        "status": "Under Peer Review",
+        "subtitle": "BNS Legal Classification Benchmark & Procedural Reasoning Engine · Under IEEE Review",
+        "status": "Under Peer Review · IEEE",
         "year": 2026,
-        "abstract": "An assistive and coordination intelligence framework bridging workflows and user needs, engineered under academic guidance and currently undergoing peer review.",
+        "abstract": "A Mumbai crime-reporting and statutory classification framework benchmarked on 50 diverse multilingual complaints (English, Hindi, Hinglish) across 12 penal categories under Bharatiya Nyaya Sanhita (BNS, 2023) and BNSS First Schedule.",
         "link": "Research-Papers/Bandhoo_IEEE_paper.pdf",
-        "journal": "Under Peer Review",
-        "tags": ["AI Systems", "Full Stack", "Under Review"]
+        "journal": "Under Peer Review (IEEE)",
+        "tags": ["BNS 2023", "Legal NLP", "BNSS Procedure", "Under Review"]
     },
     {
         "title": "Xenotransplantation",

@@ -390,18 +390,18 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             title: "Bandhoo",
-            domain: "Assistive AI & Orchestration",
-            status: "Testing",
-            badgeClass: "status-testing",
-            description: "Adaptive collaborative agent framework designed to orchestrate complex user workflows and bridge communication through contextual memory and task execution. Supported by active academic peer review.",
-            tags: ["Agentic AI", "Task Orchestration", "Contextual Memory", "Python", "Under Review"],
+            domain: "Legal AI & Penal Code NLP",
+            status: "Live",
+            badgeClass: "status-live",
+            description: "Mumbai crime-reporting and legal-provision classification engine based on the Bharatiya Nyaya Sanhita (BNS, 2023) and procedural mandates under the Bharatiya Nagarik Suraksha Sanhita (BNSS, 2023). Evaluates natural-language police complaints across English, Hindi, and Hinglish with a 4-tier statutory certainty schema, clause-level retrieval, and automated procedural mapping.",
+            tags: ["BNS 2023", "BNSS Procedure", "Legal NLP", "4-Tier Classification", "Multilingual (EN/HI/Hinglish)", "Vercel Live"],
             github: "https://github.com/nitaanth-11/Bandhoo",
-            deployed: "Under testing",
-            icon: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+            deployed: "https://bandhoo-sigma.vercel.app/",
+            icon: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 7l4-2 4 2M3 7v4c0 2 2 3 4 3s4-1 4-3V7M13 7l4-2 4 2M13 7v4c0 2 2 3 4 3s4-1 4-3V7M8 21h8"/></svg>`,
             architecture: {
-                systemDesign: "Hierarchical agent system with persistent conversational vector storage and multi-step plan verification checkpoints.",
-                dataFlow: "User Goal Intent → Decomposition Planner → Specialized Tool Invoker → Contextual Working Memory → Validated Task Completion.",
-                keyDecisions: "Utilized structured JSON output schemas to enforce deterministic tool execution across LLM invocations."
+                systemDesign: "Dual-stage legal classification harness combining single-pass clause-level BM25 legal retrieval (max_k=8) over codified statutory provisions with an LLM reasoning validator enforcing strict fact/inference separation.",
+                dataFlow: "Multilingual Complaint (English, Hindi, or Hinglish) → Preprocessing & Entity Extraction → Clause-Level Statutory Retrieval (BNS 2023) → 4-Tier Certainty Classifier → BNSS Schedule I Part I Procedural Determination → Transparent Legal Rationale Output.",
+                keyDecisions: "Formulated a 4-Tier Certainty Schema (Tier A–D) to prevent hallucinated penal sections on ambiguous complaints, accompanied by explicit negation and keyword trap immunity (e.g., neutralizing metaphorical traps like 'daylight robbery' or 'samay loot liya')."
             }
         },
         {
@@ -791,13 +791,13 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 "title": "Bandhoo",
-                "subtitle": "Under peer review from the guide and in view of application",
-                "status": "Under Peer Review",
+                "subtitle": "BNS Legal Classification Benchmark & Procedural Reasoning Engine · Under IEEE Review",
+                "status": "Under Peer Review · IEEE",
                 "year": 2026,
-                "abstract": "An assistive and coordination intelligence framework bridging workflows and user needs, engineered under academic guidance and currently undergoing peer review.",
+                "abstract": "A Mumbai crime-reporting and statutory classification framework benchmarked on 50 diverse multilingual complaints (English, Hindi, Hinglish) across 12 penal categories under Bharatiya Nyaya Sanhita (BNS, 2023) and BNSS First Schedule.",
                 "link": "Research-Papers/Bandhoo_IEEE_paper.pdf",
-                "journal": "Under Peer Review",
-                "tags": ["AI Systems", "Full Stack", "Under Review"]
+                "journal": "Under Peer Review (IEEE)",
+                "tags": ["BNS 2023", "Legal NLP", "BNSS Procedure", "Under Review"]
             },
             {
                 "title": "Xenotransplantation",
