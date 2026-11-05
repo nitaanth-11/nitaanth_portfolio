@@ -378,27 +378,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         list.forEach((proj) => {
             const isSentinel = (proj.title || '').toLowerCase().includes('sentinel');
+            const projId = (proj.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
             const card = document.createElement('div');
             card.className = `project-panel-card card-tilt ${isSentinel ? 'sentinel-card-item' : ''}`;
+            card.setAttribute('data-focus', 'project');
+            card.setAttribute('data-id', projId);
+            card.setAttribute('title', 'Click to view full architecture & technical breakdown');
 
             let liveLinkHTML = '';
             const dep = (proj.deployed || '').trim();
             if (dep.startsWith('http')) {
                 liveLinkHTML = `
-                    <a href="${dep}" target="_blank" class="project-action-button magnetic">
+                    <a href="${dep}" target="_blank" class="project-action-button magnetic" onclick="event.stopPropagation();">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                         Live Demo ↗
                     </a>`;
             } else if (isSentinel || dep.toLowerCase().includes('cli')) {
                 liveLinkHTML = `
-                    <button type="button" class="project-action-button sentinel-cli-trigger magnetic" title="Open SentinelAI CLI Scans Guide & Interactive Snippets">
+                    <button type="button" class="project-action-button sentinel-cli-trigger magnetic" onclick="event.stopPropagation();" title="Open SentinelAI CLI Scans Guide & Interactive Snippets">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
                         CLI Scans Guide ↗
                     </button>`;
             }
 
             const gitLinkHTML = (proj.github && proj.github.startsWith('http'))
-                ? `<a href="${proj.github}" target="_blank" class="project-action-button project-button-github magnetic">
+                ? `<a href="${proj.github}" target="_blank" class="project-action-button project-button-github magnetic" onclick="event.stopPropagation();">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                     Source Code
                 </a>`
@@ -406,6 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.innerHTML = `
                 <div>
+                    <span class="focus-hint-badge">Click to Expand ↗</span>
                     <div class="project-card-top-row">
                         <div class="project-brand-box">
                             <div class="project-icon-frame">${proj.icon}</div>
@@ -696,14 +701,876 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sentinelCloseDot) sentinelCloseDot.addEventListener('click', closeSentinelModal);
     if (sentinelBackdrop) sentinelBackdrop.addEventListener('click', closeSentinelModal);
 
+    // ═══════════════════════════════════════════════════════════════
+    // 12. CLICK-TO-FOCUS SPOTLIGHT CONTROLLER & RICH DATASET
+    // ═══════════════════════════════════════════════════════════════
+    const FOCUS_DATA = {
+        // ── PROJECTS ──
+        project: {
+            bandhoo: {
+                category: "Production System // Legal NLP",
+                status: "Live on Vercel",
+                title: "Bandhoo: BNS Legal Classification Benchmark",
+                subtitle: "Mumbai Crime-Reporting & Statutory Provision Classification Engine",
+                meta: [
+                    { label: "Architecture", value: "Hybrid BM25 + Rule Schema" },
+                    { label: "Statutes", value: "BNS 2023 & BNSS 2023" },
+                    { label: "Dataset", value: "50 Realistic Complaints (EN / HI / Hinglish)" },
+                    { label: "Deployment", value: "Vercel Edge & Serverless Python" }
+                ],
+                sections: [
+                    {
+                        heading: "Problem Statement & Procedural Friction",
+                        content: "Natural-language crime complaints across Mumbai and metropolitan India suffer from linguistic variance, regional idioms, and metaphorical expressions (such as calling overpriced street food 'daylight robbery'). First Information Reports (FIRs) and police station entries are frequently assigned inaccurate or speculative penal sections due to simplistic keyword matching, causing prolonged judicial delays and procedural dismissals under the newly enacted Bharatiya Nagarik Suraksha Sanhita (BNSS, 2023)."
+                    },
+                    {
+                        heading: "4-Tier Legal Certainty Schema",
+                        bullets: [
+                            "Tier A (Supported candidate provision): Complaint facts prima facie satisfy all essential statutory ingredients of one or more candidate sections with positive applicability scores.",
+                            "Tier B (Plausible alternative / Clarification needed): Narrative indicates a legal domain, but material facts (property valuation, entrustment, consent) are ambiguous. The engine outputs candidate sections while identifying missing facts and expressing qualified uncertainty.",
+                            "Tier C (Contradicted provision): Specific statutory elements are legally or factually negated by complaint facts (e.g. stealth theft negating robbery, or metaphorical grievances). Contradicted sections are strictly assigned 0.0 applicability.",
+                            "Tier D (Insufficient information): Complaint is too brief, vague, or incoherent to justify any penal classification. The engine refrains from hallucinating penal sections and mandates clarification."
+                        ]
+                    },
+                    {
+                        heading: "System Architecture & Engineering",
+                        bullets: [
+                            "Clause-level statutory retrieval using tuned BM25 over the full 358 sections of the Bharatiya Nyaya Sanhita (BNS, 2023).",
+                            "Metaphorical keyword trap immunity ensuring colloquial grievances do not trigger criminal penal codes.",
+                            "Procedural guidance engine mapping identified sections directly to BNSS First Schedule (cognizability, bailability, court jurisdiction).",
+                            "High-concurrency microservice hosted on Vercel with real-time JSON and markdown output."
+                        ]
+                    },
+                    {
+                        heading: "Technologies & Frameworks",
+                        tags: ["Python", "FastAPI", "BNS 2023", "BNSS 2023", "BM25 Retrieval", "Legal NLP", "Vercel Edge", "TailwindCSS"]
+                    }
+                ],
+                actions: [
+                    { label: "Live Engine Demo ↗", url: "https://bandhoo-sigma.vercel.app/", primary: true },
+                    { label: "GitHub Repository", url: "https://github.com/nitaanth-11/Bandhoo", primary: false },
+                    { label: "View IEEE Manuscript", url: "Research-Papers/Bandhoo_IEEE_paper.pdf", primary: false }
+                ]
+            },
+            sentinelai: {
+                category: "Security Platform // AST & RAG",
+                status: "PyPI Package & Springer ICDECT-2026",
+                title: "Sentinel AI: Dual-Engine Vulnerability Scanner",
+                subtitle: "Deterministic AST Security Auditing & LLM-Driven Root-Cause Remediation",
+                meta: [
+                    { label: "Package", value: "pip install nitaanth-sentinelai" },
+                    { label: "Publication", value: "Accepted at Springer ICDECT-2026" },
+                    { label: "LLM Backend", value: "Llama 3.3-70B via Groq" },
+                    { label: "Output Formats", value: "Terminal, HTML, SARIF, JSON, Markdown" }
+                ],
+                sections: [
+                    {
+                        heading: "Problem & Industry Need",
+                        content: "Conventional static security scanners produce hundreds of noisy, context-free alerts without actionable remediation guidance or safe automated patch verification. Developers waste hundreds of hours deciphering false positives without understanding root architectural vulnerability causes."
+                    },
+                    {
+                        heading: "Dual-Engine Architecture",
+                        bullets: [
+                            "Deterministic AST Engine: Deep Abstract Syntax Tree traversal using Semgrep, Bandit, and GitLeaks to catch CWE vulnerabilities, SQL injections, hardcoded secrets, and unsafe deserialization.",
+                            "RAG-Assisted Remediation: Correlates detected AST nodes with codebase context, sending targeted snippets to Llama 3.3-70B via Groq for root-cause analysis and automated syntax-validated patch generation.",
+                            "Interactive CLI & Rollback: Developers can review interactive diffs with 'sentinelai fix' and safely revert all changes at any point with 'sentinelai undo'.",
+                            "CI/CD Build Gating: Configurable severity thresholds (--fail-on high) to automatically protect pull requests in automated DevOps pipelines."
+                        ]
+                    },
+                    {
+                        heading: "Technologies & Tooling",
+                        tags: ["Python", "AST Parsing", "Semgrep", "Bandit", "GitLeaks", "Groq API", "Llama 3.3-70B", "SARIF Standard", "PyPI"]
+                    }
+                ],
+                actions: [
+                    { label: "Open CLI Scans Guide", action: "openSentinelModal", primary: true },
+                    { label: "GitHub Repository", url: "https://github.com/nitaanth-11/Sentinel-AI", primary: false },
+                    { label: "View Springer Manuscript", url: "Research-Papers/SentinelAI_Research_Paper.pdf", primary: false }
+                ]
+            },
+            freightiq: {
+                category: "Logistics Intelligence // AI & GIS",
+                status: "Production Demo",
+                title: "FreightIQ: Logistics & Dynamic Route Optimization",
+                subtitle: "Neural ETA Prediction & Multi-Modal Supply Chain Telemetry",
+                meta: [
+                    { label: "Domain", value: "Supply Chain & GIS" },
+                    { label: "ML Model", value: "Gradient Boosted ETA Regressor" },
+                    { label: "Telemetry", value: "Simulated Real-Time Fleet GPS" },
+                    { label: "Cloud", value: "GCP Cloud Run" }
+                ],
+                sections: [
+                    {
+                        heading: "Problem Solved",
+                        content: "Supply chain disruptions and unpredictable freight delays cost logistics operators millions annually. Static routing engines fail to dynamically factor in hyper-local weather events, toll bottlenecks, driver rest cycles, and sudden road closures."
+                    },
+                    {
+                        heading: "Engineering Highlights",
+                        bullets: [
+                            "Built predictive ETA estimation pipelines integrating historical telemetry, real-time weather APIs, and road impedance factors.",
+                            "Engineered dynamic re-routing algorithms capable of recalculating optimal delivery corridors for multi-stop consignments.",
+                            "Interactive GIS dashboard with live status cards, fleet telematics tracking, and automated delay threshold notifications."
+                        ]
+                    },
+                    {
+                        heading: "Tech Stack",
+                        tags: ["Python", "GIS Spatial Analysis", "Scikit-Learn", "FastAPI", "Mapbox GL", "PostgreSQL", "Docker"]
+                    }
+                ],
+                actions: [
+                    { label: "Live Demo ↗", url: "https://freightiq.onrender.com", primary: true },
+                    { label: "GitHub Repository", url: "https://github.com/nitaanth-11/FreightIQ", primary: false }
+                ]
+            },
+            genebridge: {
+                category: "Bioinformatics // Computational Immunology",
+                status: "Research Prototype",
+                title: "GeneBridge: Cross-Species Genetic Compatibility",
+                subtitle: "Immunological Compatibility Profiling & Organ Matching Pipeline",
+                meta: [
+                    { label: "Domain", value: "Bioinformatics & Genetics" },
+                    { label: "Focus", value: "HLA & Cross-Species Xenotransplantation" },
+                    { label: "Algorithm", value: "Multi-Factor Immunological Scoring" }
+                ],
+                sections: [
+                    {
+                        heading: "Problem Solved",
+                        content: "Critical shortages in donor organs result in thousands of preventable fatalities annually. Xenotransplantation and high-risk human organ matching require deep computational analysis of HLA markers and hyperacute immune rejection triggers."
+                    },
+                    {
+                        heading: "Methodology & Architecture",
+                        bullets: [
+                            "Analyzed genomic sequences and immune reaction vectors to quantify rejection probabilities across donor-recipient pairs.",
+                            "Modeled CRISPR gene-knockout scenarios (GGTA1, CMAH, B4GALNT2) to evaluate cross-species cellular survivability.",
+                            "Interactive visualization dashboard for transplant surgeons and computational researchers."
+                        ]
+                    },
+                    {
+                        heading: "Tech Stack",
+                        tags: ["Python", "BioPython", "Scikit-Learn", "NumPy", "Pandas", "Streamlit", "Genomic Analysis"]
+                    }
+                ],
+                actions: [
+                    { label: "GitHub Repository", url: "https://github.com/nitaanth-11/GeneBridge", primary: true },
+                    { label: "View Research PDF", url: "Research-Papers/Xenotransplantation_final_research.pdf", primary: false }
+                ]
+            },
+            janraksha: {
+                category: "Public Safety // Spatial AI & Crisis Response",
+                status: "Production Prototype",
+                title: "JanRaksha: Disaster Response & Spatial Triage",
+                subtitle: "Crowd-Sourced Spatial Incident Reporting & Emergency Dispatch",
+                meta: [
+                    { label: "Domain", value: "Disaster Management & GIS" },
+                    { label: "Map Engine", value: "Leaflet & Turf.js Spatial Index" },
+                    { label: "Deployment", value: "Render Cloud" }
+                ],
+                sections: [
+                    {
+                        heading: "Problem Solved",
+                        content: "During acute urban floods and environmental disasters, emergency helplines become overwhelmed while first responders lack geo-located situational awareness to triage relief missions."
+                    },
+                    {
+                        heading: "Engineering Highlights",
+                        bullets: [
+                            "Designed an intuitive mobile-first reporting interface allowing citizens to transmit geotagged incident reports with low bandwidth.",
+                            "Integrated spatial clustering algorithms to aggregate duplicate reports into consolidated disaster severity zones.",
+                            "Dispatch operations command portal prioritizing high-urgency zones based on vulnerability metrics."
+                        ]
+                    },
+                    {
+                        heading: "Tech Stack",
+                        tags: ["FastAPI", "Leaflet GIS", "PostGIS", "Python", "Spatial Clustering", "TailwindCSS"]
+                    }
+                ],
+                actions: [
+                    { label: "GitHub Repository", url: "https://github.com/nitaanth-11/JanRaksha", primary: true }
+                ]
+            },
+            beema: {
+                category: "FinTech // Risk Modeling",
+                status: "Live on Vercel",
+                title: "Beema: InsurTech Underwriting & Adjudication",
+                subtitle: "Predictive Risk Scoring & Policy Approval Acceleration",
+                meta: [
+                    { label: "Domain", value: "Insurance & Actuarial AI" },
+                    { label: "Deployment", value: "Vercel Edge (Next.js)" },
+                    { label: "Pipeline", value: "Automated Underwriting Engine" }
+                ],
+                sections: [
+                    {
+                        heading: "Problem Solved",
+                        content: "Traditional manual insurance underwriting processes take weeks, require costly document verifications, and suffer from subjective fraud risk evaluations."
+                    },
+                    {
+                        heading: "Engineering Highlights",
+                        bullets: [
+                            "Built automated risk stratification algorithms calculating real-time insurance premium loading factors.",
+                            "Implemented anomaly detection pipelines to flag fraudulent claims before claim payout.",
+                            "Responsive Next.js digital interface providing rapid quote generation and instant policy issuance."
+                        ]
+                    },
+                    {
+                        heading: "Tech Stack",
+                        tags: ["Next.js", "TypeScript", "Python Backend", "Vercel", "Predictive Modeling", "Chart.js"]
+                    }
+                ],
+                actions: [
+                    { label: "Live Demo ↗", url: "https://beema-jade.vercel.app/", primary: true },
+                    { label: "GitHub Repository", url: "https://github.com/nitaanth-11/Beema", primary: false }
+                ]
+            },
+            promptmax: {
+                category: "GenAI Infrastructure // Reinforcement Learning",
+                status: "Live on Render",
+                title: "Prompt Max: RL-Driven Prompt Optimization",
+                subtitle: "Reinforcement Learning & Iterative Reward Modeling Engine (Optima)",
+                meta: [
+                    { label: "Domain", value: "LLMOps & Prompt Tuning" },
+                    { label: "Framework", value: "PPO & Reward Modeling" },
+                    { label: "Deployment", value: "Render Cloud" }
+                ],
+                sections: [
+                    {
+                        heading: "Problem Solved",
+                        content: "Ad-hoc human prompt engineering is non-deterministic, fails to systematically improve LLM reasoning accuracy, and frequently balloons token usage and API expenses."
+                    },
+                    {
+                        heading: "Engineering Highlights",
+                        bullets: [
+                            "Formulated an automated reward modeling framework scoring prompt outputs on clarity, conciseness, and task success benchmarks.",
+                            "Iteratively mutates prompt candidates using policy gradients to discover optimal prompting formulations.",
+                            "Significantly boosted task completion accuracy across reasoning benchmarks while trimming unnecessary token fluff."
+                        ]
+                    },
+                    {
+                        heading: "Tech Stack",
+                        tags: ["PyTorch", "Reinforcement Learning", "FastAPI", "HuggingFace Transformers", "Docker", "Render"]
+                    }
+                ],
+                actions: [
+                    { label: "Live Demo ↗", url: "https://optima-kvj6.onrender.com", primary: true },
+                    { label: "GitHub Repository", url: "https://github.com/vedikas323-pixel/RL_Prompt_Optimizer", primary: false }
+                ]
+            },
+            eventoracle: {
+                category: "Quantitative Finance // Macro AI",
+                status: "Live on Render",
+                title: "Event Oracle: Macroeconomic & Options Forecasting",
+                subtitle: "Multi-Source Financial Forecasting Pipeline for NIFTY 50",
+                meta: [
+                    { label: "Domain", value: "Quantitative Finance & Index Options" },
+                    { label: "Database", value: "MongoDB Atlas Time Series" },
+                    { label: "Cloud", value: "Google Cloud Platform (GCP)" }
+                ],
+                sections: [
+                    {
+                        heading: "Problem Solved",
+                        content: "Sudden macroeconomic announcements (RBI repo rate decisions, US Fed inflation figures) cause violent volatility spikes in index options that blindside retail algorithmic traders."
+                    },
+                    {
+                        heading: "Engineering Highlights",
+                        bullets: [
+                            "Engineered high-frequency data ingestion fusing OHLCV price action, FII/DII institutional liquidity flows, and macroeconomic surprise indices.",
+                            "Trained ensemble models predicting option implied volatility (IV) crush and post-event directional momentum.",
+                            "Deployed on Google Cloud Platform with automated MongoDB time-series storage and real-time dashboard alerts."
+                        ]
+                    },
+                    {
+                        heading: "Tech Stack",
+                        tags: ["Python", "GCP", "MongoDB Atlas", "Time Series Models", "FastAPI", "Ensemble Learning"]
+                    }
+                ],
+                actions: [
+                    { label: "Live Demo ↗", url: "https://project-apex-baip.onrender.com/", primary: true },
+                    { label: "GitHub Repository", url: "https://github.com/nitaanth-11/Project-Apex", primary: false }
+                ]
+            }
+        },
+
+        // ── EDUCATION ──
+        education: {
+            mpstme: {
+                category: "Academic Foundation // University",
+                status: "2023 – Present · Mumbai",
+                title: "Mukesh Patel School of Technology Management & Engineering",
+                subtitle: "NMIMS University — B.Tech in Data Science",
+                meta: [
+                    { label: "GPA", value: "3.68" },
+                    { label: "CGPA", value: "3.3*" },
+                    { label: "Department", value: "Computer Engineering & Data Science" },
+                    { label: "Leadership", value: "Head of Operations — Data Mavericks" }
+                ],
+                sections: [
+                    {
+                        heading: "Academic Curriculum & Focus",
+                        content: "Rigorous academic curriculum covering advanced mathematical modeling, distributed systems architecture, artificial intelligence, and software engineering. Emphasis on bridging mathematical proofs with high-throughput production code."
+                    },
+                    {
+                        heading: "Core Coursework",
+                        bullets: [
+                            "Machine Learning & Deep Learning (CNNs, Transformers, Optimization Algorithms)",
+                            "Distributed Systems & Cloud Computing (Kubernetes, AWS architecture, microservices)",
+                            "Advanced Data Structures & Algorithms, Design Patterns, Database Management Systems",
+                            "Statistical Inference, Multivariable Calculus, Probability Theory & Linear Algebra"
+                        ]
+                    },
+                    {
+                        heading: "Co-Curricular Leadership & Varsity Athletics",
+                        bullets: [
+                            "Head of Operations at Data Mavericks: Spearheaded technical hackathons, industry workshops, and student developer cohorts.",
+                            "NMIMS Varsity Cricket Team: Active player in inter-university tournaments, balancing intense athletic schedules with top-tier academic rigor."
+                        ]
+                    }
+                ],
+                actions: [
+                    { label: "View Resume (Google Drive) ↗", url: "https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing", primary: true }
+                ]
+            },
+            mithibai: {
+                category: "Academic Foundation // Higher Secondary",
+                status: "2021 – 2023 · Mumbai",
+                title: "Mithibai College of Arts, Chauhan Institute of Science",
+                subtitle: "Higher Secondary Certificate (HSC) — Science Stream",
+                meta: [
+                    { label: "Board", value: "Maharashtra State Board (HSC)" },
+                    { label: "Stream", value: "Pure Science & Mathematics" },
+                    { label: "Leadership", value: "Captain — College Cricket Team" }
+                ],
+                sections: [
+                    {
+                        heading: "Academic Focus",
+                        content: "Completed intensive science curriculum with rigorous coursework in Advanced Mathematics, Physics, Chemistry, and Computer Science, establishing an analytical foundation for engineering."
+                    },
+                    {
+                        heading: "Athletic Leadership",
+                        bullets: [
+                            "Captained Mithibai College cricket team to tournament victories across Mumbai collegiate leagues.",
+                            "Selected for the prestigious Mumbai Under-23 Zonal Summer Camp, training under elite coaches."
+                        ]
+                    }
+                ],
+                actions: [
+                    { label: "View Resume ↗", url: "https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing", primary: true }
+                ]
+            },
+            lakshdham: {
+                category: "Foundational Education // High School",
+                status: "Graduated · Mumbai",
+                title: "Lakshdham High School",
+                subtitle: "Indian Certificate of Secondary Education (ICSE)",
+                meta: [
+                    { label: "Board", value: "ICSE Council" },
+                    { label: "Score", value: "90.4%" },
+                    { label: "Distinction", value: "School Sports Captain & Academic Honors" }
+                ],
+                sections: [
+                    {
+                        heading: "Foundational Excellence",
+                        content: "Graduated with 90.4% in ICSE examinations with top honors in Computer Applications, Science, and Mathematics. Maintained active involvement in competitive athletics and school leadership councils."
+                    }
+                ],
+                actions: [
+                    { label: "View Resume ↗", url: "https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing", primary: true }
+                ]
+            }
+        },
+
+        // ── EXPERIENCE ──
+        experience: {
+            noblenet: {
+                category: "Entrepreneurship & Engineering",
+                status: "Founder & Lead Architect · 2024 – Present",
+                title: "NobleNet Technologies",
+                subtitle: "Custom Cloud Engineering, Digital Architecture & Technical Consultancy",
+                meta: [
+                    { label: "Role", value: "Founder & Lead Architect" },
+                    { label: "Clients Served", value: "Luxury Retail, Legal Tech, Industrial Manufacturing" },
+                    { label: "Stack", value: "Python, Django, FastAPI, React, PostgreSQL, Docker, Render" }
+                ],
+                sections: [
+                    {
+                        heading: "Venture Overview",
+                        content: "Founded NobleNet Technologies as an independent technology studio delivering high-reliability web systems, automated operational pipelines, and custom software architecture for commercial enterprises."
+                    },
+                    {
+                        heading: "Architectural & Technical Contributions",
+                        bullets: [
+                            "Architected and deployed end-to-end full-stack platforms from bare requirements to secure production cloud instances.",
+                            "Engineered zero-downtime deployment pipelines with Docker containerization, automated SSL/TLS management, and DNS health routing.",
+                            "Designed custom relational schemas and optimized ORM queries for sub-100ms API response times across high-traffic catalogs.",
+                            "Consulted directly with business founders on tech stack selection, cost optimization on Render/Vercel, and cybersecurity best practices."
+                        ]
+                    }
+                ],
+                actions: [
+                    { label: "Maison Momento Prototype ↗", url: "https://maison-momento.onrender.com/products/", primary: true },
+                    { label: "Entrust Legal Services ↗", url: "https://www.entrustlegal.in/", primary: false }
+                ]
+            },
+            momento: {
+                category: "Commercial Client Venture // Luxury Retail",
+                status: "Cloud Prototype Live on Render",
+                title: "Maison Momento",
+                subtitle: "High-Concurrency Luxury E-Commerce Platform & Order Management",
+                meta: [
+                    { label: "Client", value: "Maison Momento" },
+                    { label: "Host", value: "Render Cloud Platform" },
+                    { label: "Backend", value: "Django & PostgreSQL" }
+                ],
+                sections: [
+                    {
+                        heading: "Project Brief & Architecture",
+                        content: "Developed a luxury retail digital shopping experience with dynamic inventory catalogs, responsive product showcases, customer cart persistence, and secure checkout simulation."
+                    },
+                    {
+                        heading: "Key Deliverables",
+                        bullets: [
+                            "Designed responsive UI featuring high-aesthetic minimalism matching the luxury brand's visual identity.",
+                            "Implemented PostgreSQL database backend with indexing on product categories and SKU attributes.",
+                            "Configured Render Web Services deployment with persistent media asset handling and automated builds."
+                        ]
+                    }
+                ],
+                actions: [
+                    { label: "View Live Prototype ↗", url: "https://maison-momento.onrender.com/products/", primary: true }
+                ]
+            },
+            entrust: {
+                category: "Commercial Client Venture // Legal Tech",
+                status: "Production Live",
+                title: "Entrust Legal Services",
+                subtitle: "Corporate Legal Advisory & Client Consultation Portal",
+                meta: [
+                    { label: "Client", value: "Entrust Legal Services" },
+                    { label: "Domain", value: "entrustlegal.in" },
+                    { label: "Features", value: "Client Ingestion & SEO Architecture" }
+                ],
+                sections: [
+                    {
+                        heading: "Project Brief & Impact",
+                        content: "Built a high-trust digital portal for a premier legal advisory firm, facilitating client case intake, corporate service inquiries, and statutory practice showcases."
+                    },
+                    {
+                        heading: "Technical Deliverables",
+                        bullets: [
+                            "Delivered 100/100 Lighthouse performance and SEO scores with semantic HTML and structured schema metadata.",
+                            "Engineered secure form handling with spam protection, rate-limiting, and encrypted email notification dispatch.",
+                            "Established custom domain DNS routing with automated SSL certificate lifecycle management."
+                        ]
+                    }
+                ],
+                actions: [
+                    { label: "Visit Production Site ↗", url: "https://www.entrustlegal.in/", primary: true }
+                ]
+            },
+            jyoti: {
+                category: "Industrial Client Venture // Manufacturing",
+                status: "System In Production",
+                title: "Jyoti Enterprises",
+                subtitle: "Industrial Procurement, Quotation Engine & Inventory Operations",
+                meta: [
+                    { label: "Client", value: "Jyoti Enterprises" },
+                    { label: "Scope", value: "B2B Procurement & Quotations" },
+                    { label: "Outcome", value: "80% Reduction in Manual RFQ Inquiries" }
+                ],
+                sections: [
+                    {
+                        heading: "Project Brief & Impact",
+                        content: "Modernized digital presence and B2B quotation generation workflows for an industrial fasteners and precision manufacturing firm."
+                    },
+                    {
+                        heading: "Technical Deliverables",
+                        bullets: [
+                            "Cataloged hundreds of industrial SKUs with technical specification sheets and CAD dimensional parameters.",
+                            "Built a dynamic RFQ (Request for Quotation) generator reducing phone-based inquiry overhead by over 80%.",
+                            "Optimized for high-speed mobile accessibility across manufacturing field staff and warehouse floor supervisors."
+                        ]
+                    }
+                ],
+                actions: []
+            }
+        },
+
+        // ── RESEARCH ──
+        research: {
+            sentinel: {
+                category: "Academic Research // Security & RAG",
+                status: "Accepted · Springer ICDECT-2026",
+                title: "Sentinel AI: Hybrid AST Security & LLM Remediation",
+                subtitle: "Published in Proceedings of Springer ICDECT-2026",
+                meta: [
+                    { label: "Conference", value: "Springer ICDECT-2026" },
+                    { label: "Authors", value: "Nitaanth Panickar, Research Collaborators" },
+                    { label: "Package", value: "pip install nitaanth-sentinelai" },
+                    { label: "Artifacts", value: "CLI Tool, PyPI, Full Manuscript" }
+                ],
+                sections: [
+                    {
+                        heading: "Research Abstract",
+                        content: "Modern software repositories suffer from pervasive security vulnerabilities compounded by static analysis tools that produce unranked, context-decoupled alerts. This paper introduces Sentinel AI, a dual-layer cybersecurity architecture combining deterministic Abstract Syntax Tree (AST) pattern matching with Retrieval-Augmented Generation (RAG) powered by Llama 3.3-70B via Groq. The engine provides root-cause explanations and generates AST syntax-validated patches with rollback capabilities."
+                    },
+                    {
+                        heading: "Key Methodological Findings",
+                        bullets: [
+                            "Evaluated across diverse Python and JavaScript test fixtures, demonstrating zero hallucination on deterministic AST flaw detection.",
+                            "Reduced time-to-remediate from hours to seconds through contextual diff generation and atomic patch application.",
+                            "Introduced reversible remediation via 'sentinelai undo' state snapshots, ensuring zero breaking changes in production pipelines."
+                        ]
+                    }
+                ],
+                actions: [
+                    { label: "View Manuscript (PDF) ↗", url: "Research-Papers/SentinelAI_Research_Paper.pdf", primary: true },
+                    { label: "Open CLI Scans Guide", action: "openSentinelModal", primary: false },
+                    { label: "GitHub Repository", url: "https://github.com/nitaanth-11/Sentinel-AI", primary: false }
+                ]
+            },
+            bandhoo: {
+                category: "Academic Research // Legal NLP",
+                status: "Under IEEE Peer Review",
+                title: "Bandhoo: BNS Legal Classification Benchmark",
+                subtitle: "Mumbai Crime-Reporting and Statutory Classification Framework",
+                meta: [
+                    { label: "Venue", value: "Under IEEE Peer Review" },
+                    { label: "Benchmark", value: "50 Multilingual Complaints (BNS 2023)" },
+                    { label: "Procedural Engine", value: "BNSS First Schedule Reasoning" },
+                    { label: "Demo", value: "bandhoo-sigma.vercel.app" }
+                ],
+                sections: [
+                    {
+                        heading: "Research Abstract",
+                        content: "The enactment of the Bharatiya Nyaya Sanhita (BNS, 2023) and Bharatiya Nagarik Suraksha Sanhita (BNSS, 2023) fundamentally reshuffled India's penal code structure. This research presents the Bandhoo BNS Legal Classification Benchmark (v1.0), comprising 50 diverse, realistic synthetic complaints in English, Hindi, and Hinglish across 12 penal categories. The proposed engine integrates tuned BM25 statutory retrieval with a 4-tier certainty schema to prevent false criminal filings caused by metaphorical complaints."
+                    },
+                    {
+                        heading: "Benchmark Findings & Certainty Schema",
+                        bullets: [
+                            "Tier A (Supported candidate provision): Facts satisfy prima facie statutory elements with high confidence.",
+                            "Tier B (Plausible alternative): Material ambiguity flagged; engine poses clarifying questions.",
+                            "Tier C (Contradicted provision): Correctly rejects metaphorical traps (e.g. pricing grievances) with 0.0 applicability score.",
+                            "Tier D (Insufficient information): Avoids hallucination on brief narratives."
+                        ]
+                    }
+                ],
+                actions: [
+                    { label: "View Manuscript (PDF) ↗", url: "Research-Papers/Bandhoo_IEEE_paper.pdf", primary: true },
+                    { label: "Live Engine Demo ↗", url: "https://bandhoo-sigma.vercel.app/", primary: false },
+                    { label: "GitHub Repository", url: "https://github.com/nitaanth-11/Bandhoo", primary: false }
+                ]
+            },
+            xenotransplantation: {
+                category: "Academic Research // Computational Immunology",
+                status: "Active Research",
+                title: "Xenotransplantation Viability Profiling",
+                subtitle: "Predicting Organ Rejection Risks via Genomic & Immunological Profiling",
+                meta: [
+                    { label: "Domain", value: "Computational Biology & Genetics" },
+                    { label: "Key Vectors", value: "GGTA1, CMAH, B4GALNT2, HLA Typing" },
+                    { label: "Methods", value: "Multi-layered Deep Learning & Feature Ranking" }
+                ],
+                sections: [
+                    {
+                        heading: "Research Abstract",
+                        content: "Xenotransplantation presents a viable solution to the worldwide donor organ shortage, yet hyperacute rejection and cross-species immune responses remain critical hurdles. This study formulates a computational risk modeling pipeline analyzing donor-recipient genomic compatibility, evaluating gene knockout markers and predicting post-transplantation cellular survival rates."
+                    },
+                    {
+                        heading: "Methodology & Scope",
+                        bullets: [
+                            "Investigated immune response cascades triggered by Galactose-alpha-1,3-galactose epitopes.",
+                            "Trained predictive classification models on cross-species cellular assays to profile graft survival horizons.",
+                            "Formulated computational frameworks to guide targeted CRISPR-Cas9 genetic modifications in prospective donor strains."
+                        ]
+                    }
+                ],
+                actions: [
+                    { label: "View Manuscript (PDF) ↗", url: "Research-Papers/Xenotransplantation_final_research.pdf", primary: true }
+                ]
+            }
+        },
+
+        // ── HOW I BUILD (WORKFLOW STAGES) ──
+        workflow: {
+            "stage-1": {
+                category: "Engineering Discipline // Stage 01",
+                status: "Foundational Phase",
+                title: "Stage 01: Explore",
+                subtitle: "Problem Deconstruction, Stakeholder Interviews & Domain Immersion",
+                meta: [
+                    { label: "Focus", value: "Problem Discovery" },
+                    { label: "Artifacts", value: "Requirements Doc, Friction Map" },
+                    { label: "Tools", value: "Domain Research, Literature Review" }
+                ],
+                sections: [
+                    {
+                        heading: "Methodology & Objectives",
+                        content: "Great engineering starts with identifying the exact bottleneck. Before writing a single line of code or choosing a database, I immerse myself in the domain, study existing academic literature, dissect friction points, and interview end-users to establish unambiguous, quantitative requirements."
+                    },
+                    {
+                        heading: "Execution Checklist",
+                        bullets: [
+                            "Deconstruct user pain points into quantifiable performance metrics (latency, accuracy, throughput).",
+                            "Conduct comprehensive prior-art and literature surveys to leverage proven algorithms.",
+                            "Draft user journey maps and establish failure edge cases upfront."
+                        ]
+                    }
+                ],
+                actions: []
+            },
+            "stage-2": {
+                category: "Engineering Discipline // Stage 02",
+                status: "Architectural Phase",
+                title: "Stage 02: Architect",
+                subtitle: "System Topology, Schema Contracts & Model Selection",
+                meta: [
+                    { label: "Focus", value: "Topology & Data Flow" },
+                    { label: "Artifacts", value: "System Architecture Diagram, DB Schema" },
+                    { label: "Decisions", value: "Storage vs Compute vs Latency" }
+                ],
+                sections: [
+                    {
+                        heading: "Methodology & Objectives",
+                        content: "Designing the high-level topology: selecting between relational vs document databases, evaluating whether a heuristic, classical ML, or neural LLM approach is warranted, and enforcing strict data contracts between services."
+                    },
+                    {
+                        heading: "Execution Checklist",
+                        bullets: [
+                            "Formalize database schema contracts with normalized tables, foreign keys, and indexes.",
+                            "Evaluate cost vs latency trade-offs (e.g. self-hosted models vs serverless APIs).",
+                            "Design modular microservices with clear separation of concerns."
+                        ]
+                    }
+                ],
+                actions: []
+            },
+            "stage-3": {
+                category: "Engineering Discipline // Stage 03",
+                status: "Validation Phase",
+                title: "Stage 03: Experiment",
+                subtitle: "Benchmarking, Rapid Prototyping & Iteration",
+                meta: [
+                    { label: "Focus", value: "Feasibility & Proof of Concept" },
+                    { label: "Artifacts", value: "Benchmark Metrics, Model Weights" },
+                    { label: "Techniques", value: "A/B Testing, Baseline Comparisons" }
+                ],
+                sections: [
+                    {
+                        heading: "Methodology & Objectives",
+                        content: "Assumptions must be verified empirically. I rapidly build functional proof-of-concept scripts, test edge cases, compare neural models against baseline heuristics, and evaluate convergence and token efficiency."
+                    },
+                    {
+                        heading: "Execution Checklist",
+                        bullets: [
+                            "Benchmark algorithmic accuracy against established test fixtures and golden datasets.",
+                            "Stress-test edge cases, adversarial inputs, and out-of-distribution prompts.",
+                            "Measure token efficiency and inference latency under simulated peak load."
+                        ]
+                    }
+                ],
+                actions: []
+            },
+            "stage-4": {
+                category: "Engineering Discipline // Stage 04",
+                status: "Development Phase",
+                title: "Stage 04: Engineer",
+                subtitle: "Production APIs, Model Integrations & Responsive Interfaces",
+                meta: [
+                    { label: "Focus", value: "Implementation & Hardening" },
+                    { label: "Stack", value: "FastAPI, Flask, Next.js, TypeScript" },
+                    { label: "Standards", value: "Clean Code, Typing, Unit Tests" }
+                ],
+                sections: [
+                    {
+                        heading: "Methodology & Objectives",
+                        content: "Transforming prototypes into production-grade systems. Writing asynchronous backend services with FastAPI or Flask, structuring caching layers, integrating LLM retrieval modules, and building accessible, lightning-fast UIs."
+                    },
+                    {
+                        heading: "Execution Checklist",
+                        bullets: [
+                            "Implement typed async REST endpoints with strict Pydantic / dataclass validation.",
+                            "Incorporate connection pooling, rate-limiting, and error fallback handlers.",
+                            "Craft responsive, dark-mode, accessible interfaces with fluid micro-interactions."
+                        ]
+                    }
+                ],
+                actions: []
+            },
+            "stage-5": {
+                category: "Engineering Discipline // Stage 05",
+                status: "Deployment Phase",
+                title: "Stage 05: Deploy",
+                subtitle: "Docker Containers, Cloud Infrastructure & Global Edge Delivery",
+                meta: [
+                    { label: "Focus", value: "Containerization & Delivery" },
+                    { label: "Platforms", value: "AWS, GCP, Render, Vercel" },
+                    { label: "DevOps", value: "CI/CD, Docker, SSL, Edge DNS" }
+                ],
+                sections: [
+                    {
+                        heading: "Methodology & Objectives",
+                        content: "Shipping software reliably. Packaging services into lightweight, reproducible Docker images, setting up automated CI/CD pipelines, provisioning cloud resources, and ensuring global SSL and DNS integrity."
+                    },
+                    {
+                        heading: "Execution Checklist",
+                        bullets: [
+                            "Construct multi-stage Dockerfiles optimizing image size and security layers.",
+                            "Configure GitHub Actions for automated linting, test execution, and deployment hooks.",
+                            "Set up custom domain DNS routing with automated SSL/TLS renewals."
+                        ]
+                    }
+                ],
+                actions: []
+            },
+            "stage-6": {
+                category: "Engineering Discipline // Stage 06",
+                status: "Continuous Phase",
+                title: "Stage 06: Improve",
+                subtitle: "Telemetry, Latency Profiling & Continuous Optimization",
+                meta: [
+                    { label: "Focus", value: "Monitoring & Refinement" },
+                    { label: "Metrics", value: "p95/p99 Latency, Error Rates" },
+                    { label: "Loop", value: "Feedback Analytics, Security Patches" }
+                ],
+                sections: [
+                    {
+                        heading: "Methodology & Objectives",
+                        content: "Deployment is day one, not the finish line. I monitor real-time system telemetry, track p95 and p99 latency, analyze error logs, review user feedback, patch security vulnerabilities, and iteratively refine performance."
+                    },
+                    {
+                        heading: "Execution Checklist",
+                        bullets: [
+                            "Monitor API response times, memory spikes, and error logs via telemetry dashboards.",
+                            "Profile runtime bottlenecks and apply database index or algorithmic optimizations.",
+                            "Iterate model weights and prompts based on real-world production query distributions."
+                        ]
+                    }
+                ],
+                actions: []
+            }
+        }
+    };
+
+    function openFocusModal(category, id) {
+        const data = FOCUS_DATA[category]?.[id];
+        if (!data) return;
+
+        const modal = document.getElementById('focus-spotlight-modal');
+        const catBadge = document.getElementById('focus-category');
+        const statusBadge = document.getElementById('focus-status');
+        const body = document.getElementById('focus-modal-body');
+        const footer = document.getElementById('focus-modal-footer');
+
+        if (!modal || !body) return;
+
+        if (catBadge) catBadge.textContent = data.category || category.toUpperCase();
+        if (statusBadge) {
+            statusBadge.textContent = data.status || '';
+            statusBadge.style.display = data.status ? 'inline-block' : 'none';
+        }
+
+        let metaHTML = '';
+        if (data.meta && data.meta.length) {
+            metaHTML = `
+                <div class="focus-meta-strip">
+                    ${data.meta.map(m => `<div class="focus-meta-item"><span>${m.label}:</span> <strong>${m.value}</strong></div>`).join('')}
+                </div>
+            `;
+        }
+
+        let sectionsHTML = '';
+        if (data.sections && data.sections.length) {
+            sectionsHTML = data.sections.map(sec => {
+                let inner = '';
+                if (sec.content) {
+                    inner += `<p class="focus-prose-text">${sec.content}</p>`;
+                }
+                if (sec.bullets && sec.bullets.length) {
+                    inner += `<ul class="focus-bullets-list">${sec.bullets.map(b => `<li class="focus-bullet-item">${b}</li>`).join('')}</ul>`;
+                }
+                if (sec.tags && sec.tags.length) {
+                    inner += `<div class="focus-tags-cloud">${sec.tags.map(t => `<span class="focus-tag-chip">${t}</span>`).join('')}</div>`;
+                }
+                return `
+                    <div class="focus-section-block">
+                        <span class="focus-section-heading">${sec.heading}</span>
+                        ${inner}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        body.innerHTML = `
+            <div class="focus-title-block">
+                <h3 class="focus-main-title" id="focus-modal-title">${data.title}</h3>
+                ${data.subtitle ? `<span class="focus-sub-title">${data.subtitle}</span>` : ''}
+            </div>
+            ${metaHTML}
+            ${sectionsHTML}
+        `;
+
+        // Render Action Buttons
+        if (footer) {
+            footer.innerHTML = '';
+            if (data.actions && data.actions.length) {
+                data.actions.forEach(act => {
+                    if (act.action === 'openSentinelModal') {
+                        const btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = `focus-action-btn ${act.primary ? 'focus-action-primary' : 'focus-action-secondary'}`;
+                        btn.textContent = act.label;
+                        btn.onclick = () => {
+                            closeFocusModal();
+                            openSentinelModal();
+                        };
+                        footer.appendChild(btn);
+                    } else if (act.url) {
+                        const a = document.createElement('a');
+                        a.href = act.url;
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.className = `focus-action-btn ${act.primary ? 'focus-action-primary' : 'focus-action-secondary'}`;
+                        a.textContent = act.label;
+                        footer.appendChild(a);
+                    }
+                });
+                footer.style.display = 'flex';
+            } else {
+                footer.style.display = 'none';
+            }
+        }
+
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeFocusModal() {
+        const modal = document.getElementById('focus-spotlight-modal');
+        if (!modal) return;
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    const focusCloseBtn = document.getElementById('focus-close-btn');
+    const focusBackdrop = document.getElementById('focus-spotlight-backdrop');
+    if (focusCloseBtn) focusCloseBtn.addEventListener('click', closeFocusModal);
+    if (focusBackdrop) focusBackdrop.addEventListener('click', closeFocusModal);
+
+    // Global Key Listener for Escape
     window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sentinelModal && sentinelModal.classList.contains('active')) {
-            closeSentinelModal();
+        if (e.key === 'Escape') {
+            const focusModal = document.getElementById('focus-spotlight-modal');
+            if (focusModal && focusModal.classList.contains('active')) {
+                closeFocusModal();
+            }
+            if (sentinelModal && sentinelModal.classList.contains('active')) {
+                closeSentinelModal();
+            }
         }
     });
 
-    // Delegation click listener for Sentinel card and CLI triggers
+    // Delegation click listener for Sentinel CLI triggers and Click-to-Focus Spotlight cards
     document.addEventListener('click', (e) => {
+        // Priority 1: Sentinel CLI triggers
         const trigger = e.target.closest('.sentinel-cli-trigger');
         if (trigger) {
             e.preventDefault();
@@ -712,9 +1579,19 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const sentinelCard = e.target.closest('.sentinel-card-item');
-        if (sentinelCard && !e.target.closest('a') && !e.target.closest('button')) {
-            openSentinelModal();
+        // Priority 2: Ignore clicks on standard links, action buttons, copy triggers, mobile nav
+        if (e.target.closest('a, button, .copy-btn, .mobile-toggle, #back-to-top')) {
+            return;
+        }
+
+        // Priority 3: Interactive Spotlight Click-to-Focus items
+        const focusTarget = e.target.closest('[data-focus]');
+        if (focusTarget) {
+            const cat = focusTarget.getAttribute('data-focus');
+            const id = focusTarget.getAttribute('data-id');
+            if (cat && id) {
+                openFocusModal(cat, id);
+            }
         }
     });
 
