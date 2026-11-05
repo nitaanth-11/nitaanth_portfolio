@@ -397,103 +397,319 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ═══════════════════════════════════════════════════════════════
-    // 06. TOKEN OF APPRECIATION / CERTIFICATIONS RENDERER
+    // 06. CERTIFICATIONS & APPRECIATION (ELECTRIC GLASS COLLECTION)
     // ═══════════════════════════════════════════════════════════════
-    const VERIFIED_CERTS = [
+    const COLLECTION_ITEMS = [
         {
-            title: "Fundamentals of LLM",
-            issuer: "Hugging Face",
-            date: "2026",
-            link: "Certificates/nitaanth_fund_of_llm_cert.pdf",
-            badge: "LLM"
+            id: 'resume',
+            type: 'doc',
+            typeBadge: '01 / RESUME',
+            status: 'OFFICIAL RESUME · 2026',
+            statusColor: '#00D9FF',
+            title: 'Nitaanth Panickar — Full Resume',
+            issuer: 'NMIMS MPSTME',
+            subtitle: 'B.Tech Data Science candidate · Production systems, AI/ML research & varsity athletics',
+            tags: ['Data Science', 'Agentic AI', 'Computer Vision', 'MLOps'],
+            pdf: 'nitaanth_resume.pdf',
+            isDoc: true,
+            download: 'Nitaanth_Panickar_Resume.pdf'
         },
         {
-            title: "Fundamentals of AI Agents",
-            issuer: "Hugging Face",
-            date: "2026",
-            link: "Certificates/Hugging_face_agents_course.pdf",
-            badge: "AGNT"
+            id: 'lor',
+            type: 'doc',
+            typeBadge: '02 / ENDORSEMENT',
+            status: 'CLIENT ENDORSEMENT · 2024',
+            statusColor: '#10b981',
+            title: 'Token of Appreciation & Recommendation',
+            issuer: 'Adv. Jyoti & Co.',
+            subtitle: 'Official client recommendation commending technical architecture, security & execution',
+            tags: ['Legal Tech', 'Architecture', 'Client Commendation'],
+            pdf: 'LOR_Adv_Jyoti.pdf',
+            isDoc: true,
+            download: 'Nitaanth_Panickar_Recommendation.pdf'
         },
         {
-            title: "Building Data Lakes on AWS",
-            issuer: "Amazon Web Services",
-            date: "2026",
-            link: "Certificates/data_lakes_certification.pdf",
-            badge: "AWS"
+            id: 'llm',
+            type: 'cert',
+            typeBadge: '03 / CERTIFICATION',
+            status: 'COMPLETED · 2026',
+            statusColor: '#10b981',
+            title: 'Fundamentals of LLM',
+            issuer: 'Hugging Face',
+            subtitle: 'The LLM Course · Advanced prompt engineering, fine-tuning & evaluation',
+            tags: ['Generative AI', 'NLP', 'Transformers'],
+            pdf: 'Certificates/nitaanth_fund_of_llm_cert.pdf',
+            badge: 'LLM'
         },
         {
-            title: "Architecting Solutions on AWS",
-            issuer: "Amazon Web Services",
-            date: "2026",
-            link: "Certificates/Nitaanth_AWS_architect_certificate.pdf",
-            badge: "AWS"
+            id: 'agents',
+            type: 'cert',
+            typeBadge: '04 / CERTIFICATION',
+            status: 'COMPLETED · 2026',
+            statusColor: '#10b981',
+            title: 'Fundamentals of AI Agents',
+            issuer: 'Hugging Face',
+            subtitle: 'Autonomous agents, reasoning loops, function calling & tool integration',
+            tags: ['Agentic AI', 'ReAct Loop', 'Tool Calling'],
+            pdf: 'Certificates/Hugging_face_agents_course.pdf',
+            badge: 'AGNT'
         },
         {
-            title: "AWS Cloud Technical Essentials",
-            issuer: "AWS · Coursera",
-            date: "2026",
-            link: "Certificates/Nitaanth_coursera_AWS_certificate.pdf",
-            badge: "AWS"
+            id: 'data-lakes',
+            type: 'cert',
+            typeBadge: '05 / CERTIFICATION',
+            status: 'COMPLETED · 2026',
+            statusColor: '#10b981',
+            title: 'Building Data Lakes on AWS',
+            issuer: 'Amazon Web Services',
+            subtitle: 'Lake Formation, S3 architectures, Glue ETL pipelines & Athena queries',
+            tags: ['AWS', 'Data Lakes', 'Cloud Architecture'],
+            pdf: 'Certificates/data_lakes_certification.pdf',
+            badge: 'AWS'
         },
         {
-            title: "Edge AI Course Certificate",
-            issuer: "Edge Impulse",
-            date: "2025",
-            link: "Certificates/Edge AI Course Certificate - Nitaanth Panickar.pdf",
-            badge: "EDGE"
+            id: 'aws-arch',
+            type: 'cert',
+            typeBadge: '06 / CERTIFICATION',
+            status: 'COMPLETED · 2026',
+            statusColor: '#10b981',
+            title: 'Architecting Solutions on AWS',
+            issuer: 'Amazon Web Services',
+            subtitle: 'High-availability topology, VPC design, IAM security & multi-tier resilience',
+            tags: ['AWS', 'Solutions Architecture', 'Security'],
+            pdf: 'Certificates/Nitaanth_AWS_architect_certificate.pdf',
+            badge: 'AWS'
         },
         {
-            title: "Managing Projects with AI",
-            issuer: "AI Project Management",
-            date: "2026",
-            link: "Certificates/Mging_prjts_AI.pdf",
-            badge: "AI-PM"
+            id: 'aws-essentials',
+            type: 'cert',
+            typeBadge: '07 / CERTIFICATION',
+            status: 'COMPLETED · 2026',
+            statusColor: '#10b981',
+            title: 'AWS Cloud Technical Essentials',
+            issuer: 'AWS · Coursera',
+            subtitle: 'Core compute, storage, databases & cost governance across enterprise AWS',
+            tags: ['Cloud Computing', 'AWS', 'Infrastructure'],
+            pdf: 'Certificates/Nitaanth_coursera_AWS_certificate.pdf',
+            badge: 'AWS'
+        },
+        {
+            id: 'edge-ai',
+            type: 'cert',
+            typeBadge: '08 / CERTIFICATION',
+            status: 'COMPLETED · 2025',
+            statusColor: '#10b981',
+            title: 'Edge AI Course Certificate',
+            issuer: 'Edge Impulse',
+            subtitle: 'Quantized neural networks, real-time edge streaming & OpenVINO deployment',
+            tags: ['Edge AI', 'Computer Vision', 'Model Quantization'],
+            pdf: 'Certificates/Edge AI Course Certificate - Nitaanth Panickar.pdf',
+            badge: 'EDGE'
+        },
+        {
+            id: 'pm-ai',
+            type: 'cert',
+            typeBadge: '09 / CERTIFICATION',
+            status: 'COMPLETED · 2026',
+            statusColor: '#10b981',
+            title: 'Managing Projects with AI',
+            issuer: 'AI Project Management',
+            subtitle: 'AI roadmap design, milestone governance & operational model deployment',
+            tags: ['AI Strategy', 'Product Leadership', 'Agile AI'],
+            pdf: 'Certificates/Mging_prjts_AI.pdf',
+            badge: 'AI-PM'
         }
     ];
 
-    function renderCertifications(certs) {
-        const grid = document.getElementById('certs-grid');
+    let currentCollectionIdx = 0;
+    let currentCollectionFilter = 'all';
+
+    function initCertificationsAndAppreciation() {
+        const featuredCard = document.getElementById('collection-featured-card');
+        const stripContainer = document.getElementById('collection-items-strip');
+        const prevBtn = document.getElementById('collection-prev-btn');
+        const nextBtn = document.getElementById('collection-next-btn');
+        const filterBtns = document.querySelectorAll('.collection-filter-btn');
+
+        if (!featuredCard) return;
+
+        // Render Quick Switcher Strip Pills
+        if (stripContainer) {
+            stripContainer.innerHTML = '';
+            COLLECTION_ITEMS.forEach((item, idx) => {
+                const pill = document.createElement('button');
+                pill.type = 'button';
+                pill.className = `collection-strip-pill ${idx === currentCollectionIdx ? 'active' : ''}`;
+                pill.setAttribute('data-idx', idx);
+                const shortTitle = item.title.split('—')[0].trim().replace('Course Certificate', '').trim();
+                pill.innerHTML = `
+                    <span class="collection-strip-num">${String(idx + 1).padStart(2, '0')}</span>
+                    <span>${shortTitle}</span>
+                `;
+                pill.addEventListener('click', () => {
+                    setFeaturedCollectionItem(idx);
+                });
+                stripContainer.appendChild(pill);
+            });
+        }
+
+        // Render Full Cards Grid
+        renderCollectionGrid();
+
+        // Prev / Next button listeners
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                const newIdx = (currentCollectionIdx - 1 + COLLECTION_ITEMS.length) % COLLECTION_ITEMS.length;
+                setFeaturedCollectionItem(newIdx);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                const newIdx = (currentCollectionIdx + 1) % COLLECTION_ITEMS.length;
+                setFeaturedCollectionItem(newIdx);
+            });
+        }
+
+        // Filter tabs
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCollectionFilter = btn.getAttribute('data-filter') || 'all';
+                renderCollectionGrid();
+            });
+        });
+
+        // Initialize featured card with item 0
+        setFeaturedCollectionItem(0);
+    }
+
+    function setFeaturedCollectionItem(idx) {
+        if (idx < 0 || idx >= COLLECTION_ITEMS.length) return;
+        currentCollectionIdx = idx;
+        const item = COLLECTION_ITEMS[idx];
+
+        // Update Counter
+        const counterStr = `${String(idx + 1).padStart(2, '0')} — ${String(COLLECTION_ITEMS.length).padStart(2, '0')}`;
+        const counterBadge = document.getElementById('collection-counter-badge');
+        const footerCounter = document.getElementById('featured-footer-counter');
+        if (counterBadge) counterBadge.textContent = counterStr;
+        if (footerCounter) footerCounter.textContent = counterStr;
+
+        // Update Collection Badge (01 / COLLECTION, etc.)
+        const typeBadge = document.getElementById('featured-collection-badge');
+        if (typeBadge) typeBadge.textContent = item.typeBadge || '01 / COLLECTION';
+
+        // Update Preview Frame
+        const previewIframe = document.getElementById('featured-preview-iframe');
+        const previewBox = document.getElementById('featured-preview-box');
+        if (previewIframe) {
+            previewIframe.src = `${item.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
+        }
+        if (previewBox) {
+            previewBox.setAttribute('data-pdf', item.pdf);
+            previewBox.setAttribute('data-title', item.title);
+        }
+
+        // Update Status Pill
+        const statusPill = document.getElementById('featured-status-pill');
+        if (statusPill) {
+            statusPill.textContent = item.status;
+            if (item.statusColor === '#00D9FF') {
+                statusPill.style.color = '#00D9FF';
+                statusPill.style.borderColor = 'rgba(0, 217, 255, 0.35)';
+                statusPill.style.background = 'rgba(0, 217, 255, 0.1)';
+            } else {
+                statusPill.style.color = '#10b981';
+                statusPill.style.borderColor = 'rgba(16, 185, 129, 0.35)';
+                statusPill.style.background = 'rgba(16, 185, 129, 0.1)';
+            }
+        }
+
+        // Update Title, Issuer, Subtitle
+        const titleEl = document.getElementById('featured-title');
+        const issuerEl = document.getElementById('featured-issuer');
+        const subtitleEl = document.getElementById('featured-subtitle');
+        if (titleEl) titleEl.textContent = item.title;
+        if (issuerEl) issuerEl.textContent = item.issuer;
+        if (subtitleEl) subtitleEl.textContent = item.subtitle;
+
+        // Update Tags
+        const tagsRow = document.getElementById('featured-tags-row');
+        if (tagsRow) {
+            tagsRow.innerHTML = (item.tags || []).map(t => `<span class="collection-tag">${t}</span>`).join('');
+        }
+
+        // Update Action Buttons
+        const openBtn = document.getElementById('featured-open-btn');
+        const dlBtn = document.getElementById('featured-download-btn');
+        if (openBtn) {
+            openBtn.setAttribute('data-pdf', item.pdf);
+            openBtn.setAttribute('data-title', item.title);
+            const spanText = openBtn.querySelector('span');
+            if (spanText) spanText.textContent = item.isDoc ? 'View Document' : 'View Certificate';
+        }
+        if (dlBtn) {
+            if (item.download) {
+                dlBtn.style.display = 'inline-flex';
+                dlBtn.href = item.pdf;
+                dlBtn.setAttribute('download', item.download);
+            } else {
+                dlBtn.style.display = 'none';
+            }
+        }
+
+        // Update active strip pill
+        const stripPills = document.querySelectorAll('.collection-strip-pill');
+        stripPills.forEach((p, i) => {
+            if (i === idx) p.classList.add('active');
+            else p.classList.remove('active');
+        });
+    }
+
+    function renderCollectionGrid() {
+        const grid = document.getElementById('collection-full-grid');
         if (!grid) return;
         grid.innerHTML = '';
 
-        const list = certs || VERIFIED_CERTS;
+        const filtered = COLLECTION_ITEMS.filter(item => {
+            if (currentCollectionFilter === 'docs') return item.type === 'doc';
+            if (currentCollectionFilter === 'certs') return item.type === 'cert';
+            return true;
+        });
 
-        list.forEach((cert, idx) => {
-            let logoHTML = '';
-            const issuerLower = (cert.issuer || '').toLowerCase();
-            const badgeUpper = (cert.badge || '').toUpperCase();
-            
-            if (issuerLower.includes('aws') || badgeUpper === 'AWS') {
-                logoHTML = `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#FF9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 153, 0, 0.3));"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`;
-            } else if (issuerLower.includes('huggingface') || issuerLower.includes('hugging face') || badgeUpper === 'LLM' || badgeUpper === 'AGNT') {
-                logoHTML = `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#FFD21E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 210, 30, 0.3));"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="3"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="3"/><path d="M4 17c.5-1.5 2-2.5 3.5-2.5.8 0 1.5.3 2 1"/><path d="M20 17c-.5-1.5-2-2.5-3.5-2.5-.8 0-1.5.3-2 1"/></svg>`;
-            } else {
-                logoHTML = `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#00D9FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.3));"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg>`;
-            }
-
+        filtered.forEach((item) => {
             const card = document.createElement('div');
-            card.className = 'card cert-card card-tilt open-pdf-btn';
-            card.setAttribute('data-pdf', cert.link || '');
-            card.setAttribute('data-title', cert.title);
-            card.setAttribute('title', 'Click to preview full PDF on screen');
+            card.className = 'collection-mini-card card-tilt open-pdf-btn';
+            card.setAttribute('data-pdf', item.pdf);
+            card.setAttribute('data-title', item.title);
+            card.setAttribute('title', 'Click to open on screen');
+
+            const tagsHTML = (item.tags || []).slice(0, 3).map(t => `<span class="collection-tag">${t}</span>`).join('');
 
             card.innerHTML = `
-                <div class="section-item-index">${idx + 1}</div>
-                <div class="cert-preview-window">
-                    <iframe src="${cert.link}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="cert-mini-preview" loading="lazy" tabindex="-1"></iframe>
-                    <div class="cert-preview-glass-overlay">
-                        <span class="cert-expand-pill">Preview PDF ↗</span>
+                <div class="mini-card-top-header">
+                    <span class="mini-card-badge">${item.typeBadge}</span>
+                    <span class="collection-status-pill" style="font-size: 0.65rem; padding: 0.2rem 0.55rem; color: ${item.statusColor}; border-color: ${item.statusColor}50; background: ${item.statusColor}15;">${item.status}</span>
+                </div>
+                <div class="mini-card-preview">
+                    <iframe src="${item.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" loading="lazy" tabindex="-1"></iframe>
+                </div>
+                <div class="mini-card-body">
+                    <h4 class="mini-card-title">${item.title}</h4>
+                    <span class="mini-card-issuer">${item.issuer}</span>
+                    <p class="mini-card-desc">${item.subtitle}</p>
+                    <div class="collection-tags-row" style="margin-bottom: 0.75rem;">
+                        ${tagsHTML}
                     </div>
                 </div>
-                <div class="cert-card-bottom">
-                    <div class="cert-badge">${logoHTML}</div>
-                    <h4 class="cert-title">${cert.title}</h4>
-                    <p class="cert-issuer">${cert.issuer}</p>
-                    <p class="cert-date">${cert.date}</p>
-                    <div class="cert-verify">
+                <div class="mini-card-footer">
+                    <span class="mini-card-action">
+                        <span>Preview On Screen</span>
                         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                        <span>Open Document On Screen</span>
-                    </div>
+                    </span>
+                    <span style="font-size: 0.7rem; color: var(--accent-primary); font-weight: 700;">ELECTRIC GLASS</span>
                 </div>
             `;
             grid.appendChild(card);
@@ -529,7 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ]);
 
         renderProjectsGallery(projects || VERIFIED_PROJECTS);
-        renderCertifications(certs || VERIFIED_CERTS);
+        initCertificationsAndAppreciation();
 
         const resumeBtn = document.getElementById('view-resume-btn');
         if (resumeBtn) {

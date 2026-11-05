@@ -20,7 +20,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
     <!-- Motion & Interaction CDNs -->
@@ -57,8 +57,7 @@
                 <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
                 <li><a href="#workflow" class="nav-link" data-section="workflow">How I Build</a></li>
                 <li><a href="#beyond" class="nav-link" data-section="beyond">Beyond</a></li>
-                <li><a href="#certificates" class="nav-link" data-section="certificates">Certificates</a></li>
-                <li><a href="#appreciation" class="nav-link" data-section="appreciation">Appreciation</a></li>
+                <li><a href="#certifications-appreciation" class="nav-link" data-section="certifications-appreciation">Certifications &amp; Appreciation</a></li>
             </ul>
 
             <div class="nav-actions">
@@ -90,8 +89,7 @@
         <a href="#projects" class="nav-link" data-section="projects">Projects</a>
         <a href="#workflow" class="nav-link" data-section="workflow">How I Build</a>
         <a href="#beyond" class="nav-link" data-section="beyond">Beyond Classroom</a>
-        <a href="#certificates" class="nav-link" data-section="certificates">Certificates</a>
-        <a href="#appreciation" class="nav-link" data-section="appreciation">Appreciation</a>
+        <a href="#certifications-appreciation" class="nav-link" data-section="certifications-appreciation">Certifications &amp; Appreciation</a>
     </div>
 
     <main>
@@ -103,11 +101,6 @@
                 <div class="about-hero-grid">
                     <!-- Left: Bio & Personal Story -->
                     <div class="about-hero-content">
-                        <div class="hero-tagline-chip">
-                            <span class="chip-glow-dot"></span>
-                            <span>Data Science Engineer &amp; AI Builder</span>
-                        </div>
-                        
                         <p class="about-hero-greeting">Hey, I'm</p>
                         <h1 class="about-hero-name">Nitaanth</h1>
                         
@@ -706,65 +699,89 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════
-             08 // CERTIFICATIONS (Second-to-Last Section)
-             Card format with document previews — Opens PDF on screen
+             08 // CERTIFICATIONS & APPRECIATION (Unified Closing Collection)
+             Showcase card layout matching Electric Glass Design with live previews
              ═══════════════════════════════════════════════════════════ -->
-        <section id="certificates" class="section certificates-section">
+        <section id="certifications-appreciation" class="section cert-appreciation-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-number">08 // CREDENTIALS &amp; CERTIFICATIONS</span>
-                    <h2 class="section-title">Certifications</h2>
+                    <span class="section-number">08 // MILESTONES &amp; CREDENTIALS</span>
+                    <h2 class="section-title">Certifications &amp; Appreciation</h2>
                     <div class="section-line"></div>
                 </div>
-                <p class="section-tagline">VERIFIED PROFESSIONAL CREDENTIALS — CLICK ANY CARD PREVIEW TO OPEN PDF ON SCREEN</p>
+                <p class="section-tagline">A COLLECTION OF MILESTONES, LEARNING AND RECOGNITION — ON-SCREEN PREVIEWS &amp; VERIFICATION</p>
 
-                <!-- Cards grid with miniature previews -->
-                <div class="certs-grid" id="certs-grid">
-                    <!-- Populated dynamically via app.js with on-page preview and on-screen modal trigger -->
+                <!-- Filter & Collection Controls -->
+                <div class="collection-controls-bar">
+                    <div class="collection-filter-tabs">
+                        <button type="button" class="collection-filter-btn active" data-filter="all">All Items (9)</button>
+                        <button type="button" class="collection-filter-btn" data-filter="docs">Official Documents (2)</button>
+                        <button type="button" class="collection-filter-btn" data-filter="certs">Certifications (7)</button>
+                    </div>
+                    
+                    <div class="collection-nav-arrows">
+                        <button type="button" class="collection-arrow-btn" id="collection-prev-btn" aria-label="Previous Item">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                        </button>
+                        <span class="collection-current-counter" id="collection-counter-badge">01 — 09</span>
+                        <button type="button" class="collection-arrow-btn" id="collection-next-btn" aria-label="Next Item">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- ═══════════════════════════════════════════════════════════
-             09 // TOKEN OF APPRECIATION & RESUME (Final Section)
-             Preview format on page — Full-screen on-screen viewer on click
-             ═══════════════════════════════════════════════════════════ -->
-        <section id="appreciation" class="section appreciation-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-number">09 // TOKEN OF APPRECIATION &amp; RESUME</span>
-                    <h2 class="section-title">Token of Appreciation</h2>
-                    <div class="section-line"></div>
-                </div>
-                <p class="section-tagline">OFFICIAL RESUME, CLIENT RECOMMENDATIONS AND RECOGNITION MILESTONES — PREVIEWS OPEN ON SCREEN</p>
+                <!-- Main Featured Showcase Card (Matching the user screenshot!) -->
+                <div class="collection-showcase-container card-tilt" id="collection-featured-card">
+                    <div class="collection-card-header">
+                        <div class="collection-header-left">
+                            <h3 class="collection-header-title">CERTIFICATIONS &amp; APPRECIATION</h3>
+                            <p class="collection-header-desc">A collection of milestones, learning and recognition.</p>
+                        </div>
+                        <div class="collection-header-right">
+                            <span class="collection-pill-badge" id="featured-collection-badge">01 / COLLECTION</span>
+                        </div>
+                    </div>
 
-                <!-- Documents Showcase Row (Resume & Appreciation LOR) -->
-                <div class="documents-showcase-grid">
-                    <!-- Document 1: Official Resume -->
-                    <div class="card doc-showcase-card card-tilt">
-                        <div class="section-item-index">1</div>
-                        <div class="doc-preview-wrapper open-pdf-btn" data-pdf="nitaanth_resume.pdf" data-title="Nitaanth Panickar — Official Resume">
-                            <iframe src="nitaanth_resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="doc-preview-iframe" title="Resume Preview" tabindex="-1"></iframe>
-                            <div class="doc-hover-overlay">
-                                <span class="doc-overlay-badge">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                                    Click to Open On Screen
-                                </span>
+                    <div class="collection-card-divider"></div>
+
+                    <!-- Inner two-column content -->
+                    <div class="collection-card-body">
+                        <!-- Left: Live Preview Window -->
+                        <div class="collection-preview-col">
+                            <div class="collection-preview-window open-pdf-btn" id="featured-preview-box" data-pdf="nitaanth_resume.pdf" data-title="Nitaanth Panickar — Official Resume">
+                                <iframe id="featured-preview-iframe" src="nitaanth_resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="collection-preview-iframe" title="Document Preview" tabindex="-1"></iframe>
+                                <div class="collection-preview-overlay">
+                                    <span class="collection-expand-pill">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                        Click to Open On Screen
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div class="doc-card-info">
-                            <div class="doc-tag-row">
-                                <span class="doc-badge-pill">Official Resume</span>
-                                <span class="doc-year-pill">2026 Edition</span>
+
+                        <!-- Right: Details, Metadata & Action -->
+                        <div class="collection-details-col">
+                            <div class="collection-status-row">
+                                <span class="collection-status-pill" id="featured-status-pill">OFFICIAL RESUME · 2026</span>
                             </div>
-                            <h4 class="doc-card-title">Nitaanth Panickar — Full Resume</h4>
-                            <p class="doc-card-desc">B.Tech Data Science candidate at NMIMS MPSTME. Comprehensive record of production systems, ML research papers, and technical leadership.</p>
-                            <div class="doc-card-actions">
-                                <button type="button" class="btn-primary open-pdf-btn" data-pdf="nitaanth_resume.pdf" data-title="Nitaanth Panickar — Official Resume">
-                                    <span>Open On Screen</span>
+
+                            <h4 class="collection-item-title" id="featured-title">Nitaanth Panickar — Full Resume</h4>
+                            <p class="collection-item-issuer" id="featured-issuer">NMIMS MPSTME</p>
+                            <p class="collection-item-subtitle" id="featured-subtitle">B.Tech Data Science candidate · Production systems, AI/ML research</p>
+
+                            <div class="collection-tags-row" id="featured-tags-row">
+                                <span class="collection-tag">Data Science</span>
+                                <span class="collection-tag">Agentic AI</span>
+                                <span class="collection-tag">Computer Vision</span>
+                                <span class="collection-tag">MLOps</span>
+                            </div>
+
+                            <div class="collection-actions-row" id="featured-actions-row">
+                                <button type="button" class="btn-primary open-pdf-btn" id="featured-open-btn" data-pdf="nitaanth_resume.pdf" data-title="Nitaanth Panickar — Official Resume">
+                                    <span>View Document</span>
                                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 </button>
-                                <a href="nitaanth_resume.pdf" download="Nitaanth_Panickar_Resume.pdf" class="btn-secondary">
+                                <a id="featured-download-btn" href="nitaanth_resume.pdf" download="Nitaanth_Panickar_Resume.pdf" class="btn-secondary">
                                     <span>Download PDF</span>
                                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                 </a>
@@ -772,37 +789,20 @@
                         </div>
                     </div>
 
-                    <!-- Document 2: Token of Appreciation / Letter of Recommendation -->
-                    <div class="card doc-showcase-card card-tilt">
-                        <div class="section-item-index">2</div>
-                        <div class="doc-preview-wrapper open-pdf-btn" data-pdf="LOR_Adv_Jyoti.pdf" data-title="Letter of Recommendation &amp; Token of Appreciation">
-                            <iframe src="LOR_Adv_Jyoti.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="doc-preview-iframe" title="Recommendation Preview" tabindex="-1"></iframe>
-                            <div class="doc-hover-overlay">
-                                <span class="doc-overlay-badge">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                                    Click to Open On Screen
-                                </span>
-                            </div>
-                        </div>
-                        <div class="doc-card-info">
-                            <div class="doc-tag-row">
-                                <span class="doc-badge-pill" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3);">Letter of Appreciation</span>
-                                <span class="doc-year-pill">Client Endorsement</span>
-                            </div>
-                            <h4 class="doc-card-title">Token of Appreciation &amp; Recommendation</h4>
-                            <p class="doc-card-desc">Official recommendation and recognition letter commending engineering rigor, web architecture, and operational execution for legal practice platforms.</p>
-                            <div class="doc-card-actions">
-                                <button type="button" class="btn-primary open-pdf-btn" data-pdf="LOR_Adv_Jyoti.pdf" data-title="Letter of Recommendation &amp; Token of Appreciation">
-                                    <span>Open On Screen</span>
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                </button>
-                                <a href="LOR_Adv_Jyoti.pdf" download="Nitaanth_Panickar_Recommendation.pdf" class="btn-secondary">
-                                    <span>Download PDF</span>
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                </a>
-                            </div>
-                        </div>
+                    <div class="collection-card-footer">
+                        <span class="collection-footer-counter" id="featured-footer-counter">01 — 09</span>
+                        <span class="collection-footer-brand">ELECTRIC GLASS DESIGN</span>
                     </div>
+                </div>
+
+                <!-- Interactive Item Selection Pills / Thumbnail Bar -->
+                <div class="collection-items-strip" id="collection-items-strip">
+                    <!-- Populated dynamically: quick switch pills with item number and title -->
+                </div>
+
+                <!-- Full Collection Grid (All 9 Cards in the Screenshot Aesthetic) -->
+                <div class="collection-full-grid" id="collection-full-grid">
+                    <!-- Populated dynamically via app.js -->
                 </div>
 
                 <!-- Final Thank You Note & Contact Box -->
