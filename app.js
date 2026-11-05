@@ -401,37 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ═══════════════════════════════════════════════════════════════
     const COLLECTION_ITEMS = [
         {
-            id: 'resume',
-            type: 'doc',
-            typeBadge: '01 / RESUME',
-            status: 'OFFICIAL RESUME · 2026',
-            statusColor: '#00D9FF',
-            title: 'Nitaanth Panickar — Full Resume',
-            issuer: 'NMIMS MPSTME',
-            subtitle: 'B.Tech Data Science candidate · Production systems, AI/ML research & varsity athletics',
-            tags: ['Data Science', 'Agentic AI', 'Computer Vision', 'MLOps'],
-            pdf: 'nitaanth_resume.pdf',
-            isDoc: true,
-            download: 'Nitaanth_Panickar_Resume.pdf'
-        },
-        {
-            id: 'lor',
-            type: 'doc',
-            typeBadge: '02 / ENDORSEMENT',
-            status: 'CLIENT ENDORSEMENT · 2024',
-            statusColor: '#10b981',
-            title: 'Token of Appreciation & Recommendation',
-            issuer: 'Adv. Jyoti & Co.',
-            subtitle: 'Official client recommendation commending technical architecture, security & execution',
-            tags: ['Legal Tech', 'Architecture', 'Client Commendation'],
-            pdf: 'LOR_Adv_Jyoti.pdf',
-            isDoc: true,
-            download: 'Nitaanth_Panickar_Recommendation.pdf'
-        },
-        {
             id: 'llm',
             type: 'cert',
-            typeBadge: '03 / CERTIFICATION',
+            typeBadge: '01 / CERTIFICATION',
             status: 'COMPLETED · 2026',
             statusColor: '#10b981',
             title: 'Fundamentals of LLM',
@@ -439,12 +411,12 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: 'The LLM Course · Advanced prompt engineering, fine-tuning & evaluation',
             tags: ['Generative AI', 'NLP', 'Transformers'],
             pdf: 'Certificates/nitaanth_fund_of_llm_cert.pdf',
-            badge: 'LLM'
+            download: 'Fundamentals_of_LLM_Certificate.pdf'
         },
         {
             id: 'agents',
             type: 'cert',
-            typeBadge: '04 / CERTIFICATION',
+            typeBadge: '02 / CERTIFICATION',
             status: 'COMPLETED · 2026',
             statusColor: '#10b981',
             title: 'Fundamentals of AI Agents',
@@ -452,12 +424,12 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: 'Autonomous agents, reasoning loops, function calling & tool integration',
             tags: ['Agentic AI', 'ReAct Loop', 'Tool Calling'],
             pdf: 'Certificates/Hugging_face_agents_course.pdf',
-            badge: 'AGNT'
+            download: 'Fundamentals_of_AI_Agents_Certificate.pdf'
         },
         {
             id: 'data-lakes',
             type: 'cert',
-            typeBadge: '05 / CERTIFICATION',
+            typeBadge: '03 / CERTIFICATION',
             status: 'COMPLETED · 2026',
             statusColor: '#10b981',
             title: 'Building Data Lakes on AWS',
@@ -465,12 +437,12 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: 'Lake Formation, S3 architectures, Glue ETL pipelines & Athena queries',
             tags: ['AWS', 'Data Lakes', 'Cloud Architecture'],
             pdf: 'Certificates/data_lakes_certification.pdf',
-            badge: 'AWS'
+            download: 'Building_Data_Lakes_on_AWS_Certificate.pdf'
         },
         {
             id: 'aws-arch',
             type: 'cert',
-            typeBadge: '06 / CERTIFICATION',
+            typeBadge: '04 / CERTIFICATION',
             status: 'COMPLETED · 2026',
             statusColor: '#10b981',
             title: 'Architecting Solutions on AWS',
@@ -478,12 +450,12 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: 'High-availability topology, VPC design, IAM security & multi-tier resilience',
             tags: ['AWS', 'Solutions Architecture', 'Security'],
             pdf: 'Certificates/Nitaanth_AWS_architect_certificate.pdf',
-            badge: 'AWS'
+            download: 'Architecting_Solutions_on_AWS_Certificate.pdf'
         },
         {
             id: 'aws-essentials',
             type: 'cert',
-            typeBadge: '07 / CERTIFICATION',
+            typeBadge: '05 / CERTIFICATION',
             status: 'COMPLETED · 2026',
             statusColor: '#10b981',
             title: 'AWS Cloud Technical Essentials',
@@ -491,12 +463,12 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: 'Core compute, storage, databases & cost governance across enterprise AWS',
             tags: ['Cloud Computing', 'AWS', 'Infrastructure'],
             pdf: 'Certificates/Nitaanth_coursera_AWS_certificate.pdf',
-            badge: 'AWS'
+            download: 'AWS_Cloud_Technical_Essentials_Certificate.pdf'
         },
         {
             id: 'edge-ai',
             type: 'cert',
-            typeBadge: '08 / CERTIFICATION',
+            typeBadge: '06 / CERTIFICATION',
             status: 'COMPLETED · 2025',
             statusColor: '#10b981',
             title: 'Edge AI Course Certificate',
@@ -504,12 +476,12 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: 'Quantized neural networks, real-time edge streaming & OpenVINO deployment',
             tags: ['Edge AI', 'Computer Vision', 'Model Quantization'],
             pdf: 'Certificates/Edge AI Course Certificate - Nitaanth Panickar.pdf',
-            badge: 'EDGE'
+            download: 'Edge_AI_Course_Certificate.pdf'
         },
         {
             id: 'pm-ai',
             type: 'cert',
-            typeBadge: '09 / CERTIFICATION',
+            typeBadge: '07 / CERTIFICATION',
             status: 'COMPLETED · 2026',
             statusColor: '#10b981',
             title: 'Managing Projects with AI',
@@ -517,23 +489,21 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: 'AI roadmap design, milestone governance & operational model deployment',
             tags: ['AI Strategy', 'Product Leadership', 'Agile AI'],
             pdf: 'Certificates/Mging_prjts_AI.pdf',
-            badge: 'AI-PM'
+            download: 'Managing_Projects_with_AI_Certificate.pdf'
         }
     ];
 
     let currentCollectionIdx = 0;
-    let currentCollectionFilter = 'all';
 
     function initCertificationsAndAppreciation() {
         const featuredCard = document.getElementById('collection-featured-card');
         const stripContainer = document.getElementById('collection-items-strip');
         const prevBtn = document.getElementById('collection-prev-btn');
         const nextBtn = document.getElementById('collection-next-btn');
-        const filterBtns = document.querySelectorAll('.collection-filter-btn');
 
         if (!featuredCard) return;
 
-        // Render Quick Switcher Strip Pills
+        // Render Quick Switcher Strip Pills for the 7 certificates
         if (stripContainer) {
             stripContainer.innerHTML = '';
             COLLECTION_ITEMS.forEach((item, idx) => {
@@ -571,17 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Filter tabs
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentCollectionFilter = btn.getAttribute('data-filter') || 'all';
-                renderCollectionGrid();
-            });
-        });
-
-        // Initialize featured card with item 0
+        // Initialize featured card with item 0 (Fundamentals of LLM)
         setFeaturedCollectionItem(0);
     }
 
@@ -616,15 +576,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const statusPill = document.getElementById('featured-status-pill');
         if (statusPill) {
             statusPill.textContent = item.status;
-            if (item.statusColor === '#00D9FF') {
-                statusPill.style.color = '#00D9FF';
-                statusPill.style.borderColor = 'rgba(0, 217, 255, 0.35)';
-                statusPill.style.background = 'rgba(0, 217, 255, 0.1)';
-            } else {
-                statusPill.style.color = '#10b981';
-                statusPill.style.borderColor = 'rgba(16, 185, 129, 0.35)';
-                statusPill.style.background = 'rgba(16, 185, 129, 0.1)';
-            }
+            statusPill.style.color = '#10b981';
+            statusPill.style.borderColor = 'rgba(16, 185, 129, 0.35)';
+            statusPill.style.background = 'rgba(16, 185, 129, 0.1)';
         }
 
         // Update Title, Issuer, Subtitle
@@ -648,7 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
             openBtn.setAttribute('data-pdf', item.pdf);
             openBtn.setAttribute('data-title', item.title);
             const spanText = openBtn.querySelector('span');
-            if (spanText) spanText.textContent = item.isDoc ? 'View Document' : 'View Certificate';
+            if (spanText) spanText.textContent = 'View certificate';
         }
         if (dlBtn) {
             if (item.download) {
@@ -673,13 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!grid) return;
         grid.innerHTML = '';
 
-        const filtered = COLLECTION_ITEMS.filter(item => {
-            if (currentCollectionFilter === 'docs') return item.type === 'doc';
-            if (currentCollectionFilter === 'certs') return item.type === 'cert';
-            return true;
-        });
-
-        filtered.forEach((item) => {
+        COLLECTION_ITEMS.forEach((item) => {
             const card = document.createElement('div');
             card.className = 'collection-mini-card card-tilt open-pdf-btn';
             card.setAttribute('data-pdf', item.pdf);

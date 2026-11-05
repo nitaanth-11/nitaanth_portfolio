@@ -446,6 +446,10 @@ def handle_contact():
 def serve_index():
     return send_from_directory('.', 'index.html')
 
+@app.route('/<path:filename>')
+def serve_static_file(filename):
+    return send_from_directory('.', filename)
+
 if __name__ == '__main__':
     print("Nitaanth's Portfolio Backend running on http://localhost:5000")
     app.run(host='0.0.0.0', port=5000, debug=True)
