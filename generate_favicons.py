@@ -137,3 +137,4 @@ icon_48 = generate_png_icon(48)
 icon_32.save("favicon.ico", format="ICO", sizes=[(16, 16), (32, 32), (48, 48)])
 
 print("Generated all favicon formats successfully (SVG, PNG, ICO, Apple Touch Icon)!")
+

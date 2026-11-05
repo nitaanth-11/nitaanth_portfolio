@@ -1440,74 +1440,131 @@ body {
     border-radius: 4px;
 }
 
-/* ── 06. BEYOND THE CLASSROOM ────────────────────────────────────────────── */
+/* ── 07. BEYOND THE CLASSROOM (6 HIGHLIGHTED ACHIEVEMENTS) ─────────────────── */
 .beyond-section {
     background: radial-gradient(circle at 75% 30%, rgba(8, 28, 37, 0.8) 0%, var(--bg-primary) 70%);
+    position: relative;
+    padding: 6.5rem 0;
 }
 
-.beyond-editorial-grid {
+.beyond-achievements-grid {
     display: grid;
-    grid-template-columns: 1.35fr 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
 }
 
-.beyond-story-card {
-    padding: 2.25rem;
+@media (max-width: 992px) {
+    .beyond-achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .beyond-achievements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.beyond-achievement-card {
+    background: linear-gradient(135deg, rgba(8, 20, 32, 0.9), rgba(4, 10, 16, 0.96));
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    border-radius: 18px;
+    padding: 1.85rem 1.75rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
 }
 
-.beyond-story-card.card-featured {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
+.beyond-achievement-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 217, 255, 0.2);
 }
 
-.story-category-pill {
-    display: inline-flex;
+.achievement-card-top {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--accent-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 1rem;
-}
-
-.story-title {
-    font-family: var(--font-serif);
-    font-size: 1.85rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.3;
+    justify-content: space-between;
     margin-bottom: 1.25rem;
 }
 
-.story-text {
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-}
-
-.story-meta-tags {
+.achievement-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(0, 217, 255, 0.08);
+    border: 1px solid rgba(0, 217, 255, 0.25);
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 14px rgba(0, 217, 255, 0.15);
 }
 
-.beyond-chip {
+.achievement-index {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    background: rgba(0, 217, 255, 0.08);
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement-category {
     font-family: var(--font-sans);
     font-size: 0.7rem;
-    font-weight: 500;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+    display: block;
+}
+
+.achievement-title {
+    font-family: var(--font-serif); /* Lora! */
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.achievement-desc {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.achievement-footer {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 217, 255, 0.1);
+    margin-top: auto;
+}
+
+.achievement-chip {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
     color: var(--accent-highlight);
-    background: rgba(0, 217, 255, 0.08);
-    border: 1px solid var(--border-default);
-    padding: 4px 10px;
+    background: rgba(0, 217, 255, 0.07);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    padding: 0.28rem 0.75rem;
     border-radius: var(--radius-full);
+    letter-spacing: 0.03em;
 }
 
 /* ── 08. CERTIFICATIONS & APPRECIATION (ELECTRIC GLASS DESIGN) ─────────────── */
