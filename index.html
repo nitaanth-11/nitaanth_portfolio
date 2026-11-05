@@ -3,39 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nitaanth | Data Science & Intelligent Systems</title>
-    <meta name="description" content="Nitaanth — Final-year B.Tech Data Science student at NMIMS MPSTME. Building intelligent systems in Cloud Computing, LLMs, and AI.">
-    <meta name="keywords" content="Nitaanth, Data Science, MPSTME, NMIMS, Portfolio, AI, Machine Learning">
-    <meta name="author" content="Nitaanth">
+    <title>Nitaanth | Data Science Engineer, AI Researcher &amp; Builder</title>
+    <meta name="description" content="Nitaanth Panickar — Final-year B.Tech Data Science student at NMIMS MPSTME. Building intelligent systems in Agentic AI, Cloud Computing, Computer Vision and MLOps.">
+    <meta name="keywords" content="Nitaanth, Nitaanth Panickar, Data Science, MPSTME, NMIMS, AI, Machine Learning, Computer Vision, GIS, Sentinel AI, Portfolio">
+    <meta name="author" content="Nitaanth Panickar">
 
-    <!-- Fonts loaded via Google Fonts and CSS -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Lucide Icons -->
+    <!-- Motion & Interaction CDNs -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-bar" id="scroll-progress"></div>
+
+    <!-- Cursor Following Cyan Spotlight -->
+    <div class="cursor-spotlight" id="cursor-spotlight"></div>
+
+    <!-- Ambient Cyber Grid Background Mesh -->
+    <div class="ambient-mesh"></div>
+
     <!-- ═══════════════════════════════════════════════════════════════
-         NAVIGATION
+         STICKY NAVIGATION BAR
          ═══════════════════════════════════════════════════════════════ -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="#home" class="logo">
+            <a href="#home" class="logo magnetic">
                 <span class="logo-accent">N</span>itaanth<span class="logo-accent">.</span>
             </a>
 
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#workflow" class="nav-link" data-section="workflow">Workflow</a></li>
                 <li><a href="#work" class="nav-link" data-section="work">Experience</a></li>
-                <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
-                <li><a href="#research" class="nav-link" data-section="research">Research</a></li>
+                <li><a href="#techstack" class="nav-link" data-section="techstack">Tech Stack</a></li>
                 <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#research" class="nav-link" data-section="research">Research</a></li>
+                <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
+                <li><a href="#beyond" class="nav-link" data-section="beyond">Beyond Tech</a></li>
                 <li><a href="#certifications" class="nav-link" data-section="certifications">Certs</a></li>
-                <li><a href="#cocurriculars" class="nav-link" data-section="cocurriculars">Activities</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
             </ul>
 
             <div style="display: flex; align-items: center; gap: 8px;">
@@ -47,30 +63,39 @@
         </div>
     </nav>
 
-    <!-- Mobile Nav -->
+    <!-- Mobile Nav Drawer -->
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <div class="mobile-nav" id="mobile-nav">
         <a href="#home" class="nav-link" data-section="home">Home</a>
+        <a href="#about" class="nav-link" data-section="about">About</a>
+        <a href="#workflow" class="nav-link" data-section="workflow">Workflow</a>
         <a href="#work" class="nav-link" data-section="work">Experience</a>
-        <a href="#education" class="nav-link" data-section="education">Education</a>
-        <a href="#research" class="nav-link" data-section="research">Research</a>
+        <a href="#techstack" class="nav-link" data-section="techstack">Tech Stack</a>
         <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+        <a href="#research" class="nav-link" data-section="research">Research</a>
+        <a href="#education" class="nav-link" data-section="education">Education</a>
+        <a href="#beyond" class="nav-link" data-section="beyond">Beyond Tech</a>
         <a href="#certifications" class="nav-link" data-section="certifications">Certs</a>
-        <a href="#cocurriculars" class="nav-link" data-section="cocurriculars">Activities</a>
+        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
     </div>
 
     <main>
         <!-- ═══════════════════════════════════════════════════════════
-             HERO / ABOUT ME — FULLY RESPONSIVE TWO-COLUMN GRID
+             HERO / ABOUT ME — RESPONSIVE TWO-COLUMN GRID
              ═══════════════════════════════════════════════════════════ -->
         <section id="home" class="hero section">
-            <div class="container hero-container-relative">
+            <div class="container">
                 <div class="hero-grid-layout">
                     <!-- Left Column: Bio & Introduction -->
                     <div class="hero-content">
                         <p class="hero-greeting">Hey, I'm</p>
-                        <h1 class="hero-name">Nitaanth</h1>
-                        <p class="hero-skills">Top Skills: Python-Full Stack Development · Agentic AI · Cloud Computing · MLOps</p>
+                        <h1 class="hero-name" id="hero-name-heading">Nitaanth</h1>
+                        
+                        <div class="hero-skills-pill">
+                            <span class="live-indicator-dot"></span>
+                            <span class="hero-skills-text">Top Skills: Python-Full Stack Development · Agentic AI · Cloud Computing · MLOps</span>
+                        </div>
+
                         <p class="hero-university">MUKESH PATEL SCHOOL OF TECHNOLOGY MANAGEMENT &amp; ENGINEERING · NMIMS</p>
 
                         <p class="hero-description">
@@ -78,11 +103,11 @@
                         </p>
 
                         <div class="hero-actions">
-                            <a href="#work" class="btn-primary">
+                            <a href="#work" class="btn-primary magnetic">
                                 View My Work
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
                             </a>
-                            <a href="https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing" target="_blank" class="btn-secondary" id="view-resume-btn" style="display: inline-flex;">
+                            <a href="https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing" target="_blank" class="btn-secondary magnetic" id="view-resume-btn">
                                 View Resume
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                             </a>
@@ -91,7 +116,8 @@
 
                     <!-- Right Column: Profile Picture Frame -->
                     <div class="hero-portrait-wrapper">
-                        <div class="hero-portrait-frame">
+                        <div class="hero-portrait-glow-halo"></div>
+                        <div class="hero-portrait-frame card-tilt">
                             <img src="profile.jpg" alt="Nitaanth Panickar" class="hero-portrait-img" onerror="this.parentElement.classList.add('img-fallback');">
                         </div>
                     </div>
@@ -100,30 +126,314 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════
-             01 // EXPERIENCE & VENTURES — NOBLENET SOFTWARE TECHNOLOGIES
+             ABOUT ME — EDITORIAL GLASSPHONE SECTION
              ═══════════════════════════════════════════════════════════ -->
-        <section id="work" class="section scroll-reveal">
+        <section id="about" class="section">
             <div class="container">
                 <div class="section-header">
                     <span class="section-number">01 //</span>
-                    <h2 class="section-title">Experience & Ventures</h2>
+                    <h2 class="section-title">About Me</h2>
                     <div class="section-line"></div>
                 </div>
+                <p class="section-tagline">AN ENGINEERING MIND GROUNDED IN CURIOSITY, CODE &amp; COMPETITIVE DRIVE</p>
 
-                <!-- ── NOBLENET STORY CARD (PARENT UMBRELLA) ─────────── -->
-                <div class="card noblenet-story-card">
-                    <div class="noblenet-card-glow"></div>
+                <div class="about-grid">
+                    <!-- Main Editorial Glass Card -->
+                    <div class="card about-main-card card-tilt">
+                        <div class="card-shine"></div>
+                        <div>
+                            <p class="about-lead">
+                                I am an engineer driven by an obsession with <strong>understanding how complex systems behave</strong> — from multi-agent LLM reasoning chains to spatial telemetry and the physics of fast bowling.
+                            </p>
+                            <p class="about-body-text">
+                                Currently completing my B.Tech in Data Science at MPSTME, NMIMS Mumbai, my work centers on bridging raw mathematical theory with production-grade software. I don't just benchmark algorithms in isolated notebooks; I build deployable web services, craft distributed cloud architectures, and architect resilient pipelines that solve tangible problems across logistics, law, finance, and healthcare.
+                            </p>
+                        </div>
+
+                        <div class="about-pillars">
+                            <div class="pillar-item">
+                                <div class="pillar-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="pillar-title">Applied AI &amp; LLMs</h4>
+                                    <p class="pillar-desc">Agentic orchestration, RAG architectures, and AST-driven static analysis.</p>
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <div class="pillar-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="pillar-title">Full-Stack Cloud</h4>
+                                    <p class="pillar-desc">Scalable REST architectures, Docker containers, and edge deployment.</p>
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <div class="pillar-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="pillar-title">Competitive Cricket</h4>
+                                    <p class="pillar-desc">Fast bowler, UK County Div II, Mumbai U/23 Zonal &amp; NMIMS Captaincy.</p>
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <div class="pillar-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="pillar-title">Deep Research</h4>
+                                    <p class="pillar-desc">Springer ICDECT-2026 published author in explainable cybersecurity.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Side Quick Facts Card -->
+                    <div class="card about-side-card card-tilt">
+                        <div class="card-shine"></div>
+                        <div>
+                            <h3 class="quick-facts-title">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                                Engineering Snapshot
+                            </h3>
+                            <div class="fact-row">
+                                <span class="fact-label">Education</span>
+                                <span class="fact-value">B.Tech Data Science (Final Year)</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Institution</span>
+                                <span class="fact-value">MPSTME, NMIMS Mumbai</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Academic Metrics</span>
+                                <span class="fact-value">GPA: 3.68 | CGPA: 3.3*</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Venture Leadership</span>
+                                <span class="fact-value">Operations &amp; Tech Lead · NobleNet</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Research Focus</span>
+                                <span class="fact-value">AST Code Security &amp; Assistive AI</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Publications</span>
+                                <span class="fact-value">Springer ICDECT-2026</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Sporting Experience</span>
+                                <span class="fact-value">UK County Div II &amp; Mumbai U/23</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Current Base</span>
+                                <span class="fact-value">Mumbai, India</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(0, 217, 255, 0.12);">
+                            <a href="#workflow" class="btn-secondary" style="width: 100%; justify-content: center; font-size: 0.78rem;">
+                                Explore My Engineering Workflow ↓
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             "HOW I BUILD" — ENGINEERING WORKFLOW TIMELINE
+             ═══════════════════════════════════════════════════════════ -->
+        <section id="workflow" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">02 //</span>
+                    <h2 class="section-title">How I Build</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-tagline">A PRINCIPLED 6-STAGE ENGINEERING METHODOLOGY FROM PROBLEM DISCOVERY TO CONTINUOUS OPTIMIZATION</p>
+
+                <div class="workflow-timeline" id="workflow-timeline">
+                    <!-- Connected Glowing Cyan Progress Track -->
+                    <div class="workflow-track-line">
+                        <div class="workflow-track-progress" id="workflow-progress-line"></div>
+                    </div>
+
+                    <!-- 01. EXPLORE -->
+                    <div class="workflow-stage-row active" data-stage="1">
+                        <div class="workflow-node">
+                            <span class="workflow-node-number">01</span>
+                            <div class="workflow-node-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                        </div>
+                        <div class="workflow-card card-tilt">
+                            <div class="card-shine"></div>
+                            <div class="workflow-header">
+                                <h3 class="workflow-title">01. Explore</h3>
+                                <span class="workflow-subtitle">Discovery &amp; Problem Deconstruction</span>
+                            </div>
+                            <p class="workflow-desc">
+                                Research the domain exhaustively, engage stakeholders, dissect root friction points, analyze existing literature, and formulate precise quantitative requirements before writing a single line of code.
+                            </p>
+                            <div class="workflow-tags">
+                                <span class="workflow-tag">Domain Exploration</span>
+                                <span class="workflow-tag">Problem Deconstruction</span>
+                                <span class="workflow-tag">Requirements Engineering</span>
+                                <span class="workflow-tag">Academic Literature Review</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 02. ARCHITECT -->
+                    <div class="workflow-stage-row" data-stage="2">
+                        <div class="workflow-node">
+                            <span class="workflow-node-number">02</span>
+                            <div class="workflow-node-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+                        </div>
+                        <div class="workflow-card card-tilt">
+                            <div class="card-shine"></div>
+                            <div class="workflow-header">
+                                <h3 class="workflow-title">02. Architect</h3>
+                                <span class="workflow-subtitle">System Design &amp; Model Selection</span>
+                            </div>
+                            <p class="workflow-desc">
+                                Design modular distributed architectures, define data contracts and database schemas, choose between neural, heuristic, or RAG models, and evaluate scalability trade-offs across storage, compute, and latency.
+                            </p>
+                            <div class="workflow-tags">
+                                <span class="workflow-tag">System Architecture</span>
+                                <span class="workflow-tag">Model &amp; Framework Selection</span>
+                                <span class="workflow-tag">Schema Design</span>
+                                <span class="workflow-tag">Infrastructure Blueprints</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 03. EXPERIMENT -->
+                    <div class="workflow-stage-row" data-stage="3">
+                        <div class="workflow-node">
+                            <span class="workflow-node-number">03</span>
+                            <div class="workflow-node-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/></svg></div>
+                        </div>
+                        <div class="workflow-card card-tilt">
+                            <div class="card-shine"></div>
+                            <div class="workflow-header">
+                                <h3 class="workflow-title">03. Experiment</h3>
+                                <span class="workflow-subtitle">Prototyping, Benchmarking &amp; Validation</span>
+                            </div>
+                            <p class="workflow-desc">
+                                Rapidly build functional prototypes, benchmark baseline algorithms against advanced neural approaches, test edge cases, and rigorously validate accuracy, token efficiency, and model convergence.
+                            </p>
+                            <div class="workflow-tags">
+                                <span class="workflow-tag">Rapid Prototyping</span>
+                                <span class="workflow-tag">Model Benchmarking</span>
+                                <span class="workflow-tag">AST Syntax Validation</span>
+                                <span class="workflow-tag">A/B Evaluation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 04. ENGINEER -->
+                    <div class="workflow-stage-row" data-stage="4">
+                        <div class="workflow-node">
+                            <span class="workflow-node-number">04</span>
+                            <div class="workflow-node-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                        </div>
+                        <div class="workflow-card card-tilt">
+                            <div class="card-shine"></div>
+                            <div class="workflow-header">
+                                <h3 class="workflow-title">04. Engineer</h3>
+                                <span class="workflow-subtitle">Full-Stack Implementation &amp; Pipelines</span>
+                            </div>
+                            <p class="workflow-desc">
+                                Build production-grade backend services with FastAPI or Flask, engineer robust asynchronous data pipelines, integrate LLM retrieval modules, and construct clean, accessible, responsive user interfaces.
+                            </p>
+                            <div class="workflow-tags">
+                                <span class="workflow-tag">Async REST APIs</span>
+                                <span class="workflow-tag">Data Ingestion Pipelines</span>
+                                <span class="workflow-tag">Agentic Loops</span>
+                                <span class="workflow-tag">Responsive UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 05. DEPLOY -->
+                    <div class="workflow-stage-row" data-stage="5">
+                        <div class="workflow-node">
+                            <span class="workflow-node-number">05</span>
+                            <div class="workflow-node-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+                        </div>
+                        <div class="workflow-card card-tilt">
+                            <div class="card-shine"></div>
+                            <div class="workflow-header">
+                                <h3 class="workflow-title">05. Deploy</h3>
+                                <span class="workflow-subtitle">Containerization &amp; Cloud Infrastructure</span>
+                            </div>
+                            <p class="workflow-desc">
+                                Package applications into reproducible Docker containers, configure continuous integration (CI/CD) pipelines, provision AWS or GCP resources, and establish global edge routing with SSL and DNS integrity.
+                            </p>
+                            <div class="workflow-tags">
+                                <span class="workflow-tag">Docker Containerization</span>
+                                <span class="workflow-tag">AWS &amp; GCP Orchestration</span>
+                                <span class="workflow-tag">GitHub Actions CI/CD</span>
+                                <span class="workflow-tag">Vercel &amp; Render Edge</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 06. IMPROVE -->
+                    <div class="workflow-stage-row" data-stage="6">
+                        <div class="workflow-node">
+                            <span class="workflow-node-number">06</span>
+                            <div class="workflow-node-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        </div>
+                        <div class="workflow-card card-tilt">
+                            <div class="card-shine"></div>
+                            <div class="workflow-header">
+                                <h3 class="workflow-title">06. Improve</h3>
+                                <span class="workflow-subtitle">Telemetry, Optimization &amp; Evolution</span>
+                            </div>
+                            <p class="workflow-desc">
+                                Monitor system telemetry, track error rates and API latency, analyze user feedback loops, patch vulnerabilities, and iteratively refine machine learning accuracy and runtime performance.
+                            </p>
+                            <div class="workflow-tags">
+                                <span class="workflow-tag">Latency &amp; Throughput Optimization</span>
+                                <span class="workflow-tag">Telemetry &amp; Logging</span>
+                                <span class="workflow-tag">Security Hardening</span>
+                                <span class="workflow-tag">Iterative Refinement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             03 // EXPERIENCE & VENTURES — NOBLENET SOFTWARE TECHNOLOGIES
+             ═══════════════════════════════════════════════════════════ -->
+        <section id="work" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">03 //</span>
+                    <h2 class="section-title">Experience &amp; Ventures</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-tagline">VENTURE LEADERSHIP, STARTUP OPERATIONS &amp; CLIENT DELIVERIES UNDER NOBLENET</p>
+
+                <!-- NOBLENET STORY CARD (PARENT UMBRELLA) -->
+                <div class="card noblenet-story-card card-tilt">
+                    <div class="card-shine"></div>
                     
                     <div class="noblenet-header">
                         <div class="noblenet-title-group">
                             <div class="noblenet-badge-row">
-                                <span class="noblenet-badge">Startup Operations & Technical Lead</span>
-                                <span class="noblenet-badge-secondary">Venture Leadership & Internship</span>
+                                <span class="noblenet-badge">Startup Operations &amp; Technical Lead</span>
+                                <span class="noblenet-badge-secondary">Venture Leadership &amp; Internship</span>
                             </div>
                             <h3 class="noblenet-title">NobleNet Software Technologies</h3>
                             <div class="noblenet-lineage">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                                <span>Founded by tech leaders from <strong style="color: #00d2ff;">Yahoo</strong> (Father) & <strong style="color: #00d2ff;">IBM</strong> (Uncle)</span>
+                                <span>Founded by tech leaders from <strong style="color: var(--accent-primary);">Yahoo</strong> (Father) &amp; <strong style="color: var(--accent-primary);">IBM</strong> (Uncle)</span>
                             </div>
                         </div>
                         <div class="noblenet-meta">
@@ -134,30 +444,30 @@
 
                     <div class="noblenet-body">
                         <p class="noblenet-narrative">
-                            NobleNet Software Technologies was founded by senior technology leaders with origins at <strong>Yahoo</strong> (my father) and <strong>IBM</strong> (my uncle). Over the past year, I stepped up to lead and manage operations across the entire startup — taking full ownership of technical architecture, cloud deployments, and client deliveries. Under the NobleNet umbrella, I designed and engineered three specialized web platforms spanning luxury retail AI and legal technology:
+                            NobleNet Software Technologies was founded by senior technology leaders with origins at <strong>Yahoo</strong> (my father) and <strong>IBM</strong> (my uncle). Over the past year, I stepped up to lead operations across the startup — taking full ownership of technical architecture, cloud deployments, client deliveries, and engineering management. Under the NobleNet umbrella, I designed and delivered three specialized web platforms spanning luxury retail recommendation systems and legal technology:
                         </p>
                         <div class="noblenet-highlights">
-                            <span class="highlight-pill"><span class="pill-dot"></span> Yahoo & IBM Lineage</span>
-                            <span class="highlight-pill"><span class="pill-dot"></span> Startup Tech & Operations Lead</span>
-                            <span class="highlight-pill"><span class="pill-dot"></span> Recommendation Systems</span>
-                            <span class="highlight-pill"><span class="pill-dot"></span> Full-Stack Cloud Deployment</span>
-                            <span class="highlight-pill"><span class="pill-dot"></span> Legal Tech & Portals</span>
+                            <span class="highlight-pill"><span class="pill-dot"></span> Yahoo &amp; IBM Engineering Heritage</span>
+                            <span class="highlight-pill"><span class="pill-dot"></span> Operations &amp; Tech Lead</span>
+                            <span class="highlight-pill"><span class="pill-dot"></span> Custom Recommendation Algorithms</span>
+                            <span class="highlight-pill"><span class="pill-dot"></span> Cloud Infrastructure &amp; Security</span>
+                            <span class="highlight-pill"><span class="pill-dot"></span> Legal Tech Client Portals</span>
                         </div>
                     </div>
 
-                    <!-- ── 3 CLIENT VENTURES UNDER NOBLENET ─────────── -->
+                    <!-- 3 CLIENT VENTURES UNDER NOBLENET -->
                     <div class="noblenet-projects-section">
                         <div class="noblenet-projects-header">
                             <div>
-                                <h4 class="noblenet-projects-title">Ventures & Client Platforms Built Under NobleNet</h4>
-                                <p style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">End-to-end client applications, recommendation engines, and internship portals architected under NobleNet Software Technologies.</p>
+                                <h4 class="noblenet-projects-title">Client Platforms Delivered Under NobleNet</h4>
+                                <p style="font-size: 0.74rem; color: var(--text-muted); margin-top: 3px;">End-to-end client systems, recommendation engines, and internship portals architected under NobleNet.</p>
                             </div>
                             <span class="noblenet-projects-count">3 Delivered Systems</span>
                         </div>
 
                         <div class="noblenet-projects-grid" id="work-grid">
                             <!-- Maison Momento -->
-                            <a href="https://maison-momento.onrender.com/products/" target="_blank" class="card client-project-card">
+                            <a href="https://maison-momento.onrender.com/products/" target="_blank" class="card client-project-card card-tilt">
                                 <div class="client-card-top">
                                     <div class="client-header-main">
                                         <div class="client-badge-row">
@@ -165,7 +475,7 @@
                                             <span class="client-status-badge status-prelaunch">Cloud Prototype</span>
                                         </div>
                                         <h4 class="client-project-name">Maison Momento</h4>
-                                        <p class="client-role-title">Lead Full Stack & Recommendation Systems Engineer</p>
+                                        <p class="client-role-title">Lead Full Stack &amp; Recommendation Systems Engineer</p>
                                     </div>
                                     <div class="client-link-icon" title="View Cloud Prototype">
                                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -178,7 +488,7 @@
                                     <span class="tag">Recommendation Systems</span>
                                     <span class="tag">Admin Handling</span>
                                     <span class="tag">Payment Gateways</span>
-                                    <span class="tag">UI/UX & SEO</span>
+                                    <span class="tag">UI/UX &amp; SEO</span>
                                     <span class="tag">Render Cloud</span>
                                     <span class="tag">REST API</span>
                                 </div>
@@ -192,7 +502,7 @@
                             </a>
 
                             <!-- Entrust Legal Services -->
-                            <a href="https://www.entrustlegal.in/" target="_blank" class="card client-project-card">
+                            <a href="https://www.entrustlegal.in/" target="_blank" class="card client-project-card card-tilt">
                                 <div class="client-card-top">
                                     <div class="client-header-main">
                                         <div class="client-badge-row">
@@ -200,7 +510,7 @@
                                             <span class="client-status-badge status-live">Live Platform</span>
                                         </div>
                                         <h4 class="client-project-name">Entrust Legal Services</h4>
-                                        <p class="client-role-title">Full Stack Engineer & Portal Architect</p>
+                                        <p class="client-role-title">Full Stack Engineer &amp; Portal Architect</p>
                                     </div>
                                     <div class="client-link-icon" title="Visit Live Platform">
                                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -217,7 +527,7 @@
                                     <span class="tag">Cloud Hosting</span>
                                 </div>
                                 <div class="client-card-footer">
-                                    <span class="client-note">Firm presence & active student internship portal</span>
+                                    <span class="client-note">Firm presence &amp; active student internship portal</span>
                                     <span class="client-action-btn">
                                         Visit Entrust Legal
                                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -226,22 +536,22 @@
                             </a>
 
                             <!-- Adv Jyoti & Co. -->
-                            <a href="https://adv-jyoti.web.app/" target="_blank" class="card client-project-card">
+                            <a href="https://adv-jyoti.web.app/" target="_blank" class="card client-project-card card-tilt">
                                 <div class="client-card-top">
                                     <div class="client-header-main">
                                         <div class="client-badge-row">
                                             <span class="client-category-badge">Legal Practice</span>
                                             <span class="client-status-badge status-live">Live Platform</span>
                                         </div>
-                                        <h4 class="client-project-name">Adv Jyoti & Co.</h4>
-                                        <p class="client-role-title">Web Developer & Client Solutions</p>
+                                        <h4 class="client-project-name">Adv Jyoti &amp; Co.</h4>
+                                        <p class="client-role-title">Web Developer &amp; Client Solutions</p>
                                     </div>
                                     <div class="client-link-icon" title="Visit Live Platform">
                                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                     </div>
                                 </div>
                                 <p class="client-project-desc">
-                                    Architected and launched the official responsive client portal for legal firm Adv Jyoti & Co. to elevate their digital reach, introducing online client consultation scheduling and secure document submission workflows under NobleNet Software Technologies.
+                                    Architected and launched the official responsive client portal for legal firm Adv Jyoti &amp; Co. to elevate their digital reach, introducing online client consultation scheduling and secure document submission workflows under NobleNet Software Technologies.
                                 </p>
                                 <div class="tags-row">
                                     <span class="tag">Client Portal</span>
@@ -251,9 +561,9 @@
                                     <span class="tag">NobleNet Delivery</span>
                                 </div>
                                 <div class="client-card-footer">
-                                    <span class="client-note">Live client scheduling & legal practice portal</span>
+                                    <span class="client-note">Live client scheduling &amp; legal practice portal</span>
                                     <span class="client-action-btn">
-                                        Visit Adv Jyoti & Co.
+                                        Visit Adv Jyoti &amp; Co.
                                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                                     </span>
                                 </div>
@@ -265,107 +575,126 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════
-             02 // EDUCATION
+             04 // MY TECHNOLOGY STACK — INTERACTIVE ECOSYSTEM
              ═══════════════════════════════════════════════════════════ -->
-        <section id="education" class="section scroll-reveal">
+        <section id="techstack" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-number">02 //</span>
+                    <span class="section-number">04 //</span>
+                    <h2 class="section-title">My Technology Stack</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-tagline">AN INTERACTIVE TECHNOLOGY ECOSYSTEM ACROSS DATA SCIENCE, AI, CLOUD &amp; FULL-STACK</p>
+
+                <!-- Category Filtering Bar -->
+                <div class="tech-filter-bar" id="tech-filter-bar">
+                    <button class="tech-filter-pill active" data-category="all">All Ecosystem</button>
+                    <button class="tech-filter-pill" data-category="ai-ml">AI &amp; Machine Learning</button>
+                    <button class="tech-filter-pill" data-category="genai">Generative AI &amp; NLP</button>
+                    <button class="tech-filter-pill" data-category="cv">Computer Vision</button>
+                    <button class="tech-filter-pill" data-category="backend">Backend Engineering</button>
+                    <button class="tech-filter-pill" data-category="frontend">Frontend Dev</button>
+                    <button class="tech-filter-pill" data-category="database">Databases &amp; Data</button>
+                    <button class="tech-filter-pill" data-category="cloud">Cloud &amp; DevOps</button>
+                    <button class="tech-filter-pill" data-category="gis">Geospatial AI</button>
+                </div>
+
+                <!-- Interactive Tech Cards Grid -->
+                <div class="tech-grid" id="tech-grid">
+                    <!-- Populated via JavaScript dynamically with verified experience -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             05 // PROJECT SHOWCASE
+             ═══════════════════════════════════════════════════════════ -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">05 //</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-tagline">PRODUCTION PLATFORMS, RESEARCH ENGINES &amp; INTELLIGENT APPLICATIONS</p>
+
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Populated dynamically via app.js with 3D tilt & expandable architecture -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             06 // RESEARCH PAPERS
+             ═══════════════════════════════════════════════════════════ -->
+        <section id="research" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">06 //</span>
+                    <h2 class="section-title">Research Papers</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-tagline">PEER-REVIEWED MANUSCRIPTS, SPRINGER PROCEEDINGS &amp; ACTIVE ACADEMIC INVESTIGATIONS</p>
+
+                <!-- Single Unified Research Container -->
+                <div class="card research-unified-container card-tilt">
+                    <div class="card-shine"></div>
+                    
+                    <!-- Intellectual Property & Academic Citation Disclaimer Banner -->
+                    <div class="research-disclaimer-banner">
+                        <div class="disclaimer-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        </div>
+                        <div class="disclaimer-content">
+                            <h4 class="disclaimer-title">Intellectual Property &amp; Academic Citation Disclaimer</h4>
+                            <p class="disclaimer-text">
+                                The manuscripts and research papers provided below represent original academic intellectual property. 
+                                <strong>Strictly Prohibited:</strong> Plagiarising, reproducing, redistributing, or claiming any content, architectures, figures, or findings from these papers as one's own. 
+                                <strong>Permitted &amp; Encouraged:</strong> Scholarly citation, quotation, synthesis, and review for academic literature reviews, provided that appropriate formal attribution is given to the author(s).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Unified Research Items List -->
+                    <div class="research-items-list" id="research-grid">
+                        <!-- Populated by app.js (Sentinel AI, Bandhoo, Xenotransplantation) -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             07 // EDUCATION
+             ═══════════════════════════════════════════════════════════ -->
+        <section id="education" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">07 //</span>
                     <h2 class="section-title">Education</h2>
                     <div class="section-line"></div>
                 </div>
+                <p class="section-tagline">FOUNDATIONS IN MATHEMATICS, COMPUTER SCIENCE &amp; DATA SCIENCE EXCELLENCE</p>
 
                 <div class="edu-grid">
-                    <!-- School -->
-                    <div class="card edu-card">
-                        <div class="edu-image">
-                            <!-- Place school photo as "school.jpg" in project folder -->
-                            <img src="school.jpeg" alt="Lakshdham High School"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="edu-image-placeholder" style="display:none;">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:40px;height:40px;margin:auto;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                            </div>
-                            <span class="edu-level-badge">School</span>
-                        </div>
-                        <div class="edu-body">
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 8px;">
-                                <h3 class="edu-institution" style="margin-bottom: 0;">Lakshdham High School</h3>
-                                <span class="edu-body-grade">93.5%</span>
-                            </div>
-                            <p class="edu-degree">Secondary Education (SSC)</p>
-                            <p class="edu-meta">Mumbai, India</p>
-                            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; margin-bottom: 1rem;">
-                                Built a rock-solid academic foundation with a stellar 93.5% while pursuing a wide range of sports and performing arts — proving that excellence isn't a single lane.
-                            </p>
-                            <div class="edu-activities">
-                                <p class="edu-activities-title">Activities & Sports</p>
-                                <div class="edu-activities-list">
-                                    <span class="activity-chip">Handball</span>
-                                    <span class="activity-chip">Football</span>
-                                    <span class="activity-chip">Cricket</span>
-                                    <span class="activity-chip">Oration</span>
-                                    <span class="activity-chip">Drama</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- High School / Junior College -->
-                    <div class="card edu-card">
-                        <div class="edu-image">
-                            <!-- Place high school photo as "highschool.jpg" in project folder -->
-                            <img src="high_school.jpeg" alt="Mithibai College"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="edu-image-placeholder" style="display:none;">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:40px;height:40px;margin:auto;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
-                            </div>
-                            <span class="edu-level-badge">High School</span>
-                        </div>
-                        <div class="edu-body">
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 8px;">
-                                <h3 class="edu-institution" style="margin-bottom: 0;">Mithibai College</h3>
-                                <span class="edu-body-grade">Distinction</span>
-                            </div>
-                            <p class="edu-degree">Higher Secondary Education (HSC)</p>
-                            <p class="edu-meta">Mumbai, India</p>
-                            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; margin-bottom: 1rem;">
-                                Graduated with Distinction while leading multiple student bodies — from captaining the cricket team to heading events for MITHAAS, Mithibai's official magazine committee.
-                            </p>
-                            <div class="edu-activities">
-                                <p class="edu-activities-title">Leadership & Activities</p>
-                                <div class="edu-activities-list">
-                                    <span class="activity-chip">Captain — Cricket Team</span>
-                                    <span class="activity-chip">Head of Events — MITHAAS</span>
-                                    <span class="activity-chip">PR Associate — Da'Quill Lit Fest</span>
-                                    <span class="activity-chip">Volunteer — Kshitij Hospitality</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- University -->
-                    <div class="card edu-card">
+                    <div class="card edu-card card-tilt">
+                        <div class="card-shine"></div>
                         <div class="edu-image">
-                            <!-- Place university photo as "university.jpg" in project folder -->
-                            <img src="university.jpeg" alt="MPSTME, NMIMS"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="edu-image-placeholder" style="display:none;">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:40px;height:40px;margin:auto;"><path d="M22 20V8a2 2 0 0 0-2-2h-3V4a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2z"/><rect x="6" y="10" width="4" height="4"/><rect x="14" y="10" width="4" height="4"/><rect x="10" y="16" width="4" height="4"/></svg>
-                            </div>
+                            <img src="university.jpeg" alt="MPSTME, NMIMS" onerror="this.style.display='none';">
                             <span class="edu-level-badge">University</span>
                         </div>
                         <div class="edu-body">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 8px;">
-                                <h3 class="edu-institution" style="margin-bottom: 0;">MPSTME — NMIMS University</h3>
+                                <h3 class="edu-institution">MPSTME — NMIMS University</h3>
                                 <span class="edu-body-grade">CGPA: 3.3* | GPA: 3.68</span>
                             </div>
                             <p class="edu-degree">B.Tech in Data Science</p>
                             <p class="edu-meta">2023 – Present · Mumbai, India</p>
-                            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; margin-bottom: 1rem;">
+                            <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
                                 Specializing in Machine Learning, Cloud Architecture, and Intelligent Systems at one of India's top-ranked private technology schools. Active builder, researcher, and operations lead.
                             </p>
                             <div class="edu-activities">
-                                <p class="edu-activities-title">Positions & Activities</p>
+                                <p class="edu-activities-title">Positions &amp; Activities</p>
                                 <div class="edu-activities-list">
                                     <span class="activity-chip">Cricket Team</span>
                                     <span class="activity-chip">Head of Ops — Data Mavericks</span>
@@ -373,452 +702,202 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- High School / Junior College -->
+                    <div class="card edu-card card-tilt">
+                        <div class="card-shine"></div>
+                        <div class="edu-image">
+                            <img src="high_school.jpeg" alt="Mithibai College" onerror="this.style.display='none';">
+                            <span class="edu-level-badge">High School</span>
+                        </div>
+                        <div class="edu-body">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 8px;">
+                                <h3 class="edu-institution">Mithibai College</h3>
+                                <span class="edu-body-grade">Distinction</span>
+                            </div>
+                            <p class="edu-degree">Higher Secondary Education (HSC)</p>
+                            <p class="edu-meta">Mumbai, India</p>
+                            <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
+                                Graduated with Distinction while leading multiple student bodies — from captaining the cricket team to heading events for MITHAAS, Mithibai's official magazine committee.
+                            </p>
+                            <div class="edu-activities">
+                                <p class="edu-activities-title">Leadership &amp; Activities</p>
+                                <div class="edu-activities-list">
+                                    <span class="activity-chip">Captain — Cricket Team</span>
+                                    <span class="activity-chip">Head of Events — MITHAAS</span>
+                                    <span class="activity-chip">PR Associate — Da'Quill Lit Fest</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- School -->
+                    <div class="card edu-card card-tilt">
+                        <div class="card-shine"></div>
+                        <div class="edu-image">
+                            <img src="school.jpeg" alt="Lakshdham High School" onerror="this.style.display='none';">
+                            <span class="edu-level-badge">School</span>
+                        </div>
+                        <div class="edu-body">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 8px;">
+                                <h3 class="edu-institution">Lakshdham High School</h3>
+                                <span class="edu-body-grade">93.5%</span>
+                            </div>
+                            <p class="edu-degree">Secondary Education (SSC)</p>
+                            <p class="edu-meta">Mumbai, India</p>
+                            <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
+                                Built a rock-solid academic foundation with a stellar 93.5% while pursuing a wide range of sports and performing arts — proving that excellence isn't a single lane.
+                            </p>
+                            <div class="edu-activities">
+                                <p class="edu-activities-title">Activities &amp; Sports</p>
+                                <div class="edu-activities-list">
+                                    <span class="activity-chip">Handball</span>
+                                    <span class="activity-chip">Football</span>
+                                    <span class="activity-chip">Cricket</span>
+                                    <span class="activity-chip">Oration &amp; Drama</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════
-             RESEARCH PAPERS
+             08 // BEYOND TECHNOLOGY — CINEMATIC HORIZONTAL STORYTELLING
              ═══════════════════════════════════════════════════════════ -->
-        <section id="research" class="section scroll-reveal">
+        <section id="beyond" class="section beyond-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-number">03 //</span>
-                    <h2 class="section-title">Research Papers</h2>
+                    <span class="section-number">08 //</span>
+                    <h2 class="section-title">Beyond Technology</h2>
                     <div class="section-line"></div>
                 </div>
+                <p class="section-tagline">ATHLETICS, EXPLORATION, AND CONTINUOUS EXPERIMENTATION THAT SHAPE MY WORLDVIEW</p>
+            </div>
 
-                <!-- Single Unified Research Container -->
-                <div class="card research-unified-container">
-                    <!-- Integrated Academic & IP Disclaimer Banner -->
-                    <div class="research-disclaimer-banner">
-                        <div class="disclaimer-icon">
-                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        </div>
-                        <div class="disclaimer-content">
-                            <h4 class="disclaimer-title">Intellectual Property & Academic Citation Disclaimer</h4>
-                            <p class="disclaimer-text">
-                                The manuscripts and research papers provided below represent original academic intellectual property. 
-                                <strong>Strictly Prohibited:</strong> Plagiarising, reproducing, redistributing, or claiming any content, architectures, figures, or findings from these papers as one's own. 
-                                <strong>Permitted & Encouraged:</strong> Scholarly citation, quotation, synthesis, and review for academic literature reviews, provided that appropriate formal attribution is given to the author(s).
+            <!-- Horizontal Scrolling Track -->
+            <div class="beyond-track-wrapper">
+                <div class="beyond-track" id="beyond-track">
+                    
+                    <!-- 1. CRICKET -->
+                    <div class="beyond-card card-tilt">
+                        <div class="card-shine"></div>
+                        <div>
+                            <span class="beyond-card-tag">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                                Competitive Sport
+                            </span>
+                            <h3 class="beyond-card-title">Competitive Cricket &amp; Fast Bowling</h3>
+                            <p class="beyond-card-text">
+                                Cricket has been a cornerstone of my discipline, composure, and grit. As a fast bowler, I relish the intensity of high-pressure match situations where mental focus dictates execution. From bowling in cold English conditions as an overseas player in the UK County Division II league to representing NMIMS Mumbai and training at the Mumbai Under-23 Zonal Summer Camp, the cricket field has taught me that teamwork, strategy, and relentless preparation always precede performance.
                             </p>
                         </div>
+                        <div class="beyond-badges-row">
+                            <span class="beyond-badge">Overseas Player · UK County Div II</span>
+                            <span class="beyond-badge">Mumbai U/23 Zonal Camp</span>
+                            <span class="beyond-badge">Captain · Mithibai College</span>
+                            <span class="beyond-badge">NMIMS University Team</span>
+                        </div>
                     </div>
 
-                    <!-- Unified Research Items List inside the container -->
-                    <div class="research-items-list" id="research-grid">
-                        <!-- Sentinel AI -->
-                        <a href="Research-Papers/252_CRC.pdf" target="_blank" class="research-item-row">
-                            <div class="research-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                            </div>
-                            <div class="research-row-content">
-                                <div class="research-row-header">
-                                    <h3 class="research-title">Sentinel AI</h3>
-                                    <span class="activity-chip" style="color: var(--crescent); border-color: var(--border-default); font-weight: 700;">Accepted · Springer</span>
-                                </div>
-                                <p class="research-status-note">
-                                    accepted at ICDECT-2026 (Springer proceedings), Nov 2026 and will be in journal of ICDECT in 10 months
-                                </p>
-                                <p class="research-abstract">
-                                    Combining Static Analysis and Retrieval-Augmented Reasoning for Explainable Vulnerability Detection. Validating automated vulnerability analysis through layered LLM reasoning grounded in static code metrics.
-                                </p>
-                                <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 10px;">
-                                    <div class="research-link" style="margin-top: 0;">
-                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                        View Manuscript (PDF)
-                                    </div>
-                                    <button type="button" class="sentinel-cli-trigger" style="background: none; border: none; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--crescent); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 0;">
-                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                                        CLI Scans Guide ↗
-                                    </button>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Bandhoo -->
-                        <a href="Research-Papers/Bandhoo_IEEE_paper.pdf" target="_blank" class="research-item-row">
-                            <div class="research-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                            </div>
-                            <div class="research-row-content">
-                                <div class="research-row-header">
-                                    <h3 class="research-title">Bandhoo</h3>
-                                    <span class="activity-chip" style="color: var(--crescent); border-color: var(--border-default); font-weight: 700;">Under Peer Review</span>
-                                </div>
-                                <p class="research-status-note">
-                                    Under peer review from the guide and in view of application
-                                </p>
-                                <p class="research-abstract">
-                                    An assistive and coordination intelligence framework bridging workflows and user needs, engineered under academic guidance and currently undergoing peer review.
-                                </p>
-                                <div class="research-link">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    View Manuscript (PDF)
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Xenotransplantation -->
-                        <a href="Research-Papers/Xenotransplantation_final_research.pdf" target="_blank" class="research-item-row">
-                            <div class="research-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                            </div>
-                            <div class="research-row-content">
-                                <div class="research-row-header">
-                                    <h3 class="research-title">Xenotransplantation</h3>
-                                    <span class="activity-chip" style="color: var(--crescent); border-color: var(--border-default); font-weight: 700;">Active Research</span>
-                                </div>
-                                <p class="research-status-note">
-                                    Under active research with proper guidance
-                                </p>
-                                <p class="research-abstract">
-                                    Predicting xenotransplantation viability and organ rejection risks through multi-layered biological, genomic, and immunological compatibility profiling.
-                                </p>
-                                <div class="research-link">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    View Manuscript (PDF)
-                                </div>
-                            </div>
-                        </a>
+                    <!-- 2. TRAVEL -->
+                    <div class="beyond-card card-tilt">
+                        <div class="card-shine"></div>
+                        <div>
+                            <span class="beyond-card-tag">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                                Exploration &amp; Perspective
+                            </span>
+                            <h3 class="beyond-card-title">Travel &amp; Cultural Immersion</h3>
+                            <p class="beyond-card-text">
+                                Travelling across diverse landscapes, historic cities, and unfamiliar communities broadens how I view problems and human behavior. Immersing myself in new environments sharpens my adaptability, teaches me to observe rather than assume, and brings fresh creative energy back into how I architect user experiences and technological solutions.
+                            </p>
+                        </div>
+                        <div class="beyond-badges-row">
+                            <span class="beyond-badge">Cross-Cultural Exploration</span>
+                            <span class="beyond-badge">Hiking &amp; Terrains</span>
+                            <span class="beyond-badge">Global Perspective</span>
+                        </div>
                     </div>
+
+                    <!-- 3. BUILDING -->
+                    <div class="beyond-card card-tilt">
+                        <div class="card-shine"></div>
+                        <div>
+                            <span class="beyond-card-tag">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                Maker Mindset
+                            </span>
+                            <h3 class="beyond-card-title">Experimenting &amp; Side Hackathons</h3>
+                            <p class="beyond-card-text">
+                                I am happiest when tinkering with unreleased APIs, prototyping multi-agent loops, and participating in hackathons under intense 48-hour time constraints. Reaching the Pre-Finals of the Economic Times (ET) AI Hackathon and the Lorri AI Hackathon Finals reinforced my belief that the fastest way to understand technology is to get your hands dirty building real systems.
+                            </p>
+                        </div>
+                        <div class="beyond-badges-row">
+                            <span class="beyond-badge">Pre-Finalist · ET AI Hackathon</span>
+                            <span class="beyond-badge">Finalist · Lorri AI Hackathon</span>
+                            <span class="beyond-badge">Continuous Prototyping</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. RESEARCH -->
+                    <div class="beyond-card card-tilt">
+                        <div class="card-shine"></div>
+                        <div>
+                            <span class="beyond-card-tag">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                Intellectual Curiosity
+                            </span>
+                            <h3 class="beyond-card-title">Scholarly Depth &amp; Emerging Tech</h3>
+                            <p class="beyond-card-text">
+                                Beyond shipping products, I maintain a deep intellectual curiosity for emerging scientific domains. Whether reading through arXiv papers on synthetic biology and xenotransplantation organ viability or formalizing AST security models for Sentinel AI, rigorous academic inquiry grounds all my engineering decisions in truth.
+                            </p>
+                        </div>
+                        <div class="beyond-badges-row">
+                            <span class="beyond-badge">Springer Proceedings Author</span>
+                            <span class="beyond-badge">Bioinformatics Viability Modeling</span>
+                            <span class="beyond-badge">Autonomous Agent Frameworks</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════
-             04 // PROJECTS (Directly below Research Papers)
+             09 // CERTIFICATIONS
              ═══════════════════════════════════════════════════════════ -->
-        <section id="projects" class="section scroll-reveal">
+        <section id="certifications" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-number">04 //</span>
-                    <h2 class="section-title">Projects</h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="projects-grid" id="projects-grid">
-                    <!-- FreightIQ -->
-                    <div class="card">
-                        <div class="project-card-body">
-                            <div class="project-header">
-                                <div class="project-icon" style="color: var(--crescent);">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                                </div>
-                                <span class="project-status status-live">Live</span>
-                            </div>
-                            <h3 class="project-title">FreightIQ</h3>
-                            <span class="project-domain-badge">Logistics & Supply Chain</span>
-                            <p class="project-desc">Intelligent multi-modal logistics routing and freight optimizer utilizing neural networks and heuristic constraint solvers to minimize transport latency, fuel burn, and routing overhead. Finalist at the Lorri AI Hackathon.</p>
-                            <div class="tags-row">
-                                <span class="tag">Python</span>
-                                <span class="tag">PyTorch</span>
-                                <span class="tag">Heuristic Search</span>
-                                <span class="tag">MLOps</span>
-                                <span class="tag">Route Optimization</span>
-                                <span class="tag">Docker</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/siddh-sh/LoRRI" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Source</a>
-                                <a href="https://lorri.onrender.com/" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- GeneBridge -->
-                    <div class="card">
-                        <div class="project-card-body">
-                            <div class="project-header">
-                                <div class="project-icon" style="color: var(--crescent);">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5C4.5 5 12 3 12 3s7.5 2 7.5 7.5c0 5-7.5 10.5-7.5 10.5s-7.5-5.5-7.5-10.5z"/><path d="M12 3v18M8 7h8M7 11h10M8 15h8"/></svg>
-                                </div>
-                                <span class="project-status status-live">Live</span>
-                            </div>
-                            <h3 class="project-title">GeneBridge</h3>
-                            <span class="project-domain-badge">Bioinformatics & Health Tech</span>
-                            <p class="project-desc">Computational genomics and genetic sequence alignment platform engineered to discover and visualize hereditary correlations across multi-strain genetic data with interactive computational models.</p>
-                            <div class="tags-row">
-                                <span class="tag">BioPython</span>
-                                <span class="tag">Genomics</span>
-                                <span class="tag">Sequence Alignment</span>
-                                <span class="tag">Flask</span>
-                                <span class="tag">Vercel</span>
-                                <span class="tag">Docker</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/nitaanth-11/GeneBridge" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Source</a>
-                                <a href="https://gene-bridge-31eg.vercel.app/" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- JanRaksha -->
-                    <div class="card">
-                        <div class="project-card-body">
-                            <div class="project-header">
-                                <div class="project-icon" style="color: var(--crescent);">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v8M8 12h8"/></svg>
-                                </div>
-                                <span class="project-status status-live">Live</span>
-                            </div>
-                            <h3 class="project-title">JanRaksha</h3>
-                            <span class="project-domain-badge">Public Safety & Civic Tech</span>
-                            <p class="project-desc">Real-time emergency response and disaster relief orchestration platform. Ingests crowd-sourced distress signals, assesses geospatial urgency scores, and coordinates rapid responder dispatch pipelines.</p>
-                            <div class="tags-row">
-                                <span class="tag">FastAPI</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Geospatial AI</span>
-                                <span class="tag">PostgreSQL</span>
-                                <span class="tag">Real-Time Pipelines</span>
-                                <span class="tag">Cloud</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/nitaanth-11/JanRaksha" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Source</a>
-                                <a href="https://janraksha-wyc6.onrender.com/" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Beema -->
-                    <div class="card">
-                        <div class="project-card-body">
-                            <div class="project-header">
-                                <div class="project-icon" style="color: var(--crescent);">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12A10 10 0 0 0 12 2 10 10 0 0 0 2 12c0 2.4 1 3.5 2 3.5 1 0 1.5-.7 2-1.5.8-1.3 1.8-2 3-2 1.3 0 2.2.7 3 2 .5.8 1 1.5 2 1.5 1 0 1.5-.7 2-1.5.8-1.3 1.8-2 3-2 1.3 0 2.2.7 3 2 .5.8 1 1.5 2 1.5 1 0 2-1.1 2-3.5z"/><path d="M12 12v7a2 2 0 0 0 4 0"/></svg>
-                                </div>
-                                <span class="project-status status-live">Live</span>
-                            </div>
-                            <h3 class="project-title">Beema</h3>
-                            <span class="project-domain-badge">InsurTech & FinTech</span>
-                            <p class="project-desc">Automated insurance underwriting and claim adjudication engine. Leverages predictive risk assessment models, anomaly detection algorithms, and a streamlined digital interface for policy approval acceleration.</p>
-                            <div class="tags-row">
-                                <span class="tag">InsurTech</span>
-                                <span class="tag">Risk Scoring</span>
-                                <span class="tag">Predictive Modeling</span>
-                                <span class="tag">Next.js</span>
-                                <span class="tag">Vercel</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/nitaanth-11/Beema" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Source</a>
-                                <a href="https://beema-jade.vercel.app/" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bandhoo -->
-                    <div class="card">
-                        <div class="project-card-body">
-                            <div class="project-header">
-                                <div class="project-icon" style="color: var(--crescent);">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                                </div>
-                                <span class="project-status status-testing">Testing</span>
-                            </div>
-                            <h3 class="project-title">Bandhoo</h3>
-                            <span class="project-domain-badge">Assistive AI & Orchestration</span>
-                            <p class="project-desc">Adaptive collaborative agent framework designed to orchestrate complex user workflows and bridge communication through contextual memory and task execution. Supported by active academic peer review.</p>
-                            <div class="tags-row">
-                                <span class="tag">Agentic AI</span>
-                                <span class="tag">Task Orchestration</span>
-                                <span class="tag">Contextual Memory</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Under Review</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/nitaanth-11/Bandhoo" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Source</a>
-                                <span class="project-link-badge badge-testing"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg> Under Testing</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sentinel AI -->
-                    <div class="card sentinel-card-item">
-                        <div class="project-card-body">
-                            <div class="project-header">
-                                <div class="project-icon" style="color: var(--crescent);">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                                </div>
-                                <span class="project-status status-cli">CLI Tool</span>
-                            </div>
-                            <h3 class="project-title">Sentinel AI</h3>
-                            <span class="project-domain-badge">Cybersecurity & Code Analysis</span>
-                            <p class="project-desc">Command-line vulnerability detection and code security engine. Combines static AST analysis with Retrieval-Augmented Generation (RAG) for explainable security audits. Accepted at ICDECT-2026 (Springer Proceedings).</p>
-                            <div class="tags-row">
-                                <span class="tag">CLI Security Tool</span>
-                                <span class="tag">Static AST</span>
-                                <span class="tag">RAG Reasoning</span>
-                                <span class="tag">Springer Proceedings</span>
-                                <span class="tag">Vulnerability Scanning</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/nitaanth-11/Sentinel-AI" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Source</a>
-                                <button type="button" class="project-link-badge badge-cli sentinel-cli-trigger" id="sentinel-cli-btn" title="Click to view SentinelAI CLI Scans Guide & Snippets">
-                                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-                                    CLI Scans Guide ↗
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Prompt Max -->
-                    <div class="card">
-                        <div class="project-card-body">
-                            <div class="project-header">
-                                <div class="project-icon" style="color: var(--crescent);">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                                </div>
-                                <span class="project-status status-live">Live</span>
-                            </div>
-                            <h3 class="project-title">Prompt Max</h3>
-                            <span class="project-domain-badge">Reinforcement Learning & GenAI</span>
-                            <p class="project-desc">Reinforcement learning-driven prompt optimization system (Optima). Analyzes query intents, applies iterative reward modeling, and automatically rewrites prompts to maximize LLM accuracy and task benchmarks.</p>
-                            <div class="tags-row">
-                                <span class="tag">Reinforcement Learning</span>
-                                <span class="tag">Reward Modeling</span>
-                                <span class="tag">Prompt Optimization</span>
-                                <span class="tag">LLMOps</span>
-                                <span class="tag">Render</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/vedikas323-pixel/RL_Prompt_Optimizer" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Source</a>
-                                <a href="https://optima-kvj6.onrender.com" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Event Oracle -->
-                    <div class="card">
-                        <div class="project-card-body">
-                            <div class="project-header">
-                                <div class="project-icon" style="color: var(--crescent);">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M12 14l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/></svg>
-                                </div>
-                                <span class="project-status status-live">Live</span>
-                            </div>
-                            <h3 class="project-title">Event Oracle</h3>
-                            <span class="project-domain-badge">Quantitative Finance & Macro AI</span>
-                            <p class="project-desc">Multi-source financial forecasting pipeline for NIFTY 50 and index options, fusing OHLCV price action, FII/DII liquidity flows, macroeconomic release surprises, and news sentiment for volatility prediction.</p>
-                            <div class="tags-row">
-                                <span class="tag">GCP</span>
-                                <span class="tag">Agentic AI</span>
-                                <span class="tag">Ensemble Learning</span>
-                                <span class="tag">Time Series Analysis</span>
-                                <span class="tag">MongoDB</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/nitaanth-11/Project-Apex" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> Source</a>
-                                <a href="https://project-apex-baip.onrender.com/" target="_blank" class="project-link"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             05 // CERTIFICATIONS (Directly below Projects)
-             ═══════════════════════════════════════════════════════════ -->
-        <section id="certifications" class="section scroll-reveal">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-number">05 //</span>
+                    <span class="section-number">09 //</span>
                     <h2 class="section-title">Certifications</h2>
                     <div class="section-line"></div>
                 </div>
+                <p class="section-tagline">INDUSTRY-RECOGNIZED CREDENTIALS IN LLMS, AWS CLOUD ARCHITECTURE, AGENTS &amp; EDGE AI</p>
+
                 <div class="certs-grid" id="certs-grid">
-                    <!-- Fundamentals of LLM -->
-                    <a href="Certificates/nitaanth_fund_of_llm_cert.pdf" target="_blank" class="card cert-card">
-                        <div class="cert-badge" style="display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 0.8rem;">
-                            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#FFD21E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 210, 30, 0.3));"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="3"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="3"/><path d="M4 17c.5-1.5 2-2.5 3.5-2.5.8 0 1.5.3 2 1"/><path d="M20 17c-.5-1.5-2-2.5-3.5-2.5-.8 0-1.5.3-2 1"/></svg>
-                        </div>
-                        <h3 class="cert-title">Fundamentals of LLM</h3>
-                        <p class="cert-issuer">Hugging Face</p>
-                        <p class="cert-date">2026</p>
-                        <div class="cert-verify"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Verify</div>
-                    </a>
-
-                    <!-- Fundamentals of AI Agents -->
-                    <a href="Certificates/Hugging_face_agents_course.pdf" target="_blank" class="card cert-card">
-                        <div class="cert-badge" style="display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 0.8rem;">
-                            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#FFD21E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 210, 30, 0.3));"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="3"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="3"/><path d="M4 17c.5-1.5 2-2.5 3.5-2.5.8 0 1.5.3 2 1"/><path d="M20 17c-.5-1.5-2-2.5-3.5-2.5-.8 0-1.5.3-2 1"/></svg>
-                        </div>
-                        <h3 class="cert-title">Fundamentals of AI Agents</h3>
-                        <p class="cert-issuer">Hugging Face</p>
-                        <p class="cert-date">2026</p>
-                        <div class="cert-verify"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Verify</div>
-                    </a>
-
-                    <!-- Building Data Lakes on AWS -->
-                    <a href="Certificates/data_lakes_certification.pdf" target="_blank" class="card cert-card">
-                        <div class="cert-badge" style="display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 0.8rem;">
-                            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#FF9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 153, 0, 0.3));"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <h3 class="cert-title">Building Data Lakes on AWS</h3>
-                        <p class="cert-issuer">Amazon Web Services</p>
-                        <p class="cert-date">2026</p>
-                        <div class="cert-verify"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Verify</div>
-                    </a>
-
-                    <!-- Architecting Solutions on AWS -->
-                    <a href="Certificates/Nitaanth_AWS_architect_certificate.pdf" target="_blank" class="card cert-card">
-                        <div class="cert-badge" style="display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 0.8rem;">
-                            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#FF9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 153, 0, 0.3));"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <h3 class="cert-title">Architecting Solutions on AWS</h3>
-                        <p class="cert-issuer">Amazon Web Services</p>
-                        <p class="cert-date">2026</p>
-                        <div class="cert-verify"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Verify</div>
-                    </a>
-
-                    <!-- AWS Cloud Technical Essentials -->
-                    <a href="Certificates/Nitaanth_coursera_AWS_certificate.pdf" target="_blank" class="card cert-card">
-                        <div class="cert-badge" style="display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 0.8rem;">
-                            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#FF9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 153, 0, 0.3));"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <h3 class="cert-title">AWS Cloud Technical Essentials</h3>
-                        <p class="cert-issuer">AWS · Coursera</p>
-                        <p class="cert-date">2026</p>
-                        <div class="cert-verify"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Verify</div>
-                    </a>
-
-                    <!-- Edge AI Course Certificate -->
-                    <a href="Certificates/Edge AI Course Certificate - Nitaanth Panickar.pdf" target="_blank" class="card cert-card">
-                        <div class="cert-badge" style="display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 0.8rem;">
-                            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#00d2ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.3));"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg>
-                        </div>
-                        <h3 class="cert-title">Edge AI Course Certificate</h3>
-                        <p class="cert-issuer">Edge Impulse</p>
-                        <p class="cert-date">2025</p>
-                        <div class="cert-verify"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Verify</div>
-                    </a>
-
-                    <!-- Managing Projects with AI -->
-                    <a href="Certificates/Mging_prjts_AI.pdf" target="_blank" class="card cert-card">
-                        <div class="cert-badge" style="display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 0.8rem;">
-                            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.3));"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <h3 class="cert-title">Managing Projects with AI</h3>
-                        <p class="cert-issuer">AI Project Management</p>
-                        <p class="cert-date">2026</p>
-                        <div class="cert-verify"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Verify</div>
-                    </a>
+                    <!-- Populated dynamically via app.js with SVG issuer logos and verified PDF links -->
                 </div>
             </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════
-             06 // CO-CURRICULARS & ACHIEVEMENTS
+             10 // BEYOND THE CLASSROOM — CO-CURRICULARS
              ═══════════════════════════════════════════════════════════ -->
-        <section id="cocurriculars" class="section scroll-reveal">
+        <section id="cocurriculars" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-number">06 //</span>
+                    <span class="section-number">10 //</span>
                     <h2 class="section-title">Beyond the Classroom</h2>
                     <div class="section-line"></div>
                 </div>
+                <p class="section-tagline">LEADERSHIP, COMPETITIVE ACHIEVEMENTS &amp; COMMUNITY INITIATIVES</p>
 
                 <div class="cocurricular-grid">
                     <!-- Pre-Finalist — ET AI Hackathon -->
-                    <div class="card cocurricular-item">
+                    <div class="card cocurricular-item card-tilt">
                         <div class="cocurricular-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         </div>
@@ -828,7 +907,7 @@
                         </div>
                     </div>
 
-                    <div class="card cocurricular-item">
+                    <div class="card cocurricular-item card-tilt">
                         <div class="cocurricular-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="2" x2="6" y2="22"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="18" y1="2" x2="18" y2="22"/><line x1="4" y1="4" x2="20" y2="4"/></svg>
                         </div>
@@ -838,7 +917,7 @@
                         </div>
                     </div>
 
-                    <div class="card cocurricular-item">
+                    <div class="card cocurricular-item card-tilt">
                         <div class="cocurricular-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"/><path d="M12 2a7.7 7.7 0 0 1 7.54 8H4.46A7.7 7.7 0 0 1 12 2z"/></svg>
                         </div>
@@ -848,7 +927,7 @@
                         </div>
                     </div>
 
-                    <div class="card cocurricular-item">
+                    <div class="card cocurricular-item card-tilt">
                         <div class="cocurricular-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
                         </div>
@@ -858,7 +937,7 @@
                         </div>
                     </div>
 
-                    <div class="card cocurricular-item">
+                    <div class="card cocurricular-item card-tilt">
                         <div class="cocurricular-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 0 8.5C16.7 14 14 18 11 20z"/><path d="M19 2c-2.26 2.26-6.19 3.24-8.8 3.51"/></svg>
                         </div>
@@ -868,7 +947,7 @@
                         </div>
                     </div>
 
-                    <div class="card cocurricular-item">
+                    <div class="card cocurricular-item card-tilt">
                         <div class="cocurricular-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
                         </div>
@@ -881,33 +960,137 @@
             </div>
         </section>
 
+        <!-- ═══════════════════════════════════════════════════════════
+             11 // CONTACT & GET IN TOUCH
+             ═══════════════════════════════════════════════════════════ -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">11 //</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-tagline">OPEN FOR ROLES IN DATA SCIENCE, APPLIED AI, RESEARCH COLLABORATION &amp; FULL-STACK ENGINEERING</p>
+
+                <div class="contact-grid">
+                    <!-- Contact Information Column -->
+                    <div class="card contact-info-card card-tilt">
+                        <div class="card-shine"></div>
+                        <div>
+                            <h3 class="contact-lead">Let's build something intelligent together.</h3>
+                            <p class="contact-sub">
+                                Whether you're exploring full-time opportunities, discussing research collaborations in code security or bioinformatics, or simply want to chat about AI and cricket, my inbox is always open.
+                            </p>
+
+                            <div class="contact-items-list">
+                                <a href="mailto:nitaanth.panickar@gmail.com" class="contact-item-row">
+                                    <div class="contact-icon-circle">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                    </div>
+                                    <span>nitaanth.panickar@gmail.com</span>
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/nitaanth-panickar" target="_blank" class="contact-item-row">
+                                    <div class="contact-icon-circle">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                    </div>
+                                    <span>linkedin.com/in/nitaanth-panickar</span>
+                                </a>
+
+                                <a href="https://github.com/nitaanth-11" target="_blank" class="contact-item-row">
+                                    <div class="contact-icon-circle">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                    </div>
+                                    <span>github.com/nitaanth-11</span>
+                                </a>
+
+                                <div class="contact-item-row">
+                                    <div class="contact-icon-circle">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    </div>
+                                    <span>Mumbai, Maharashtra, India</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing" target="_blank" class="btn-primary magnetic" style="width: 100%; justify-content: center;">
+                                View Complete Resume (PDF)
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Direct Message Contact Form -->
+                    <div class="card contact-form-card card-tilt">
+                        <div class="card-shine"></div>
+                        <h3 style="font-size: 1.35rem; font-weight: 700; color: #ffffff; margin-bottom: 1.5rem;">Send a Direct Message</h3>
+                        
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Maya Lin" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-email" class="form-label">Email Address</label>
+                                <input type="email" id="form-email" name="email" class="form-input" placeholder="e.g. maya@organization.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" id="subject" name="subject" class="form-input" placeholder="e.g. Role Discussion / Research Collaboration" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" name="message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+                            </div>
+
+                            <div id="form-feedback" class="form-feedback"></div>
+
+                            <button type="submit" class="btn-primary magnetic btn-submit" style="width: 100%; justify-content: center;">
+                                <span>Send Message</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- ═══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
          FOOTER
-         ═══════════════════════════════════════════════════════════════ -->
+         ═══════════════════════════════════════════════════════════ -->
     <footer class="footer" id="footer">
         <div class="container footer-inner">
             <div class="footer-brand">
-                <a href="#home" class="logo">
+                <a href="#home" class="logo magnetic">
                     <span class="logo-accent">N</span>itaanth<span class="logo-accent">.</span>
                 </a>
-                <p class="footer-tagline">B.Tech Data Science · MPSTME, NMIMS Mumbai · Intelligent Systems & Cloud Architecture</p>
+                <p class="footer-tagline">B.Tech Data Science · MPSTME, NMIMS Mumbai · Intelligent Systems &amp; Autonomous Agents</p>
             </div>
+            
             <div class="footer-contact-actions">
                 <a href="mailto:nitaanth.panickar@gmail.com" class="footer-email-link">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     nitaanth.panickar@gmail.com
                 </a>
                 <div class="footer-socials" id="footer-socials"></div>
+                <button type="button" class="back-to-top-btn magnetic" id="back-to-top" title="Scroll to top" aria-label="Back to top">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                </button>
             </div>
-            <p class="footer-copy">&copy; 2026 Nitaanth Panickar. All rights reserved.</p>
+
+            <p class="footer-copy">&copy; 2026 Nitaanth Panickar. Built with precision, electric cyan &amp; performance.</p>
         </div>
     </footer>
 
-    <!-- ═══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
          SENTINEL AI — CLI COMMANDS & SCANS MODAL
-         ═══════════════════════════════════════════════════════════════ -->
+         ═══════════════════════════════════════════════════════════ -->
     <div id="sentinel-modal" class="sentinel-modal-overlay" aria-hidden="true">
         <div class="sentinel-modal-backdrop" id="sentinel-modal-backdrop"></div>
         <div class="sentinel-modal-container" role="dialog" aria-modal="true" aria-labelledby="sentinel-modal-title">
@@ -932,7 +1115,7 @@
             <div class="sentinel-modal-body">
                 <div class="sentinel-intro">
                     <div class="sentinel-badge-row">
-                        <span class="activity-chip" style="color: var(--crescent); border-color: var(--border-default); font-weight: 700;">PyPI: nitaanth-sentinelai</span>
+                        <span class="activity-chip" style="color: var(--accent-primary); border-color: var(--border-default); font-weight: 700;">PyPI: nitaanth-sentinelai</span>
                         <span class="activity-chip" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">Accepted · Springer ICDECT-2026</span>
                     </div>
                     <p class="sentinel-intro-text">
@@ -940,7 +1123,7 @@
                     </p>
                 </div>
 
-                <!-- 6 Code Snippets Grid / List -->
+                <!-- 6 Code Snippets List -->
                 <div class="sentinel-snippets-list">
                     
                     <!-- 1. One-Time Setup -->
