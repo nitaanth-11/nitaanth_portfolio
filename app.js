@@ -148,75 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // ── SEQUENCE 1: THE JOURNEY (Education, Work Experience, Research) ──
-        const journeyTrack = document.getElementById('journey-track');
-        const journeySection = document.getElementById('journey');
-        const stagePills = document.querySelectorAll('.stage-nav-pill');
-
-        if (journeyTrack && journeySection) {
-            const getJourneyScroll = () => journeyTrack.scrollWidth - journeySection.offsetWidth + 64;
-
-            gsap.to(journeyTrack, {
-                x: () => -getJourneyScroll(),
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: journeySection,
-                    pin: true,
-                    scrub: 1,
-                    start: 'top top',
-                    end: () => `+=${getJourneyScroll()}`,
-                    invalidateOnRefresh: true,
-                    onUpdate: (self) => {
-                        const progress = self.progress;
-                        stagePills.forEach(p => p.classList.remove('active'));
-                        if (progress < 0.33) {
-                            if (stagePills[0]) stagePills[0].classList.add('active');
-                        } else if (progress < 0.68) {
-                            if (stagePills[1]) stagePills[1].classList.add('active');
-                        } else {
-                            if (stagePills[2]) stagePills[2].classList.add('active');
-                        }
-                    }
-                }
-            });
-
-            // Chapter pills click handler
-            stagePills.forEach(pill => {
-                pill.addEventListener('click', () => {
-                    const ch = parseInt(pill.getAttribute('data-chapter'), 10);
-                    const targetProgress = ch === 1 ? 0 : ch === 2 ? 0.45 : 0.95;
-                    const st = ScrollTrigger.getById('journey-st') || ScrollTrigger.getAll().find(s => s.trigger === journeySection);
-                    if (st) {
-                        const scrollTarget = st.start + (st.end - st.start) * targetProgress;
-                        if (lenis) lenis.scrollTo(scrollTarget);
-                        else window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
-                    }
-                });
-            });
-        }
-
-        // ── SEQUENCE 2: PROJECTS GALLERY ─────────────────────────
-        const projectsTrack = document.getElementById('projects-track');
-        const projectsSection = document.getElementById('projects');
-
-        if (projectsTrack && projectsSection) {
-            const getProjectsScroll = () => projectsTrack.scrollWidth - projectsSection.offsetWidth + 64;
-
-            gsap.to(projectsTrack, {
-                x: () => -getProjectsScroll(),
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: projectsSection,
-                    pin: true,
-                    scrub: 1,
-                    start: 'top top',
-                    end: () => `+=${getProjectsScroll()}`,
-                    invalidateOnRefresh: true
-                }
-            });
-        }
-
-        // ── SEQUENCE 3: "HOW I BUILD" ENGINEERING TIMELINE ───────
+        // ── "HOW I BUILD" ENGINEERING TIMELINE ───────────────────
         const workflowTrack = document.getElementById('workflow-track');
         const workflowSection = document.getElementById('workflow');
         const lineFill = document.getElementById('workflow-line-fill');
@@ -375,8 +307,10 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.innerHTML = '';
 
         const list = projects || VERIFIED_PROJECTS;
+        // Duplicate cards so CSS infinite marquee loops seamlessly without any jump
+        const fullList = [...list, ...list];
 
-        list.forEach((proj) => {
+        fullList.forEach((proj) => {
             const isSentinel = (proj.title || '').toLowerCase().includes('sentinel');
             const projId = (proj.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
             const card = document.createElement('div');
@@ -448,6 +382,17 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(card);
         });
 
+        // Hover listeners: pause slow carousel when cursor enters or stops on any project
+        const viewport = document.getElementById('projects-carousel-viewport');
+        if (viewport && grid) {
+            viewport.addEventListener('mouseenter', () => {
+                grid.style.animationPlayState = 'paused';
+            });
+            viewport.addEventListener('mouseleave', () => {
+                grid.style.animationPlayState = 'running';
+            });
+        }
+
         initCardTilt();
     }
 
@@ -513,33 +458,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const list = certs || VERIFIED_CERTS;
 
-        list.forEach(cert => {
+        list.forEach((cert, idx) => {
             let logoHTML = '';
             const issuerLower = (cert.issuer || '').toLowerCase();
             const badgeUpper = (cert.badge || '').toUpperCase();
             
             if (issuerLower.includes('aws') || badgeUpper === 'AWS') {
-                logoHTML = `<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#FF9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 153, 0, 0.3));"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`;
+                logoHTML = `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#FF9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 153, 0, 0.3));"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`;
             } else if (issuerLower.includes('huggingface') || issuerLower.includes('hugging face') || badgeUpper === 'LLM' || badgeUpper === 'AGNT') {
-                logoHTML = `<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#FFD21E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 210, 30, 0.3));"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="3"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="3"/><path d="M4 17c.5-1.5 2-2.5 3.5-2.5.8 0 1.5.3 2 1"/><path d="M20 17c-.5-1.5-2-2.5-3.5-2.5-.8 0-1.5.3-2 1"/></svg>`;
+                logoHTML = `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#FFD21E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255, 210, 30, 0.3));"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="3"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="3"/><path d="M4 17c.5-1.5 2-2.5 3.5-2.5.8 0 1.5.3 2 1"/><path d="M20 17c-.5-1.5-2-2.5-3.5-2.5-.8 0-1.5.3-2 1"/></svg>`;
             } else {
-                logoHTML = `<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#00D9FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.3));"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg>`;
+                logoHTML = `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#00D9FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.3));"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg>`;
             }
 
-            const card = document.createElement('a');
-            card.href = cert.link || '#';
-            card.target = '_blank';
-            card.className = 'card cert-card card-tilt';
+            const card = document.createElement('div');
+            card.className = 'card cert-card card-tilt open-pdf-btn';
+            card.setAttribute('data-pdf', cert.link || '');
+            card.setAttribute('data-title', cert.title);
+            card.setAttribute('title', 'Click to preview full PDF on screen');
+
             card.innerHTML = `
-                <div>
+                <div class="section-item-index">${idx + 1}</div>
+                <div class="cert-preview-window">
+                    <iframe src="${cert.link}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="cert-mini-preview" loading="lazy" tabindex="-1"></iframe>
+                    <div class="cert-preview-glass-overlay">
+                        <span class="cert-expand-pill">Preview PDF ↗</span>
+                    </div>
+                </div>
+                <div class="cert-card-bottom">
                     <div class="cert-badge">${logoHTML}</div>
                     <h4 class="cert-title">${cert.title}</h4>
                     <p class="cert-issuer">${cert.issuer}</p>
                     <p class="cert-date">${cert.date}</p>
-                </div>
-                <div class="cert-verify">
-                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    Verify Credential (PDF)
+                    <div class="cert-verify">
+                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                        <span>Open Document On Screen</span>
+                    </div>
                 </div>
             `;
             grid.appendChild(card);
@@ -577,10 +531,10 @@ document.addEventListener('DOMContentLoaded', () => {
         renderProjectsGallery(projects || VERIFIED_PROJECTS);
         renderCertifications(certs || VERIFIED_CERTS);
 
-        const resumeUrl = (resume && resume.url) || 'https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing';
         const resumeBtn = document.getElementById('view-resume-btn');
-        if (resumeBtn && resumeUrl) {
-            resumeBtn.href = resumeUrl;
+        if (resumeBtn) {
+            resumeBtn.setAttribute('data-pdf', 'nitaanth_resume.pdf');
+            resumeBtn.setAttribute('data-title', 'Nitaanth Panickar — Official Resume');
         }
 
         // Initialize GSAP scroll triggers after elements have rendered
@@ -1024,7 +978,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 ],
                 actions: [
-                    { label: "View Resume (Google Drive) ↗", url: "https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing", primary: true }
+                    { label: "View Resume On Screen ↗", pdf: "nitaanth_resume.pdf", title: "Nitaanth Panickar — Official Resume", primary: true }
                 ]
             },
             mithibai: {
@@ -1051,7 +1005,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 ],
                 actions: [
-                    { label: "View Resume ↗", url: "https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing", primary: true }
+                    { label: "View Resume On Screen ↗", pdf: "nitaanth_resume.pdf", title: "Nitaanth Panickar — Official Resume", primary: true }
                 ]
             },
             lakshdham: {
@@ -1071,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 ],
                 actions: [
-                    { label: "View Resume ↗", url: "https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing", primary: true }
+                    { label: "View Resume On Screen ↗", pdf: "nitaanth_resume.pdf", title: "Nitaanth Panickar — Official Resume", primary: true }
                 ]
             }
         },
@@ -1220,7 +1174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 ],
                 actions: [
-                    { label: "View Manuscript (PDF) ↗", url: "Research-Papers/SentinelAI_Research_Paper.pdf", primary: true },
+                    { label: "View Manuscript (PDF) ↗", pdf: "Research-Papers/252_CRC.pdf", title: "Sentinel AI: Hybrid AST Security & LLM Remediation", primary: true },
                     { label: "Open CLI Scans Guide", action: "openSentinelModal", primary: false },
                     { label: "GitHub Repository", url: "https://github.com/nitaanth-11/Sentinel-AI", primary: false }
                 ]
@@ -1252,7 +1206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 ],
                 actions: [
-                    { label: "View Manuscript (PDF) ↗", url: "Research-Papers/Bandhoo_IEEE_paper.pdf", primary: true },
+                    { label: "View Manuscript (PDF) ↗", pdf: "Research-Papers/Bandhoo_IEEE_paper.pdf", title: "Bandhoo: BNS Legal Classification Benchmark", primary: true },
                     { label: "Live Engine Demo ↗", url: "https://bandhoo-sigma.vercel.app/", primary: false },
                     { label: "GitHub Repository", url: "https://github.com/nitaanth-11/Bandhoo", primary: false }
                 ]
@@ -1282,7 +1236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 ],
                 actions: [
-                    { label: "View Manuscript (PDF) ↗", url: "Research-Papers/Xenotransplantation_final_research.pdf", primary: true }
+                    { label: "View Manuscript (PDF) ↗", pdf: "Research-Papers/Xenotransplantation_final_research.pdf", title: "Xenotransplantation Viability Profiling", primary: true }
                 ]
             }
         },
@@ -1521,6 +1475,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             openSentinelModal();
                         };
                         footer.appendChild(btn);
+                    } else if (act.pdf) {
+                        const btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = `focus-action-btn ${act.primary ? 'focus-action-primary' : 'focus-action-secondary'}`;
+                        btn.textContent = act.label;
+                        btn.onclick = () => {
+                            closeFocusModal();
+                            openPDFModal(act.pdf, act.title || act.label);
+                        };
+                        footer.appendChild(btn);
                     } else if (act.url) {
                         const a = document.createElement('a');
                         a.href = act.url;
@@ -1555,9 +1519,46 @@ document.addEventListener('DOMContentLoaded', () => {
     if (focusCloseBtn) focusCloseBtn.addEventListener('click', closeFocusModal);
     if (focusBackdrop) focusBackdrop.addEventListener('click', closeFocusModal);
 
+    // ── ON-SCREEN FULLSCREEN PDF VIEWER MODAL ──────────────────
+    const pdfModal = document.getElementById('pdf-viewer-modal');
+    const pdfIframe = document.getElementById('pdf-modal-iframe');
+    const pdfModalTitle = document.getElementById('pdf-modal-title');
+    const pdfDownloadLink = document.getElementById('pdf-download-link');
+    const pdfCloseBtn = document.getElementById('pdf-close-btn');
+    const pdfBackdrop = document.getElementById('pdf-modal-backdrop');
+
+    function openPDFModal(pdfUrl, title) {
+        if (!pdfModal || !pdfIframe) return;
+        if (pdfModalTitle) pdfModalTitle.textContent = title || 'Document Viewer';
+        if (pdfDownloadLink) {
+            pdfDownloadLink.href = pdfUrl;
+            pdfDownloadLink.setAttribute('download', (pdfUrl || '').split('/').pop() || 'document.pdf');
+        }
+        // Native browser PDF viewer with toolbar enabled for reading and zooming
+        pdfIframe.src = `${pdfUrl}#toolbar=1&navpanes=1&scrollbar=1&view=FitH`;
+        pdfModal.classList.add('active');
+        pdfModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePDFModal() {
+        if (!pdfModal || !pdfIframe) return;
+        pdfModal.classList.remove('active');
+        pdfModal.setAttribute('aria-hidden', 'true');
+        pdfIframe.src = 'about:blank';
+        document.body.style.overflow = '';
+    }
+
+    if (pdfCloseBtn) pdfCloseBtn.addEventListener('click', closePDFModal);
+    if (pdfBackdrop) pdfBackdrop.addEventListener('click', closePDFModal);
+
     // Global Key Listener for Escape
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
+            const pdfModal = document.getElementById('pdf-viewer-modal');
+            if (pdfModal && pdfModal.classList.contains('active')) {
+                closePDFModal();
+            }
             const focusModal = document.getElementById('focus-spotlight-modal');
             if (focusModal && focusModal.classList.contains('active')) {
                 closeFocusModal();
@@ -1568,9 +1569,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Delegation click listener for Sentinel CLI triggers and Click-to-Focus Spotlight cards
+    // Delegation click listener for PDF triggers, Sentinel CLI triggers and Click-to-Focus Spotlight cards
     document.addEventListener('click', (e) => {
-        // Priority 1: Sentinel CLI triggers
+        // Priority 1: On-Screen PDF document triggers (Certificates, Resume, LOR, Papers)
+        const pdfBtn = e.target.closest('.open-pdf-btn, [data-pdf]');
+        if (pdfBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            const pdfUrl = pdfBtn.getAttribute('data-pdf');
+            const title = pdfBtn.getAttribute('data-title') || pdfBtn.getAttribute('title') || 'Document Preview';
+            if (pdfUrl) {
+                openPDFModal(pdfUrl, title);
+            }
+            return;
+        }
+
+        // Priority 2: Sentinel CLI triggers
         const trigger = e.target.closest('.sentinel-cli-trigger');
         if (trigger) {
             e.preventDefault();
@@ -1579,12 +1593,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Priority 2: Ignore clicks on standard links, action buttons, copy triggers, mobile nav
+        // Priority 3: Ignore clicks on standard links, action buttons, copy triggers, mobile nav
         if (e.target.closest('a, button, .copy-btn, .mobile-toggle, #back-to-top')) {
             return;
         }
 
-        // Priority 3: Interactive Spotlight Click-to-Focus items
+        // Priority 4: Interactive Spotlight Click-to-Focus items
         const focusTarget = e.target.closest('[data-focus]');
         if (focusTarget) {
             const cat = focusTarget.getAttribute('data-focus');

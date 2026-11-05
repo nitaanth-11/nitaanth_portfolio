@@ -629,102 +629,49 @@ body {
     letter-spacing: 0.06em;
 }
 
-/* ── 03. THE JOURNEY: EDUCATION, EXPERIENCE & RESEARCH ───────────────────── */
-.journey-section {
-    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-midnight) 50%, var(--bg-primary) 100%);
-    overflow: hidden;
+/* ── 02. EDUCATION SECTION ─────────────────────────────────────────────────── */
+.education-section {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, #06111c 100%);
     position: relative;
+    padding: 6.5rem 0;
 }
 
-.journey-header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-}
-
-.journey-stage-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.stage-nav-pill {
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    padding: 6px 14px;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--border-subtle);
-    background: rgba(10, 25, 38, 0.5);
-    transition: var(--transition-smooth);
-    cursor: pointer;
-}
-
-.stage-nav-pill.active {
-    color: var(--text-primary);
-    border-color: var(--accent-primary);
-    background: rgba(0, 217, 255, 0.15);
-    box-shadow: 0 0 14px rgba(0, 217, 255, 0.25);
-}
-
-.journey-track-wrapper {
-    width: 100%;
+/* ── 03. EXPERIENCE SECTION ────────────────────────────────────────────────── */
+.experience-section {
+    background: linear-gradient(180deg, #06111c 0%, var(--bg-midnight) 100%);
     position: relative;
-    padding: 1rem 0 3rem;
+    padding: 6.5rem 0;
 }
 
-.journey-track {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 3.5rem;
-    padding: 0 2rem;
-    will-change: transform;
+/* ── 04. RESEARCH SECTION ──────────────────────────────────────────────────── */
+.research-section {
+    background: linear-gradient(180deg, var(--bg-midnight) 0%, #040d16 100%);
+    position: relative;
+    padding: 6.5rem 0;
 }
 
-.journey-panel {
-    flex: 0 0 calc(90vw - 4rem);
-    max-width: 1180px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-}
-
-.panel-chapter-indicator {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.chapter-num {
+.section-item-index {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: var(--accent-primary);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    background: rgba(0, 217, 255, 0.08);
+    border: 1px solid rgba(0, 217, 255, 0.25);
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+    pointer-events: none;
 }
 
-.panel-heading {
-    font-family: var(--font-serif);
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.panel-subheading {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-}
-
-/* Panel 1: Education Grid */
+/* Education Grid */
 .edu-panels-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1.75rem;
+    margin-top: 2rem;
 }
 
 .edu-card {
@@ -1144,45 +1091,67 @@ body {
     box-shadow: 0 0 14px rgba(0, 217, 255, 0.3);
 }
 
-/* ── 04. PROJECTS — HORIZONTAL SCROLL GALLERY ────────────────────────────── */
+/* ── 05. PROJECTS — CONTINUOUS SLOW CAROUSEL ─────────────────────────────── */
 .projects-gallery-section {
-    background: radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 65%);
     overflow: hidden;
     position: relative;
+    padding: 6.5rem 0;
 }
 
-.projects-track-wrapper {
+.projects-carousel-viewport {
     width: 100%;
+    overflow: hidden;
     position: relative;
-    padding: 1rem 0 3.5rem;
+    padding: 2rem 0 3.5rem;
+    mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
 }
 
-.projects-track {
+.projects-carousel-track {
     display: flex;
     flex-wrap: nowrap;
     gap: 2.5rem;
-    padding: 0 2rem;
+    width: max-content;
     will-change: transform;
+    animation: slowContinuousScroll 65s linear infinite;
+}
+
+/* Stop when the cursor actually stops on the project */
+.projects-carousel-viewport:hover .projects-carousel-track,
+.projects-carousel-track:hover {
+    animation-play-state: paused !important;
+}
+
+@keyframes slowContinuousScroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
 }
 
 .project-panel-card {
-    flex: 0 0 70vw;
-    min-width: 650px;
-    max-width: 860px;
+    flex: 0 0 540px;
+    width: 540px;
+    max-width: 85vw;
     background: var(--bg-card);
     border: 1px solid var(--border-default);
     border-radius: var(--radius-lg);
-    padding: 2.5rem;
+    padding: 2.25rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), var(--border-glow);
     transition: var(--transition-smooth);
+    position: relative;
 }
 
 .project-panel-card:hover {
     border-color: var(--accent-primary);
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 217, 255, 0.4);
+    transform: translateY(-4px);
 }
 
 .project-card-top-row {
@@ -1568,57 +1537,110 @@ body {
 
 .drive-icon-box {
     width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    background: rgba(0, 217, 255, 0.12);
-    border: 1px solid var(--border-default);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-primary);
-    flex-shrink: 0;
+/* ── 08. CERTIFICATIONS SECTION ────────────────────────────────────────────── */
+.certificates-section {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, #06121d 100%);
+    position: relative;
+    padding: 6.5rem 0;
 }
 
-.drive-banner-title {
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 2px;
-}
-
-.drive-banner-desc {
-    font-size: 0.84rem;
-    color: var(--text-secondary);
-}
-
-/* Certs Grid */
 .certs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    margin-top: 2rem;
 }
 
 .cert-card {
-    padding: 1.75rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-decoration: none;
+    background: rgba(8, 20, 32, 0.75);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    cursor: pointer;
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.cert-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 217, 255, 0.25);
+    transform: translateY(-4px);
+}
+
+.cert-preview-window {
+    position: relative;
+    width: 100%;
+    height: 175px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #02070e;
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 1.2rem;
+}
+
+.cert-mini-preview {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cert-card:hover .cert-mini-preview {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.cert-preview-glass-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(3, 10, 18, 0.9) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.75rem;
+    transition: background 0.25s ease;
+}
+
+.cert-card:hover .cert-preview-glass-overlay {
+    background: rgba(0, 217, 255, 0.1);
+}
+
+.cert-expand-pill {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--accent-primary);
+    background: rgba(6, 16, 28, 0.92);
+    border: 1px solid var(--accent-primary);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+    transition: all 0.25s ease;
+}
+
+.cert-card:hover .cert-expand-pill {
+    background: var(--accent-primary);
+    color: #030609;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
 }
 
 .cert-badge {
-    min-height: 44px;
+    min-height: 40px;
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .cert-title {
     font-family: var(--font-serif);
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 4px;
@@ -1636,7 +1658,7 @@ body {
     font-family: var(--font-mono);
     font-size: 0.68rem;
     color: var(--text-muted);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .cert-verify {
@@ -1648,6 +1670,276 @@ body {
     align-items: center;
     gap: 6px;
     margin-top: auto;
+}
+
+/* ── 09. TOKEN OF APPRECIATION & RESUME SECTION ────────────────────────────── */
+.appreciation-section {
+    background: linear-gradient(180deg, #06121d 0%, var(--bg-primary) 100%);
+    position: relative;
+    padding: 6.5rem 0;
+}
+
+.documents-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.25rem;
+    margin-top: 2.5rem;
+    margin-bottom: 4.5rem;
+}
+
+.doc-showcase-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: rgba(8, 20, 32, 0.85);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), var(--border-glow);
+    position: relative;
+}
+
+.doc-preview-wrapper {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    background: #02060b;
+    border-bottom: 1px solid var(--border-default);
+    cursor: pointer;
+}
+
+.doc-preview-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    opacity: 0.9;
+    transition: transform 0.4s ease;
+}
+
+.doc-preview-wrapper:hover .doc-preview-iframe {
+    transform: scale(1.02);
+}
+
+.doc-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 10, 18, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    backdrop-filter: blur(3px);
+}
+
+.doc-preview-wrapper:hover .doc-hover-overlay {
+    opacity: 1;
+}
+
+.doc-overlay-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #030609;
+    background: var(--accent-primary);
+    padding: 0.65rem 1.4rem;
+    border-radius: 999px;
+    box-shadow: 0 0 25px rgba(0, 217, 255, 0.6);
+}
+
+.doc-card-info {
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.75rem;
+}
+
+.doc-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.doc-badge-pill {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    border-radius: 999px;
+    padding: 0.2rem 0.65rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.doc-year-pill {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
+
+.doc-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.25;
+}
+
+.doc-card-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.doc-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ── 10. ON-SCREEN PDF VIEWER MODAL ────────────────────────────────────────── */
+.pdf-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pdf-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.pdf-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 6, 12, 0.92);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.pdf-modal-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1100px;
+    height: 92vh;
+    background: rgba(5, 14, 24, 0.98);
+    border: 1px solid var(--accent-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.98), 0 0 50px rgba(0, 217, 255, 0.35);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.96);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pdf-modal-overlay.active .pdf-modal-container {
+    transform: scale(1);
+}
+
+.pdf-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.75rem;
+    background: rgba(2, 8, 16, 0.95);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.pdf-badge-type {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.pdf-modal-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.pdf-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pdf-header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--accent-highlight);
+    background: rgba(10, 25, 38, 0.85);
+    border: 1px solid var(--border-default);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.pdf-header-btn:hover {
+    border-color: var(--accent-primary);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(0, 217, 255, 0.3);
+}
+
+.pdf-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    transition: var(--transition-fast);
+}
+
+.pdf-close-btn:hover {
+    color: var(--accent-primary);
+    transform: scale(1.15);
+}
+
+.pdf-modal-body {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    background: #08121d;
+    overflow: hidden;
+}
+
+.pdf-fullscreen-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
 }
 
 /* Final Thank You Note & Connect Card */
@@ -2002,27 +2294,16 @@ body {
 
 @media (max-width: 900px) {
     /* Mobile / Tablet: Natural Vertical Scrolling Fallback */
-    .journey-track {
-        flex-direction: column;
-        gap: 3rem;
-        padding: 0;
-    }
-
-    .journey-panel {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-
-    .projects-track {
-        flex-direction: column;
-        gap: 2rem;
-        padding: 0;
+    .edu-panels-grid,
+    .client-ventures-row,
+    .certs-grid,
+    .documents-showcase-grid {
+        grid-template-columns: 1fr;
     }
 
     .project-panel-card {
-        flex: 1 1 100%;
-        min-width: 100%;
-        max-width: 100%;
+        flex: 0 0 85vw;
+        width: 85vw;
     }
 
     .workflow-track {

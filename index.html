@@ -42,10 +42,13 @@
 
             <ul class="nav-links" id="nav-links">
                 <li><a href="#about" class="nav-link active" data-section="about">About</a></li>
-                <li><a href="#journey" class="nav-link" data-section="journey">Journey</a></li>
+                <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
+                <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+                <li><a href="#research" class="nav-link" data-section="research">Research</a></li>
                 <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
                 <li><a href="#workflow" class="nav-link" data-section="workflow">How I Build</a></li>
-                <li><a href="#beyond" class="nav-link" data-section="beyond">Beyond Classroom</a></li>
+                <li><a href="#beyond" class="nav-link" data-section="beyond">Beyond</a></li>
+                <li><a href="#certificates" class="nav-link" data-section="certificates">Certificates</a></li>
                 <li><a href="#appreciation" class="nav-link" data-section="appreciation">Appreciation</a></li>
             </ul>
 
@@ -72,10 +75,13 @@
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <div class="mobile-nav" id="mobile-nav">
         <a href="#about" class="nav-link" data-section="about">About</a>
-        <a href="#journey" class="nav-link" data-section="journey">Journey</a>
+        <a href="#education" class="nav-link" data-section="education">Education</a>
+        <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+        <a href="#research" class="nav-link" data-section="research">Research</a>
         <a href="#projects" class="nav-link" data-section="projects">Projects</a>
         <a href="#workflow" class="nav-link" data-section="workflow">How I Build</a>
         <a href="#beyond" class="nav-link" data-section="beyond">Beyond Classroom</a>
+        <a href="#certificates" class="nav-link" data-section="certificates">Certificates</a>
         <a href="#appreciation" class="nav-link" data-section="appreciation">Appreciation</a>
     </div>
 
@@ -110,14 +116,14 @@
                         </div>
 
                         <div class="about-hero-actions">
-                            <a href="#journey" class="btn-primary magnetic">
+                            <a href="#education" class="btn-primary magnetic">
                                 Explore My Journey
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
                             </a>
-                            <a href="https://drive.google.com/file/d/1Q3XOHoWpYLka72cCnHK6uxri_mxH13Kr/view?usp=sharing" target="_blank" class="btn-secondary magnetic" id="view-resume-btn">
+                            <button type="button" class="btn-secondary magnetic open-pdf-btn" data-pdf="nitaanth_resume.pdf" data-title="Nitaanth Panickar — Official Resume" id="view-resume-btn">
                                 View Resume
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                            </a>
+                            </button>
                         </div>
 
                         <!-- Subtle Scroll Down Indicator -->
@@ -145,318 +151,313 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════
-             02, 03, 04 // THE JOURNEY: EDUCATION, EXPERIENCE & RESEARCH
-             Continuous Horizontal Storytelling Experience
+             02 // EDUCATION — ACADEMIC FOUNDATIONS
              ═══════════════════════════════════════════════════════════ -->
-        <section id="journey" class="section journey-section">
-            <div class="container journey-header-container">
+        <section id="education" class="section education-section">
+            <div class="container">
                 <div class="section-header">
-                    <span class="section-number">01 // THE JOURNEY</span>
-                    <h2 class="section-title">Education, Experience &amp; Research</h2>
+                    <span class="section-number">02 // ACADEMIC FOUNDATIONS</span>
+                    <h2 class="section-title">Education</h2>
                     <div class="section-line"></div>
                 </div>
-                <div class="journey-stage-nav">
-                    <span class="stage-nav-pill active" data-chapter="1">01. Education</span>
-                    <span class="stage-nav-pill" data-chapter="2">02. Work Experience</span>
-                    <span class="stage-nav-pill" data-chapter="3">03. Research Papers</span>
-                </div>
-            </div>
+                <p class="section-tagline">CORE TRAINING IN MATHEMATICS, DATA SCIENCE, AND COMPUTING ARCHITECTURE</p>
 
-            <!-- Horizontal Track of Three Spacious Panels -->
-            <div class="journey-track-wrapper">
-                <div class="journey-track" id="journey-track">
-                    
-                    <!-- ── PANEL 1: EDUCATION ──────────────────────────────── -->
-                    <div class="journey-panel" id="journey-panel-edu">
-                        <div class="panel-chapter-indicator">
-                            <span class="chapter-num">CHAPTER 01</span>
-                            <h3 class="panel-heading">Education &amp; Academic Foundations</h3>
-                            <p class="panel-subheading">Core training in mathematics, data science, and computing architecture.</p>
+                <div class="edu-panels-grid">
+                    <!-- MPSTME NMIMS (1) -->
+                    <div class="card edu-card card-tilt" data-focus="education" data-id="mpstme" title="Click to view full academic details">
+                        <div class="section-item-index">1</div>
+                        <span class="focus-hint-badge">Click to Expand ↗</span>
+                        <div class="edu-card-top">
+                            <div class="edu-img-wrap">
+                                <img src="university.jpeg" alt="MPSTME, NMIMS" class="edu-thumb" onerror="this.style.display='none';">
+                            </div>
+                            <div>
+                                <span class="edu-level-tag">University</span>
+                                <h4 class="edu-inst-name">MPSTME — NMIMS University</h4>
+                                <p class="edu-degree-title">B.Tech in Data Science</p>
+                            </div>
                         </div>
-
-                        <div class="edu-panels-grid">
-                            <!-- MPSTME NMIMS -->
-                            <div class="card edu-card card-tilt" data-focus="education" data-id="mpstme" title="Click to view full academic details">
-                                <span class="focus-hint-badge">Click to Expand ↗</span>
-                                <div class="edu-card-top">
-                                    <div class="edu-img-wrap">
-                                        <img src="university.jpeg" alt="MPSTME, NMIMS" class="edu-thumb" onerror="this.style.display='none';">
-                                    </div>
-                                    <div>
-                                        <span class="edu-level-tag">University</span>
-                                        <h4 class="edu-inst-name">MPSTME — NMIMS University</h4>
-                                        <p class="edu-degree-title">B.Tech in Data Science</p>
-                                    </div>
-                                </div>
-                                <div class="edu-meta-row">
-                                    <span class="edu-meta-item">2023 – Present · Mumbai, India</span>
-                                    <span class="edu-grade-badge">GPA: 3.68 · CGPA: 3.3*</span>
-                                </div>
-                                <p class="edu-summary-text">
-                                    Specializing in Machine Learning, Cloud Architecture, and Intelligent Systems at one of India's premier private engineering institutions. Focus on applied algorithmic theory and scalable deployments.
-                                </p>
-                                <div class="edu-highlights-pills">
-                                    <span class="edu-chip">Cricket Team</span>
-                                    <span class="edu-chip">Head of Ops — Data Mavericks</span>
-                                    <span class="edu-chip">Distributed Systems</span>
-                                </div>
-                            </div>
-
-                            <!-- Mithibai College -->
-                            <div class="card edu-card card-tilt" data-focus="education" data-id="mithibai" title="Click to view full academic details">
-                                <span class="focus-hint-badge">Click to Expand ↗</span>
-                                <div class="edu-card-top">
-                                    <div class="edu-img-wrap">
-                                        <img src="high_school.jpeg" alt="Mithibai College" class="edu-thumb" onerror="this.style.display='none';">
-                                    </div>
-                                    <div>
-                                        <span class="edu-level-tag">High School</span>
-                                        <h4 class="edu-inst-name">Mithibai College</h4>
-                                        <p class="edu-degree-title">Higher Secondary Certificate (HSC)</p>
-                                    </div>
-                                </div>
-                                <div class="edu-meta-row">
-                                    <span class="edu-meta-item">Mumbai, India</span>
-                                    <span class="edu-grade-badge">Distinction</span>
-                                </div>
-                                <p class="edu-summary-text">
-                                    Completed higher secondary education with distinction while captaining the college cricket squad and leading major student executive bodies and cultural festival initiatives.
-                                </p>
-                                <div class="edu-highlights-pills">
-                                    <span class="edu-chip">Captain — Cricket Team</span>
-                                    <span class="edu-chip">Head of Events — MITHAAS</span>
-                                    <span class="edu-chip">PR Associate — Da'Quill Lit Fest</span>
-                                </div>
-                            </div>
-
-                            <!-- Lakshdham High School -->
-                            <div class="card edu-card card-tilt" data-focus="education" data-id="lakshdham" title="Click to view full academic details">
-                                <span class="focus-hint-badge">Click to Expand ↗</span>
-                                <div class="edu-card-top">
-                                    <div class="edu-img-wrap">
-                                        <img src="school.jpeg" alt="Lakshdham High School" class="edu-thumb" onerror="this.style.display='none';">
-                                    </div>
-                                    <div>
-                                        <span class="edu-level-tag">Secondary School</span>
-                                        <h4 class="edu-inst-name">Lakshdham High School</h4>
-                                        <p class="edu-degree-title">Secondary School Certificate (SSC)</p>
-                                    </div>
-                                </div>
-                                <div class="edu-meta-row">
-                                    <span class="edu-meta-item">Mumbai, India</span>
-                                    <span class="edu-grade-badge">93.5%</span>
-                                </div>
-                                <p class="edu-summary-text">
-                                    Established an academic foundation with 93.5% while actively competing across multiple varsity sports, inter-school debates, and performing arts competitions.
-                                </p>
-                                <div class="edu-highlights-pills">
-                                    <span class="edu-chip">Handball</span>
-                                    <span class="edu-chip">Football</span>
-                                    <span class="edu-chip">Cricket</span>
-                                    <span class="edu-chip">Oration &amp; Drama</span>
-                                </div>
-                            </div>
+                        <div class="edu-meta-row">
+                            <span class="edu-meta-item">2023 – Present · Mumbai, India</span>
+                            <span class="edu-grade-badge">GPA: 3.68 · CGPA: 3.3*</span>
+                        </div>
+                        <p class="edu-summary-text">
+                            Specializing in Machine Learning, Cloud Architecture, and Intelligent Systems at one of India's premier private engineering institutions. Focus on applied algorithmic theory and scalable deployments.
+                        </p>
+                        <div class="edu-highlights-pills">
+                            <span class="edu-chip">Cricket Team</span>
+                            <span class="edu-chip">Head of Ops — Data Mavericks</span>
+                            <span class="edu-chip">Distributed Systems</span>
                         </div>
                     </div>
 
-                    <!-- ── PANEL 2: WORK EXPERIENCE ────────────────────────── -->
-                    <div class="journey-panel" id="journey-panel-work">
-                        <div class="panel-chapter-indicator">
-                            <span class="chapter-num">CHAPTER 02</span>
-                            <h3 class="panel-heading">Work Experience &amp; Venture Leadership</h3>
-                            <p class="panel-subheading">Technical leadership, startup operations, and client platform engineering.</p>
+                    <!-- Mithibai College (2) -->
+                    <div class="card edu-card card-tilt" data-focus="education" data-id="mithibai" title="Click to view full academic details">
+                        <div class="section-item-index">2</div>
+                        <span class="focus-hint-badge">Click to Expand ↗</span>
+                        <div class="edu-card-top">
+                            <div class="edu-img-wrap">
+                                <img src="high_school.jpeg" alt="Mithibai College" class="edu-thumb" onerror="this.style.display='none';">
+                            </div>
+                            <div>
+                                <span class="edu-level-tag">High School</span>
+                                <h4 class="edu-inst-name">Mithibai College</h4>
+                                <p class="edu-degree-title">Higher Secondary Certificate (HSC)</p>
+                            </div>
                         </div>
-
-                        <!-- NobleNet Story & 3 Client Platforms -->
-                        <div class="card experience-main-card card-tilt" data-focus="experience" data-id="noblenet" title="Click to view leadership and operational breakdown">
-                            <span class="focus-hint-badge">Click to Expand ↗</span>
-                            <div class="exp-umbrella-header">
-                                <div class="exp-umbrella-title-box">
-                                    <div class="exp-badges-row">
-                                        <span class="exp-role-badge">Startup Operations &amp; Technical Lead</span>
-                                        <span class="exp-lineage-badge">Yahoo &amp; IBM Engineering Lineage</span>
-                                    </div>
-                                    <h4 class="exp-company-name">NobleNet Software Technologies</h4>
-                                    <p class="exp-narrative-lead">
-                                        Founded by veteran leaders from Yahoo and IBM. Over the past year, I took ownership of engineering operations, architecture, and client software delivery—shipping three platforms across luxury AI and legal technology:
-                                    </p>
-                                </div>
-                                <div class="exp-period-box">
-                                    <span class="exp-period">2025 – Present</span>
-                                    <span class="exp-active-status">Active Leadership</span>
-                                </div>
-                            </div>
-
-                            <div class="client-ventures-row">
-                                <!-- Maison Momento -->
-                                <div class="client-venture-card" data-focus="experience" data-id="momento" title="Click to view technical architecture and delivery details">
-                                    <div class="venture-card-header">
-                                        <span class="venture-type-badge">Luxury Retail Brand</span>
-                                        <span class="venture-status status-prelaunch">Cloud Prototype</span>
-                                    </div>
-                                    <h5 class="venture-name">Maison Momento</h5>
-                                    <p class="venture-role">Lead Full Stack &amp; Recommendation Engineer</p>
-                                    <p class="venture-desc">
-                                        Engineered personalized fragrance recommendation algorithms, administrative dashboard, secure payment gateway integrations, and responsive UI. Cloud prototype live on Render.
-                                    </p>
-                                    <div class="venture-tags">
-                                        <span class="tag">Recommendation AI</span>
-                                        <span class="tag">Payments</span>
-                                        <span class="tag">Render Cloud</span>
-                                    </div>
-                                    <div class="venture-action-link">
-                                        <a href="https://maison-momento.onrender.com/products/" target="_blank" class="venture-direct-link" onclick="event.stopPropagation();">View Prototype ↗</a>
-                                    </div>
-                                </div>
-
-                                <!-- Entrust Legal Services -->
-                                <div class="client-venture-card" data-focus="experience" data-id="entrust" title="Click to view technical architecture and delivery details">
-                                    <div class="venture-card-header">
-                                        <span class="venture-type-badge">Legal Tech Firm</span>
-                                        <span class="venture-status status-live">Live Platform</span>
-                                    </div>
-                                    <h5 class="venture-name">Entrust Legal Services</h5>
-                                    <p class="venture-role">Full Stack Engineer &amp; Portal Architect</p>
-                                    <p class="venture-desc">
-                                        Engineered full web presence and architected an active student internship portal enabling law students to seek internships, submit applications, and track verification.
-                                    </p>
-                                    <div class="venture-tags">
-                                        <span class="tag">Internship Portal</span>
-                                        <span class="tag">Python</span>
-                                        <span class="tag">Legal Tech</span>
-                                    </div>
-                                    <div class="venture-action-link">
-                                        <a href="https://www.entrustlegal.in/" target="_blank" class="venture-direct-link" onclick="event.stopPropagation();">Visit Platform ↗</a>
-                                    </div>
-                                </div>
-
-                                <!-- Adv Jyoti & Co. -->
-                                <div class="client-venture-card" data-focus="experience" data-id="jyoti" title="Click to view technical architecture and delivery details">
-                                    <div class="venture-card-header">
-                                        <span class="venture-type-badge">Legal Practice</span>
-                                        <span class="venture-status status-live">Live Platform</span>
-                                    </div>
-                                    <h5 class="venture-name">Adv Jyoti &amp; Co.</h5>
-                                    <p class="venture-role">Web Developer &amp; Client Solutions</p>
-                                    <p class="venture-desc">
-                                        Architected and launched the official client consultation portal for legal firm Adv Jyoti &amp; Co., introducing online consultation scheduling and secure document submission workflows.
-                                    </p>
-                                    <div class="venture-tags">
-                                        <span class="tag">Client Portal</span>
-                                        <span class="tag">Firebase</span>
-                                        <span class="tag">Appointments</span>
-                                    </div>
-                                    <div class="venture-action-link">
-                                        <a href="https://adv-jyoti.web.app/" target="_blank" class="venture-direct-link" onclick="event.stopPropagation();">Visit Portal ↗</a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="edu-meta-row">
+                            <span class="edu-meta-item">Mumbai, India</span>
+                            <span class="edu-grade-badge">Distinction</span>
+                        </div>
+                        <p class="edu-summary-text">
+                            Completed higher secondary education with distinction while captaining the college cricket squad and leading major student executive bodies and cultural festival initiatives.
+                        </p>
+                        <div class="edu-highlights-pills">
+                            <span class="edu-chip">Captain — Cricket Team</span>
+                            <span class="edu-chip">Head of Events — MITHAAS</span>
+                            <span class="edu-chip">PR Associate — Da'Quill Lit Fest</span>
                         </div>
                     </div>
 
-                    <!-- ── PANEL 3: RESEARCH PAPERS ────────────────────────── -->
-                    <div class="journey-panel" id="journey-panel-research">
-                        <div class="panel-chapter-indicator">
-                            <span class="chapter-num">CHAPTER 03</span>
-                            <h3 class="panel-heading">Peer-Reviewed Research &amp; Publications</h3>
-                            <p class="panel-subheading">Rigorous academic investigations in code security, legal NLP, and bioinformatics.</p>
+                    <!-- Lakshdham High School (3) -->
+                    <div class="card edu-card card-tilt" data-focus="education" data-id="lakshdham" title="Click to view full academic details">
+                        <div class="section-item-index">3</div>
+                        <span class="focus-hint-badge">Click to Expand ↗</span>
+                        <div class="edu-card-top">
+                            <div class="edu-img-wrap">
+                                <img src="school.jpeg" alt="Lakshdham High School" class="edu-thumb" onerror="this.style.display='none';">
+                            </div>
+                            <div>
+                                <span class="edu-level-tag">Secondary School</span>
+                                <h4 class="edu-inst-name">Lakshdham High School</h4>
+                                <p class="edu-degree-title">Secondary School Certificate (SSC)</p>
+                            </div>
                         </div>
-
-                        <div class="card research-panel-card card-tilt">
-                            <!-- IP Citation Disclaimer -->
-                            <div class="research-ip-banner">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                <span><strong>Intellectual Property &amp; Academic Citation:</strong> These manuscripts represent original research. Scholarly citation with formal attribution is encouraged; unauthorized reproduction is prohibited.</span>
-                            </div>
-
-                            <div class="research-items-track" id="research-grid">
-                                <!-- Sentinel AI Paper -->
-                                <div class="research-row-card" data-focus="research" data-id="sentinel" title="Click to view methodology and research analysis">
-                                    <div class="research-row-left">
-                                        <span class="research-status-pill status-accepted">Accepted · Springer ICDECT-2026</span>
-                                        <h4 class="research-row-title">Sentinel AI: Explainable Vulnerability Detection</h4>
-                                        <p class="research-journal-meta">Accepted at ICDECT-2026 (Springer Proceedings) · Nov 2026</p>
-                                        <p class="research-row-abstract">
-                                            Combining Static AST Analysis and Retrieval-Augmented Reasoning for Explainable Vulnerability Detection. Validating automated vulnerability analysis through layered LLM reasoning grounded in static code metrics and deterministic AST rules.
-                                        </p>
-                                    </div>
-                                    <div class="research-row-actions">
-                                        <a href="Research-Papers/252_CRC.pdf" target="_blank" class="btn-research-link" onclick="event.stopPropagation();">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                                            View Manuscript (PDF)
-                                        </a>
-                                        <button type="button" class="btn-research-cli sentinel-cli-trigger" onclick="event.stopPropagation();">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                                            CLI Scans Guide ↗
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Bandhoo Paper -->
-                                <div class="research-row-card" data-focus="research" data-id="bandhoo" title="Click to view methodology and benchmark analysis">
-                                    <div class="research-row-left">
-                                        <span class="research-status-pill status-review">Under IEEE Peer Review</span>
-                                        <h4 class="research-row-title">Bandhoo: BNS Legal Classification Benchmark</h4>
-                                        <p class="research-journal-meta">BNS Legal Classification Benchmark &amp; Procedural Reasoning Engine</p>
-                                        <p class="research-row-abstract">
-                                            A Mumbai crime-reporting and statutory classification framework benchmarked on 50 diverse multilingual complaints (English, Hindi, Hinglish) across 12 penal categories under Bharatiya Nyaya Sanhita (BNS, 2023) and BNSS First Schedule. Implements a 4-tier legal certainty schema and clause-level statutory retrieval.
-                                        </p>
-                                    </div>
-                                    <div class="research-row-actions">
-                                        <a href="Research-Papers/Bandhoo_IEEE_paper.pdf" target="_blank" class="btn-research-link" onclick="event.stopPropagation();">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                                            View Manuscript (PDF)
-                                        </a>
-                                        <a href="https://bandhoo-sigma.vercel.app/" target="_blank" class="btn-research-link" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3);" onclick="event.stopPropagation();">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
-                                            Live Engine Demo ↗
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- Xenotransplantation Paper -->
-                                <div class="research-row-card" data-focus="research" data-id="xenotransplantation" title="Click to view methodology and research analysis">
-                                    <div class="research-row-left">
-                                        <span class="research-status-pill status-active">Active Research</span>
-                                        <h4 class="research-row-title">Xenotransplantation Viability Profiling</h4>
-                                        <p class="research-journal-meta">Computational Immunology &amp; Cross-Species Genetic Compatibility</p>
-                                        <p class="research-row-abstract">
-                                            Predicting xenotransplantation viability and organ rejection risks through multi-layered biological, genomic, and immunological compatibility profiling. Evaluates genetic knock-out markers and immune response pathways using deep learning.
-                                        </p>
-                                    </div>
-                                    <div class="research-row-actions">
-                                        <a href="Research-Papers/Xenotransplantation_final_research.pdf" target="_blank" class="btn-research-link" onclick="event.stopPropagation();">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                                            View Manuscript (PDF)
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="edu-meta-row">
+                            <span class="edu-meta-item">Mumbai, India</span>
+                            <span class="edu-grade-badge">93.5%</span>
+                        </div>
+                        <p class="edu-summary-text">
+                            Established an academic foundation with 93.5% while actively competing across multiple varsity sports, inter-school debates, and performing arts competitions.
+                        </p>
+                        <div class="edu-highlights-pills">
+                            <span class="edu-chip">Handball</span>
+                            <span class="edu-chip">Football</span>
+                            <span class="edu-chip">Cricket</span>
+                            <span class="edu-chip">Oration &amp; Drama</span>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════
-             05 // PROJECTS — HORIZONTAL SCROLL GALLERY
-             Large project panels with preview of next project
+             03 // WORK EXPERIENCE — PROFESSIONAL MILESTONES
+             ═══════════════════════════════════════════════════════════ -->
+        <section id="experience" class="section experience-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">03 // PROFESSIONAL MILESTONES</span>
+                    <h2 class="section-title">Work Experience</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-tagline">STARTUP LEADERSHIP, CLOUD ARCHITECTURE, AND CLIENT PLATFORM DELIVERY</p>
+
+                <!-- NobleNet Story & 3 Client Platforms -->
+                <div class="card experience-main-card card-tilt" data-focus="experience" data-id="noblenet" title="Click to view leadership and operational breakdown">
+                    <div class="section-item-index">1</div>
+                    <span class="focus-hint-badge">Click to Expand ↗</span>
+                    <div class="exp-umbrella-header">
+                        <div class="exp-umbrella-title-box">
+                            <div class="exp-badges-row">
+                                <span class="exp-role-badge">Startup Operations &amp; Technical Lead</span>
+                                <span class="exp-lineage-badge">Yahoo &amp; IBM Engineering Lineage</span>
+                            </div>
+                            <h4 class="exp-company-name">NobleNet Software Technologies</h4>
+                            <p class="exp-narrative-lead">
+                                Founded by veteran leaders from Yahoo and IBM. Over the past year, I took ownership of engineering operations, architecture, and client software delivery—shipping three platforms across luxury AI and legal technology:
+                            </p>
+                        </div>
+                        <div class="exp-period-box">
+                            <span class="exp-period">2025 – Present</span>
+                            <span class="exp-active-status">Active Leadership</span>
+                        </div>
+                    </div>
+
+                    <div class="client-ventures-row">
+                        <!-- Maison Momento (2.1) -->
+                        <div class="client-venture-card" data-focus="experience" data-id="momento" title="Click to view technical architecture and delivery details">
+                            <div class="venture-card-header">
+                                <span class="venture-type-badge">Luxury Retail Brand</span>
+                                <span class="venture-status status-prelaunch">Cloud Prototype</span>
+                            </div>
+                            <h5 class="venture-name">Maison Momento</h5>
+                            <p class="venture-role">Lead Full Stack &amp; Recommendation Engineer</p>
+                            <p class="venture-desc">
+                                Engineered personalized fragrance recommendation algorithms, administrative dashboard, secure payment gateway integrations, and responsive UI. Cloud prototype live on Render.
+                            </p>
+                            <div class="venture-tags">
+                                <span class="tag">Recommendation AI</span>
+                                <span class="tag">Payments</span>
+                                <span class="tag">Render Cloud</span>
+                            </div>
+                            <div class="venture-action-link">
+                                <a href="https://maison-momento.onrender.com/products/" target="_blank" class="venture-direct-link" onclick="event.stopPropagation();">View Prototype ↗</a>
+                            </div>
+                        </div>
+
+                        <!-- Entrust Legal Services (2.2) -->
+                        <div class="client-venture-card" data-focus="experience" data-id="entrust" title="Click to view technical architecture and delivery details">
+                            <div class="venture-card-header">
+                                <span class="venture-type-badge">Legal Tech Firm</span>
+                                <span class="venture-status status-live">Live Platform</span>
+                            </div>
+                            <h5 class="venture-name">Entrust Legal Services</h5>
+                            <p class="venture-role">Full Stack Engineer &amp; Portal Architect</p>
+                            <p class="venture-desc">
+                                Engineered full web presence and architected an active student internship portal enabling law students to seek internships, submit applications, and track verification.
+                            </p>
+                            <div class="venture-tags">
+                                <span class="tag">Internship Portal</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Legal Tech</span>
+                            </div>
+                            <div class="venture-action-link">
+                                <a href="https://www.entrustlegal.in/" target="_blank" class="venture-direct-link" onclick="event.stopPropagation();">Visit Platform ↗</a>
+                            </div>
+                        </div>
+
+                        <!-- Adv Jyoti & Co. (2.3) -->
+                        <div class="client-venture-card" data-focus="experience" data-id="jyoti" title="Click to view technical architecture and delivery details">
+                            <div class="venture-card-header">
+                                <span class="venture-type-badge">Legal Practice</span>
+                                <span class="venture-status status-live">Live Platform</span>
+                            </div>
+                            <h5 class="venture-name">Adv Jyoti &amp; Co.</h5>
+                            <p class="venture-role">Web Developer &amp; Client Solutions</p>
+                            <p class="venture-desc">
+                                Architected and launched the official client consultation portal for legal firm Adv Jyoti &amp; Co., introducing online consultation scheduling and secure document submission workflows.
+                            </p>
+                            <div class="venture-tags">
+                                <span class="tag">Client Portal</span>
+                                <span class="tag">Firebase</span>
+                                <span class="tag">Appointments</span>
+                            </div>
+                            <div class="venture-action-link">
+                                <a href="https://adv-jyoti.web.app/" target="_blank" class="venture-direct-link" onclick="event.stopPropagation();">Visit Portal ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             04 // RESEARCH PAPERS — SCIENTIFIC INQUIRY
+             ═══════════════════════════════════════════════════════════ -->
+        <section id="research" class="section research-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">04 // SCIENTIFIC INQUIRY</span>
+                    <h2 class="section-title">Research Papers</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-tagline">PEER-REVIEWED INVESTIGATIONS IN CODE SECURITY, STATUTORY NLP &amp; BIOINFORMATICS</p>
+
+                <div class="card research-panel-card card-tilt">
+                    <!-- IP Citation Disclaimer -->
+                    <div class="research-ip-banner">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <span><strong>Intellectual Property &amp; Academic Citation:</strong> These manuscripts represent original research. Scholarly citation with formal attribution is encouraged; unauthorized reproduction is prohibited.</span>
+                    </div>
+
+                    <div class="research-items-track" id="research-grid">
+                        <!-- Sentinel AI Paper (1) -->
+                        <div class="research-row-card" data-focus="research" data-id="sentinel" title="Click to view methodology and research analysis">
+                            <div class="section-item-index">1</div>
+                            <div class="research-row-left">
+                                <span class="research-status-pill status-accepted">Accepted · Springer ICDECT-2026</span>
+                                <h4 class="research-row-title">Sentinel AI: Explainable Vulnerability Detection</h4>
+                                <p class="research-journal-meta">Accepted at ICDECT-2026 (Springer Proceedings) · Nov 2026</p>
+                                <p class="research-row-abstract">
+                                    Combining Static AST Analysis and Retrieval-Augmented Reasoning for Explainable Vulnerability Detection. Validating automated vulnerability analysis through layered LLM reasoning grounded in static code metrics and deterministic AST rules.
+                                </p>
+                            </div>
+                            <div class="research-row-actions">
+                                <button type="button" class="btn-research-link open-pdf-btn" data-pdf="Research-Papers/252_CRC.pdf" data-title="Sentinel AI: Explainable Vulnerability Detection (Springer ICDECT-2026)" onclick="event.stopPropagation();">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                                    View Manuscript (PDF)
+                                </button>
+                                <button type="button" class="btn-research-cli sentinel-cli-trigger" onclick="event.stopPropagation();">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    CLI Scans Guide ↗
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Bandhoo Paper (2) -->
+                        <div class="research-row-card" data-focus="research" data-id="bandhoo" title="Click to view methodology and benchmark analysis">
+                            <div class="section-item-index">2</div>
+                            <div class="research-row-left">
+                                <span class="research-status-pill status-review">Under IEEE Peer Review</span>
+                                <h4 class="research-row-title">Bandhoo: BNS Legal Classification Benchmark</h4>
+                                <p class="research-journal-meta">BNS Legal Classification Benchmark &amp; Procedural Reasoning Engine</p>
+                                <p class="research-row-abstract">
+                                    A Mumbai crime-reporting and statutory classification framework benchmarked on 50 diverse multilingual complaints (English, Hindi, Hinglish) across 12 penal categories under Bharatiya Nyaya Sanhita (BNS, 2023) and BNSS First Schedule. Implements a 4-tier legal certainty schema and clause-level statutory retrieval.
+                                </p>
+                            </div>
+                            <div class="research-row-actions">
+                                <button type="button" class="btn-research-link open-pdf-btn" data-pdf="Research-Papers/Bandhoo_IEEE_paper.pdf" data-title="Bandhoo: BNS Legal Classification Benchmark" onclick="event.stopPropagation();">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                                    View Manuscript (PDF)
+                                </button>
+                                <a href="https://bandhoo-sigma.vercel.app/" target="_blank" class="btn-research-link" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3);" onclick="event.stopPropagation();">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                                    Live Engine Demo ↗
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Xenotransplantation Paper (3) -->
+                        <div class="research-row-card" data-focus="research" data-id="xenotransplantation" title="Click to view methodology and research analysis">
+                            <div class="section-item-index">3</div>
+                            <div class="research-row-left">
+                                <span class="research-status-pill status-active">Active Research</span>
+                                <h4 class="research-row-title">Xenotransplantation Viability Profiling</h4>
+                                <p class="research-journal-meta">Computational Immunology &amp; Cross-Species Genetic Compatibility</p>
+                                <p class="research-row-abstract">
+                                    Predicting xenotransplantation viability and organ rejection risks through multi-layered biological, genomic, and immunological compatibility profiling. Evaluates genetic knock-out markers and immune response pathways using deep learning.
+                                </p>
+                            </div>
+                            <div class="research-row-actions">
+                                <button type="button" class="btn-research-link open-pdf-btn" data-pdf="Research-Papers/Xenotransplantation_final_research.pdf" data-title="Xenotransplantation Viability Profiling Manuscript" onclick="event.stopPropagation();">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                                    View Manuscript (PDF)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             05 // PROJECTS — CONTINUOUS SLOW CAROUSEL
              ═══════════════════════════════════════════════════════════ -->
         <section id="projects" class="section projects-gallery-section">
             <div class="container projects-header-container">
                 <div class="section-header">
-                    <span class="section-number">02 // SYSTEMS &amp; PRODUCTS</span>
+                    <span class="section-number">05 // SYSTEMS &amp; PRODUCTS</span>
                     <h2 class="section-title">Featured Projects</h2>
                     <div class="section-line"></div>
                 </div>
-                <p class="section-tagline">SCROLL TO NAVIGATE THROUGH PRODUCTION PLATFORMS, RESEARCH ENGINES &amp; DISTRIBUTED SYSTEMS</p>
+                <p class="section-tagline">CONTINUOUS SLOW CAROUSEL — PAUSES WHEN CURSOR HOVERS ON ANY PROJECT</p>
             </div>
 
-            <!-- Horizontal Scroll Project Gallery Track -->
-            <div class="projects-track-wrapper">
-                <div class="projects-track" id="projects-track">
-                    <!-- Populated dynamically via app.js with large cinematic panels -->
+            <!-- Continuous Slow Carousel Track -->
+            <div class="projects-carousel-viewport" id="projects-carousel-viewport">
+                <div class="projects-carousel-track" id="projects-track">
+                    <!-- Populated dynamically via app.js with duplicated cards for seamless infinite loop -->
                 </div>
             </div>
         </section>
@@ -468,7 +469,7 @@
         <section id="workflow" class="section workflow-section">
             <div class="container workflow-header-container">
                 <div class="section-header">
-                    <span class="section-number">03 // ENGINEERING DISCIPLINE</span>
+                    <span class="section-number">06 // ENGINEERING DISCIPLINE</span>
                     <h2 class="section-title">How I Build</h2>
                     <div class="section-line"></div>
                 </div>
@@ -616,20 +617,21 @@
 
         <!-- ═══════════════════════════════════════════════════════════
              07 // BEYOND THE CLASSROOM
-             Clean Editorial Magazine Layout: Athletics, Travel, Curiosity
+             Clean Editorial Cards Layout: Athletics, Travel, Curiosity
              ═══════════════════════════════════════════════════════════ -->
         <section id="beyond" class="section beyond-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-number">04 // PERSPECTIVE &amp; PASSIONS</span>
+                    <span class="section-number">07 // PERSPECTIVE &amp; PASSIONS</span>
                     <h2 class="section-title">Beyond the Classroom</h2>
                     <div class="section-line"></div>
                 </div>
                 <p class="section-tagline">THE ATHLETICS, TRAVEL, AND CURIOSITY THAT SHAPE MY DISCIPLINE, STRATEGY AND WORLDVIEW</p>
 
                 <div class="beyond-editorial-grid">
-                    <!-- Featured Story: Cricket -->
-                    <div class="card beyond-story-card card-featured card-tilt">
+                    <!-- Featured Story: Cricket (1) -->
+                    <div class="card beyond-story-card card-tilt">
+                        <div class="section-item-index">1</div>
                         <div class="story-content">
                             <div class="story-category-pill">
                                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
@@ -651,8 +653,9 @@
                         </div>
                     </div>
 
-                    <!-- Story 2: Travel & Perspective -->
+                    <!-- Story 2: Travel & Perspective (2) -->
                     <div class="card beyond-story-card card-tilt">
+                        <div class="section-item-index">2</div>
                         <div class="story-content">
                             <div class="story-category-pill">
                                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
@@ -670,8 +673,9 @@
                         </div>
                     </div>
 
-                    <!-- Story 3: Maker Curiosity -->
+                    <!-- Story 3: Maker Curiosity (3) -->
                     <div class="card beyond-story-card card-tilt">
+                        <div class="section-item-index">3</div>
                         <div class="story-content">
                             <div class="story-category-pill">
                                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -693,38 +697,103 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════
-             08 // TOKEN OF APPRECIATION — FINAL SECTION
-             Curated closing collection with certificates, Drive links & note
+             08 // CERTIFICATIONS (Second-to-Last Section)
+             Card format with document previews — Opens PDF on screen
+             ═══════════════════════════════════════════════════════════ -->
+        <section id="certificates" class="section certificates-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">08 // CREDENTIALS &amp; CERTIFICATIONS</span>
+                    <h2 class="section-title">Certifications</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-tagline">VERIFIED PROFESSIONAL CREDENTIALS — CLICK ANY CARD PREVIEW TO OPEN PDF ON SCREEN</p>
+
+                <!-- Cards grid with miniature previews -->
+                <div class="certs-grid" id="certs-grid">
+                    <!-- Populated dynamically via app.js with on-page preview and on-screen modal trigger -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             09 // TOKEN OF APPRECIATION & RESUME (Final Section)
+             Preview format on page — Full-screen on-screen viewer on click
              ═══════════════════════════════════════════════════════════ -->
         <section id="appreciation" class="section appreciation-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-number">05 // RECOGNITION &amp; MILESTONES</span>
+                    <span class="section-number">09 // TOKEN OF APPRECIATION &amp; RESUME</span>
                     <h2 class="section-title">Token of Appreciation</h2>
                     <div class="section-line"></div>
                 </div>
-                <p class="section-tagline">CURATED PROFESSIONAL CERTIFICATIONS, CREDENTIALS AND RECOGNITION MILESTONES</p>
+                <p class="section-tagline">OFFICIAL RESUME, CLIENT RECOMMENDATIONS AND RECOGNITION MILESTONES — PREVIEWS OPEN ON SCREEN</p>
 
-                <!-- Drive Folder Banner -->
-                <div class="appreciation-drive-banner card-tilt">
-                    <div class="drive-banner-left">
-                        <div class="drive-icon-box">
-                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                <!-- Documents Showcase Row (Resume & Appreciation LOR) -->
+                <div class="documents-showcase-grid">
+                    <!-- Document 1: Official Resume -->
+                    <div class="card doc-showcase-card card-tilt">
+                        <div class="section-item-index">1</div>
+                        <div class="doc-preview-wrapper open-pdf-btn" data-pdf="nitaanth_resume.pdf" data-title="Nitaanth Panickar — Official Resume">
+                            <iframe src="nitaanth_resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="doc-preview-iframe" title="Resume Preview" tabindex="-1"></iframe>
+                            <div class="doc-hover-overlay">
+                                <span class="doc-overlay-badge">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                    Click to Open On Screen
+                                </span>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="drive-banner-title">Official Credentials &amp; Verification Repository</h4>
-                            <p class="drive-banner-desc">Access high-resolution PDF credentials, transcripts, and official verification documents directly via Google Drive.</p>
+                        <div class="doc-card-info">
+                            <div class="doc-tag-row">
+                                <span class="doc-badge-pill">Official Resume</span>
+                                <span class="doc-year-pill">2026 Edition</span>
+                            </div>
+                            <h4 class="doc-card-title">Nitaanth Panickar — Full Resume</h4>
+                            <p class="doc-card-desc">B.Tech Data Science candidate at NMIMS MPSTME. Comprehensive record of production systems, ML research papers, and technical leadership.</p>
+                            <div class="doc-card-actions">
+                                <button type="button" class="btn-primary open-pdf-btn" data-pdf="nitaanth_resume.pdf" data-title="Nitaanth Panickar — Official Resume">
+                                    <span>Open On Screen</span>
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </button>
+                                <a href="nitaanth_resume.pdf" download="Nitaanth_Panickar_Resume.pdf" class="btn-secondary">
+                                    <span>Download PDF</span>
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <a href="https://drive.google.com/drive/folders/1PMhXaHkAoCIIECq8Z8UlleYZ4PpYYgul?usp=drive_link" target="_blank" class="btn-primary magnetic">
-                        <span>Open Drive Folder</span>
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    </a>
-                </div>
 
-                <!-- Curated Credentials Glass Frames -->
-                <div class="certs-grid" id="certs-grid">
-                    <!-- Populated dynamically via app.js / LOCAL_FALLBACK -->
+                    <!-- Document 2: Token of Appreciation / Letter of Recommendation -->
+                    <div class="card doc-showcase-card card-tilt">
+                        <div class="section-item-index">2</div>
+                        <div class="doc-preview-wrapper open-pdf-btn" data-pdf="LOR_Adv_Jyoti.pdf" data-title="Letter of Recommendation &amp; Token of Appreciation">
+                            <iframe src="LOR_Adv_Jyoti.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="doc-preview-iframe" title="Recommendation Preview" tabindex="-1"></iframe>
+                            <div class="doc-hover-overlay">
+                                <span class="doc-overlay-badge">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                    Click to Open On Screen
+                                </span>
+                            </div>
+                        </div>
+                        <div class="doc-card-info">
+                            <div class="doc-tag-row">
+                                <span class="doc-badge-pill" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3);">Letter of Appreciation</span>
+                                <span class="doc-year-pill">Client Endorsement</span>
+                            </div>
+                            <h4 class="doc-card-title">Token of Appreciation &amp; Recommendation</h4>
+                            <p class="doc-card-desc">Official recommendation and recognition letter commending engineering rigor, web architecture, and operational execution for legal practice platforms.</p>
+                            <div class="doc-card-actions">
+                                <button type="button" class="btn-primary open-pdf-btn" data-pdf="LOR_Adv_Jyoti.pdf" data-title="Letter of Recommendation &amp; Token of Appreciation">
+                                    <span>Open On Screen</span>
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </button>
+                                <a href="LOR_Adv_Jyoti.pdf" download="Nitaanth_Panickar_Recommendation.pdf" class="btn-secondary">
+                                    <span>Download PDF</span>
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Final Thank You Note & Contact Box -->
@@ -778,6 +847,31 @@
             </div>
         </div>
     </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FULLSCREEN ON-SCREEN PDF VIEWER MODAL
+         ═══════════════════════════════════════════════════════════ -->
+    <div id="pdf-viewer-modal" class="pdf-modal-overlay" aria-hidden="true">
+        <div class="pdf-modal-backdrop" id="pdf-modal-backdrop"></div>
+        <div class="pdf-modal-container" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title">
+            <div class="pdf-modal-header">
+                <div class="pdf-header-left">
+                    <span class="pdf-badge-type">ON-SCREEN DOCUMENT VIEWER</span>
+                    <h3 class="pdf-modal-title" id="pdf-modal-title">Document Title</h3>
+                </div>
+                <div class="pdf-header-actions">
+                    <a href="#" id="pdf-download-link" class="pdf-header-btn" download title="Download Document">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Download PDF</span>
+                    </a>
+                    <button type="button" class="pdf-close-btn" id="pdf-close-btn" aria-label="Close Document Viewer">&times;</button>
+                </div>
+            </div>
+            <div class="pdf-modal-body">
+                <iframe id="pdf-modal-iframe" src="" class="pdf-fullscreen-iframe" title="PDF Document Viewer"></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- ═══════════════════════════════════════════════════════════
          CLICK-TO-FOCUS SPOTLIGHT MODAL (Global Interactive Expansion)
