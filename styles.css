@@ -3140,3 +3140,277 @@ body {
         display: none;
     }
 }
+
+
+/* ── LINKEDIN PROFILE EMBED & CONNECT CARD ──────────────────────────────── */
+.linkedin-embed-container {
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.linkedin-embed-card {
+    background: linear-gradient(135deg, rgba(8, 20, 32, 0.95), rgba(4, 10, 16, 0.98));
+    border: 1px solid rgba(0, 217, 255, 0.25);
+    border-radius: 22px;
+    padding: 2.25rem 2.5rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(0, 217, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.linkedin-embed-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(10, 102, 194, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.linkedin-embed-card:hover {
+    border-color: rgba(0, 217, 255, 0.45);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 217, 255, 0.15);
+}
+
+.linkedin-card-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid rgba(0, 217, 255, 0.15);
+}
+
+.linkedin-brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+    background: rgba(10, 102, 194, 0.12);
+    border: 1px solid rgba(10, 102, 194, 0.35);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+}
+
+.linkedin-status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-full);
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.linkedin-card-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (max-width: 960px) {
+    .linkedin-card-content {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+}
+
+.linkedin-avatar-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+}
+
+.linkedin-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+}
+
+.linkedin-badge-icon {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 24px;
+    height: 24px;
+    background: #0A66C2;
+    border: 2px solid #030609;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.linkedin-profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.linkedin-name-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.linkedin-name {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.linkedin-pronouns {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.linkedin-headline {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--accent-highlight);
+    font-weight: 500;
+    line-height: 1.45;
+}
+
+.linkedin-meta-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.linkedin-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.linkedin-meta-separator {
+    color: var(--border-default);
+}
+
+.linkedin-connections {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.linkedin-skills-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.6rem;
+}
+
+.linkedin-chip {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: rgba(10, 25, 38, 0.7);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+    transition: var(--transition-smooth);
+}
+
+.linkedin-chip:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.linkedin-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 190px;
+}
+
+@media (max-width: 960px) {
+    .linkedin-card-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.linkedin-connect-btn {
+    background: linear-gradient(135deg, #0A66C2, #004182) !important;
+    border-color: #0A66C2 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(10, 102, 194, 0.4) !important;
+    justify-content: center;
+}
+
+.linkedin-connect-btn:hover {
+    background: linear-gradient(135deg, #0d7adb, #0A66C2) !important;
+    box-shadow: 0 6px 24px rgba(10, 102, 194, 0.6) !important;
+}
+
+/* About Section LinkedIn Pill */
+.about-linkedin-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+}
+
+.about-linkedin-pill:hover {
+    border-color: #0A66C2;
+    color: #ffffff;
+}
+
+/* Drive source button */
+.drive-source-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.6rem 0.95rem;
+    font-size: 0.78rem;
+    color: var(--accent-highlight);
+    border-color: rgba(0, 217, 255, 0.25);
+}
+
+.drive-source-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: rgba(0, 217, 255, 0.1);
+}

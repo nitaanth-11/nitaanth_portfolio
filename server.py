@@ -451,5 +451,6 @@ def serve_static_file(filename):
     return send_from_directory('.', filename)
 
 if __name__ == '__main__':
-    print("Nitaanth's Portfolio Backend running on http://localhost:5000")
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 8080))
+    print(f"Nitaanth's Portfolio Backend running on http://localhost:{port}")
+    app.run(host='0.0.0.0', port=port, debug=True)

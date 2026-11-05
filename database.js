@@ -12,7 +12,7 @@ const DATABASE = {
     header: {
         name: "Nitaanth",
         github: "https://github.com/nitaanth",
-        linkedin: "https://linkedin.com/in/nitaanth",
+        linkedin: "https://www.linkedin.com/in/nitaanth-panickar-55043523a/",
         email: "nitaanth@example.com",
         phone: "+91 98765 43210"
     },

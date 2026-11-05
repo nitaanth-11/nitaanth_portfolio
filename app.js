@@ -476,7 +476,8 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: 'Quantized neural networks, real-time edge streaming & OpenVINO deployment',
             tags: ['Edge AI', 'Computer Vision', 'Model Quantization'],
             pdf: 'Certificates/Edge AI Course Certificate - Nitaanth Panickar.pdf',
-            download: 'Edge_AI_Course_Certificate.pdf'
+            download: 'Edge_AI_Course_Certificate.pdf',
+            driveUrl: 'https://drive.google.com/file/d/1hShZG__f02TAEX03VRYJzx6PHhFGs1Jl/view?usp=drive_link'
         },
         {
             id: 'pm-ai',
@@ -570,6 +571,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (previewBox) {
             previewBox.setAttribute('data-pdf', item.pdf);
             previewBox.setAttribute('data-title', item.title);
+            if (item.driveUrl) {
+                previewBox.setAttribute('data-drive', item.driveUrl);
+            } else {
+                previewBox.removeAttribute('data-drive');
+            }
+        }
+
+        // Handle featured drive source button
+        let featuredDriveBtn = document.getElementById('featured-drive-btn');
+        if (item.driveUrl) {
+            if (!featuredDriveBtn) {
+                featuredDriveBtn = document.createElement('a');
+                featuredDriveBtn.id = 'featured-drive-btn';
+                featuredDriveBtn.className = 'btn-secondary drive-source-btn';
+                featuredDriveBtn.target = '_blank';
+                featuredDriveBtn.rel = 'noopener noreferrer';
+                featuredDriveBtn.title = 'View Verified Source on Google Drive';
+                featuredDriveBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <span>Drive Source</span>
+                `;
+                const actionsRow = document.getElementById('featured-actions-row');
+                if (actionsRow) actionsRow.appendChild(featuredDriveBtn);
+            }
+            featuredDriveBtn.href = item.driveUrl;
+            featuredDriveBtn.style.display = 'inline-flex';
+        } else if (featuredDriveBtn) {
+            featuredDriveBtn.style.display = 'none';
         }
 
         // Update Status Pill
@@ -632,9 +661,18 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'collection-mini-card card-tilt open-pdf-btn';
             card.setAttribute('data-pdf', item.pdf);
             card.setAttribute('data-title', item.title);
+            if (item.driveUrl) {
+                card.setAttribute('data-drive', item.driveUrl);
+            }
             card.setAttribute('title', 'Click to open on screen');
 
             const tagsHTML = (item.tags || []).slice(0, 3).map(t => `<span class="collection-tag">${t}</span>`).join('');
+            const driveActionHTML = item.driveUrl
+                ? `<a href="${item.driveUrl}" target="_blank" rel="noopener noreferrer" class="drive-source-btn" style="padding: 0.25rem 0.55rem; font-size: 0.68rem;" title="View Verified Source on Google Drive" onclick="event.stopPropagation();">
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <span>Drive</span>
+                   </a>`
+                : '';
 
             card.innerHTML = `
                 <div class="mini-card-top-header">
@@ -657,7 +695,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span>Preview On Screen</span>
                         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                     </span>
-                    <span style="font-size: 0.7rem; color: var(--accent-primary); font-weight: 700;">ELECTRIC GLASS</span>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        ${driveActionHTML}
+                        <span style="font-size: 0.7rem; color: var(--accent-primary); font-weight: 700;">ELECTRIC GLASS</span>
+                    </div>
                 </div>
             `;
             grid.appendChild(card);
@@ -1691,12 +1732,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const pdfCloseBtn = document.getElementById('pdf-close-btn');
     const pdfBackdrop = document.getElementById('pdf-modal-backdrop');
 
-    function openPDFModal(pdfUrl, title) {
+    function openPDFModal(pdfUrl, title, driveUrl) {
         if (!pdfModal || !pdfIframe) return;
         if (pdfModalTitle) pdfModalTitle.textContent = title || 'Document Viewer';
         if (pdfDownloadLink) {
             pdfDownloadLink.href = pdfUrl;
             pdfDownloadLink.setAttribute('download', (pdfUrl || '').split('/').pop() || 'document.pdf');
+        }
+        const driveModalLink = document.getElementById('pdf-modal-drive-link');
+        if (driveModalLink) {
+            if (driveUrl) {
+                driveModalLink.href = driveUrl;
+                driveModalLink.style.display = 'inline-flex';
+            } else {
+                driveModalLink.style.display = 'none';
+            }
         }
         // Native browser PDF viewer with toolbar enabled for reading and zooming
         pdfIframe.src = `${pdfUrl}#toolbar=1&navpanes=1&scrollbar=1&view=FitH`;
@@ -1742,8 +1792,9 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             const pdfUrl = pdfBtn.getAttribute('data-pdf');
             const title = pdfBtn.getAttribute('data-title') || pdfBtn.getAttribute('title') || 'Document Preview';
+            const driveUrl = pdfBtn.getAttribute('data-drive') || null;
             if (pdfUrl) {
-                openPDFModal(pdfUrl, title);
+                openPDFModal(pdfUrl, title, driveUrl);
             }
             return;
         }
