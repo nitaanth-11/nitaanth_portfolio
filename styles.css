@@ -3414,3 +3414,391 @@ body {
     color: var(--accent-primary);
     background: rgba(0, 217, 255, 0.1);
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPREHENSIVE MULTI-SCREEN RESPONSIVE SYSTEM
+   Ensures seamless fluid adaptation across ultra-wide, laptops, tablets, and phones
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── TABLETS & MEDIUM SCREENS (<= 992px) ─────────────────────────────────── */
+@media (max-width: 992px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .about-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-portrait-column {
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .collection-card-body {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .endorsements-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .linkedin-card-content {
+        grid-template-columns: auto 1fr;
+        gap: 1.5rem;
+    }
+
+    .linkedin-card-actions {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .linkedin-card-actions a {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* ── PHONES & SMALL SCREENS (<= 768px) ────────────────────────────────────── */
+@media (max-width: 768px) {
+    /* Section Headers */
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .subsection-title {
+        font-size: 1.45rem;
+    }
+
+    .collection-subsection {
+        margin-bottom: 3.25rem;
+    }
+
+    /* Showcase Cards */
+    .collection-showcase-container {
+        padding: 1.6rem 1.35rem;
+        border-radius: 18px;
+    }
+
+    .collection-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .collection-item-title {
+        font-size: 1.6rem;
+    }
+
+    .collection-item-issuer {
+        font-size: 0.95rem;
+    }
+
+    /* Full Grid */
+    .collection-full-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Endorsement Cards */
+    .endorsement-card {
+        padding: 1.6rem 1.35rem;
+        border-radius: 18px;
+    }
+
+    .endorsement-card-title {
+        font-size: 1.35rem;
+    }
+
+    /* LinkedIn Embed Card */
+    .linkedin-embed-card {
+        padding: 1.6rem 1.35rem;
+        border-radius: 18px;
+    }
+
+    .linkedin-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+    }
+
+    .linkedin-card-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.65rem;
+    }
+
+    .linkedin-card-actions a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* PDF Viewer Modal */
+    .pdf-modal-overlay {
+        padding: 0.5rem;
+    }
+
+    .pdf-modal-container {
+        height: 96vh;
+        border-radius: 16px;
+    }
+
+    .pdf-modal-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .pdf-modal-title {
+        font-size: 1rem;
+        max-width: 220px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* ── COMPACT MOBILE PHONES (<= 540px) ─────────────────────────────────────── */
+@media (max-width: 540px) {
+    .container {
+        padding: 0 1.15rem;
+    }
+
+    /* About Hero Typography & Buttons */
+    .about-hero-name {
+        font-size: 2.85rem;
+    }
+
+    .about-hero-subheading {
+        font-size: 0.78rem;
+    }
+
+    .about-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .about-hero-actions a,
+    .about-hero-actions button {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 0.85rem 1rem;
+    }
+
+    /* Section & Subsection Titles */
+    .section-title {
+        font-size: 1.7rem;
+    }
+
+    .section-number {
+        font-size: 0.7rem;
+    }
+
+    .subsection-index {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.5rem;
+    }
+
+    .subsection-title {
+        font-size: 1.25rem;
+    }
+
+    /* Showcase Cards on small phones */
+    .collection-showcase-container {
+        padding: 1.25rem 1rem;
+        border-radius: 14px;
+    }
+
+    .collection-header-title {
+        font-size: 1rem;
+    }
+
+    .collection-item-title {
+        font-size: 1.35rem;
+    }
+
+    .collection-item-subtitle {
+        font-size: 0.82rem;
+    }
+
+    .collection-actions-row {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.65rem;
+    }
+
+    .collection-actions-row button,
+    .collection-actions-row a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Endorsement Cards */
+    .endorsement-card {
+        padding: 1.25rem 1rem;
+        border-radius: 14px;
+    }
+
+    .endorsement-card-title {
+        font-size: 1.2rem;
+    }
+
+    .endorsement-card-issuer {
+        font-size: 0.85rem;
+    }
+
+    .endorsement-card-desc {
+        font-size: 0.82rem;
+    }
+
+    .endorsement-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.6rem;
+    }
+
+    .endorsement-actions button,
+    .endorsement-actions a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* LinkedIn Card on Small Phones */
+    .linkedin-embed-card {
+        padding: 1.25rem 1rem;
+        border-radius: 14px;
+    }
+
+    .linkedin-avatar-wrapper {
+        width: 72px;
+        height: 72px;
+    }
+
+    .linkedin-name {
+        font-size: 1.4rem;
+    }
+
+    .linkedin-headline {
+        font-size: 0.84rem;
+    }
+
+    .linkedin-meta-list {
+        font-size: 0.75rem;
+        gap: 0.35rem;
+    }
+
+    .linkedin-chip {
+        font-size: 0.68rem;
+        padding: 0.2rem 0.55rem;
+    }
+
+    .linkedin-brand-pill {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.65rem;
+    }
+
+    .linkedin-status-indicator {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.65rem;
+    }
+
+    /* Mini Cards in Grid */
+    .collection-mini-card {
+        padding: 1.15rem 0.95rem;
+        border-radius: 14px;
+    }
+
+    .mini-card-title {
+        font-size: 1.15rem;
+    }
+
+    /* Touch Scrolling Strip */
+    .collection-items-strip {
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 1rem;
+    }
+
+    .collection-strip-pill {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.75rem;
+    }
+
+    /* PDF Modal on Small Phones */
+    .pdf-modal-container {
+        height: 98vh;
+        border-radius: 12px;
+    }
+
+    .pdf-modal-header {
+        padding: 0.6rem 0.75rem;
+    }
+
+    .pdf-modal-title {
+        font-size: 0.88rem;
+        max-width: 130px;
+    }
+
+    /* Hide text labels on modal actions to avoid crowding the close button */
+    .pdf-modal-action-btn span {
+        display: none;
+    }
+
+    .pdf-modal-action-btn {
+        padding: 0.45rem;
+        min-width: 34px;
+        min-height: 34px;
+        justify-content: center;
+    }
+
+    .pdf-header-actions {
+        gap: 6px;
+    }
+
+    /* Final Thank You Card */
+    .final-thank-you-title {
+        font-size: 1.6rem;
+    }
+
+    .final-thank-you-text {
+        font-size: 0.88rem;
+    }
+
+    .final-connect-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.65rem;
+    }
+
+    .final-connect-actions a {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ── TOUCH & ACCESSIBILITY OPTIMIZATIONS ──────────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+    /* Touch device optimizations: enlarge tap targets and soften heavy transforms */
+    .collection-preview-overlay {
+        opacity: 0.75;
+        background: rgba(3, 6, 9, 0.35);
+    }
+
+    .collection-strip-pill {
+        min-height: 40px;
+    }
+
+    .btn-primary, .btn-secondary, .social-icon {
+        min-height: 44px;
+    }
+}
